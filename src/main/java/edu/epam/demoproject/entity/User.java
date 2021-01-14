@@ -1,22 +1,32 @@
 package edu.epam.demoproject.entity;
 
-public class User {
+public class User extends Entity {
 
-    private int id;
+    private long id;
     private String login;
     private String password;
+    private String firstName;
+    private String lastName;
+    private int statusNum;
+    private int facultyNum;
+    private int specialtyNum;
 
-    public User(int id, String login, String password) {
+    public User(long id, String login, String password, String firstName, String lastName, int statusNum, int facultyNum, int specialtyNum) {
         this.id = id;
         this.login = login;
         this.password = password;
+        this.firstName = firstName;
+        this.lastName = lastName;
+        this.statusNum = statusNum;
+        this.facultyNum = facultyNum;
+        this.specialtyNum = specialtyNum;
     }
 
-    public int getId() {
+    public Long getId() {
         return id;
     }
 
-    public void setId(int id) {
+    public void setId(Long id) {
         this.id = id;
     }
 
@@ -34,6 +44,46 @@ public class User {
 
     public void setPassword(String password) {
         this.password = password;
+    }
+
+    public String getFirstName() {
+        return firstName;
+    }
+
+    public void setFirstName(String firstName) {
+        this.firstName = firstName;
+    }
+
+    public String getLastName() {
+        return lastName;
+    }
+
+    public void setLastName(String lastName) {
+        this.lastName = lastName;
+    }
+
+    public int getStatusNum() {
+        return statusNum;
+    }
+
+    public void setStatusNum(int status_num) {
+        this.statusNum = status_num;
+    }
+
+    public int getFacultyNum() {
+        return facultyNum;
+    }
+
+    public void setFacultyNum(int faculty_num) {
+        this.facultyNum = faculty_num;
+    }
+
+    public int getSpecialtyNum() {
+        return specialtyNum;
+    }
+
+    public void setSpecialtyNum(int specialty_num) {
+        this.specialtyNum = specialty_num;
     }
 
     @Override
