@@ -1,8 +1,9 @@
 package edu.epam.demoproject.service;
 
-import edu.epam.demoproject.connection.MySqlDataSourceFactory;
+import edu.epam.demoproject.connection.ConnectionPool;
+import edu.epam.demoproject.dao.DaoException;
 import edu.epam.demoproject.dao.EntityTransaction;
-import edu.epam.demoproject.dao.UserDao;
+import edu.epam.demoproject.dao.impl.UserDaoImpl;
 import edu.epam.demoproject.entity.User;
 import edu.epam.demoproject.util.IdGenerator;
 
@@ -11,20 +12,26 @@ import java.sql.SQLException;
 
 public class UserDaoService {
 
-    public boolean createNewUser(String login, String password){
+    public boolean createNewUser(String login, String password) throws DaoException {
+        try {
+            Class.forName("com.mysql.cj.jdbc.Driver");
+        } catch (ClassNotFoundException e) {
+            e.printStackTrace();
+        }
         IdGenerator idGenerator = new IdGenerator();
         long id = idGenerator.findId();
-        Connection connection = MySqlDataSourceFactory.getConnection();
+        ConnectionPool connectionPool = ConnectionPool.getInstance();
+        Connection connection = connectionPool.getConnection();
         EntityTransaction entityTransaction = new EntityTransaction();
-        UserDao userDao = new UserDao();
-        userDao.setConnection(connection);
-        entityTransaction.begin(userDao);
+        UserDaoImpl userDaoImpl = new UserDaoImpl();
+        userDaoImpl.setConnection(connection);
+        entityTransaction.begin(userDaoImpl);
         if (checkUserByLoginAndPassword(login, password)){
             return false;
         }else {
             try {
                 User newUser = new User(id, login, password, null, null, 2, 0, 0);
-                userDao.create(newUser);
+                userDaoImpl.create(newUser);
                 entityTransaction.commit();
             } catch (SQLException e) {
                 e.printStackTrace();
@@ -36,13 +43,14 @@ public class UserDaoService {
         }
     }
 
-    public boolean checkUserByLoginAndPassword(String login, String password){
-        Connection connection = MySqlDataSourceFactory.getConnection();
-        UserDao userDao = new UserDao();
-        userDao.setConnection(connection);
+    public boolean checkUserByLoginAndPassword(String login, String password) throws DaoException {
+        ConnectionPool connectionPool = ConnectionPool.getInstance();
+        Connection connection = connectionPool.getConnection();
+        UserDaoImpl userDaoImpl = new UserDaoImpl();
+        userDaoImpl.setConnection(connection);
         boolean isExist = false;
         try {
-            isExist = userDao.checkUserByLoginAndPassword(login, password);
+            isExist = userDaoImpl.checkUserByLoginAndPassword(login, password);
         } catch (SQLException e) {
             e.printStackTrace();
         }

@@ -1,5 +1,6 @@
 package edu.epam.demoproject.servlet;
 
+import edu.epam.demoproject.dao.DaoException;
 import edu.epam.demoproject.service.UserDaoService;
 
 import javax.servlet.RequestDispatcher;
@@ -28,12 +29,16 @@ public class RegistrationController extends HttpServlet {
         String login = request.getParameter("login");
         String password = request.getParameter("password");
         UserDaoService userDaoService = new UserDaoService();
-        if(userDaoService.createNewUser(login, password)){
-            RequestDispatcher dispatcher = request.getRequestDispatcher("/pages/switcher.jsp");
-            dispatcher.forward(request, response);
-        } else  {
-            RequestDispatcher dispatcher = request.getRequestDispatcher("/pages/thisUserIsExist.jsp");
-            dispatcher.forward(request, response);
+        try {
+            if(userDaoService.createNewUser(login, password)){
+                RequestDispatcher dispatcher = request.getRequestDispatcher("/pages/switcher.jsp");
+                dispatcher.forward(request, response);
+            } else  {
+                RequestDispatcher dispatcher = request.getRequestDispatcher("/pages/thisUserIsExist.jsp");
+                dispatcher.forward(request, response);
+            }
+        } catch (DaoException e) {
+            e.printStackTrace();
         }
     }
 

@@ -11,7 +11,7 @@ public abstract class AbstractDao<K, T extends Entity> {
     protected Connection connection;
 
     public abstract List<T> findAll();
-    public abstract T findEntityById(K id);
+    public abstract T findById(K id);
     public abstract boolean delete(T t);
     public abstract boolean delete(K id);
     public abstract void create(T t) throws SQLException;

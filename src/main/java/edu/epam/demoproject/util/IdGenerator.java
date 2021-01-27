@@ -1,24 +1,20 @@
 package edu.epam.demoproject.util;
 
-import edu.epam.demoproject.connection.MySqlDataSourceFactory;
-import edu.epam.demoproject.dao.AbstractDao;
-import edu.epam.demoproject.dao.EntityTransaction;
-import edu.epam.demoproject.dao.UserDao;
+import edu.epam.demoproject.connection.MysqlDataSourceFactory;
+import edu.epam.demoproject.dao.impl.UserDaoImpl;
 
 import java.sql.Connection;
-import java.sql.ResultSet;
 import java.sql.SQLException;
-import java.sql.Statement;
 
 public class IdGenerator {
 
     public long findId(){
-        UserDao userDao = new UserDao();
-        Connection connection = MySqlDataSourceFactory.getConnection();
-        userDao.setConnection(connection);
+        UserDaoImpl userDaoImpl = new UserDaoImpl();
+        Connection connection = MysqlDataSourceFactory.getConnection();
+        userDaoImpl.setConnection(connection);
         long id = 0;
         try {
-            id = userDao.findMaxUserId();
+            id = userDaoImpl.findMaxUserId();
         } catch (SQLException e) {
             e.printStackTrace();
         }finally {

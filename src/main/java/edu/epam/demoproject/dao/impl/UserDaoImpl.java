@@ -1,5 +1,6 @@
-package edu.epam.demoproject.dao;
+package edu.epam.demoproject.dao.impl;
 
+import edu.epam.demoproject.dao.AbstractUserDao;
 import edu.epam.demoproject.entity.User;
 
 import java.sql.PreparedStatement;
@@ -8,7 +9,7 @@ import java.sql.SQLException;
 import java.sql.Statement;
 import java.util.List;
 
-public class UserDao extends AbstractDao<Integer, User> {
+public class UserDaoImpl extends AbstractUserDao {
     private static final String SQL_CREATE = "INSERT INTO users(id, login, password, first_name, " +
             "last_name, status_num, faculty_num, specialty_num) VALUES (?, ?, ?, ?, ?, ?, ?, ?)";
     private final static String SQL_FIND_MAX_ID = "SELECT MAX(users.id) FROM users";
@@ -19,14 +20,17 @@ public class UserDao extends AbstractDao<Integer, User> {
 
     }
 
-    void blockUser(User user){
-        return;
+    @Override
+    public void blockUser(User user){
+
     }
 
-    User updateUserId(User user){
+    @Override
+    public User updateUserId(User user){
         return null;
     }
 
+    @Override
     public long findMaxUserId() throws SQLException{
         Statement statement = connection.createStatement();
         ResultSet resultSet = statement.executeQuery(SQL_FIND_MAX_ID);
@@ -35,6 +39,7 @@ public class UserDao extends AbstractDao<Integer, User> {
         return id;
     }
 
+    @Override
     public boolean checkUserByLoginAndPassword(String login, String password) throws SQLException {
         PreparedStatement statement = connection.prepareStatement(SQL_CHECK_USER_BY_LOGIN_AND_PASSWORD);
         statement.setString(1, login);
@@ -49,9 +54,10 @@ public class UserDao extends AbstractDao<Integer, User> {
     }
 
     @Override
-    public User findEntityById(Integer id) {
+    public User findById(Long id) {
         return null;
     }
+
 
     @Override
     public boolean delete(User user) {
@@ -59,9 +65,10 @@ public class UserDao extends AbstractDao<Integer, User> {
     }
 
     @Override
-    public boolean delete(Integer id) {
+    public boolean delete(Long id) {
         return false;
     }
+
 
     @Override
     public void create(User user) throws SQLException {
