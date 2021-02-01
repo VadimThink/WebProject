@@ -6,16 +6,17 @@
   To change this template use File | Settings | File Templates.
 --%>
 <%@ page contentType="text/html;charset=UTF-8" language="java" %>
+
 <html>
 <head>
     <title>Регистрация</title>
 </head>
 <body>
-<form action="${pageContext.request.contextPath}/regController" method="post">
+<form name= "signUpForm" action="${pageContext.request.contextPath}/controller" method="post">
     <p> Форма регистрации:</p>
     <input type="text" name="login" placeholder="Логин"  required pattern="^[a-zA-Z0-9]([._-](?![._-])|[a-zA-Z0-9]){3,18}[a-zA-Z0-9]$"/>
     <input type="text" name="password" placeholder="Пароль" required pattern="^[a-zA-Z0-9]([._-](?![._-])|[a-zA-Z0-9]){3,18}[a-zA-Z0-9]$"/>
-    <input type = "submit" name="submit" value="Зарегистрировать"/>
+    <input type = "submit" name="command" value="register"/>
 </form>
 </body>
 </html>

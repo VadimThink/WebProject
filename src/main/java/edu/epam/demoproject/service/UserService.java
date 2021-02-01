@@ -10,7 +10,7 @@ import edu.epam.demoproject.util.IdGenerator;
 import java.sql.Connection;
 import java.sql.SQLException;
 
-public class UserDaoService {
+public class UserService {
 
     public boolean createNewUser(String login, String password) throws DaoException {
         try {
@@ -26,9 +26,9 @@ public class UserDaoService {
         UserDaoImpl userDaoImpl = new UserDaoImpl();
         userDaoImpl.setConnection(connection);
         entityTransaction.begin(userDaoImpl);
-        if (checkUserByLoginAndPassword(login, password)){
+        if (checkUserByLoginAndPassword(login, password)) {
             return false;
-        }else {
+        } else {
             try {
                 User newUser = new User(id, login, password, null, null, 2, 0, 0);
                 userDaoImpl.create(newUser);

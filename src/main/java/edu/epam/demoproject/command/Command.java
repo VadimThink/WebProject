@@ -1,5 +1,8 @@
 package edu.epam.demoproject.command;
 
+import javax.servlet.http.HttpServletRequest;
+import javax.servlet.http.HttpServletResponse;
+
 public interface Command{
-    void execute();
+    String execute(HttpServletRequest request);
 }

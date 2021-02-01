@@ -11,7 +11,7 @@
     <title>Добро пожаловать!</title>
 </head>
 <body>
-<form action="logicController" method="post">
+<form action="controller" method="post">
     <p> Выключатель света лампочки:</p>
     <p> Чтобы свет был, введите "Включен", чтобы света не было, введите "Выключен"</p>
     <input type="text" name="lightCondition" placeholder="Вместо этого текста введите" required pattern="^[А-Яа-я]+$"/>
