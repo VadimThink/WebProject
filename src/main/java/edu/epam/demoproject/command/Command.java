@@ -1,8 +1,7 @@
 package edu.epam.demoproject.command;
 
-import javax.servlet.http.HttpServletRequest;
-import javax.servlet.http.HttpServletResponse;
+import edu.epam.demoproject.controller.request.RequestContext;
 
-public interface Command{
-    String execute(HttpServletRequest request);
+public interface Command {
+    CommandResult execute(RequestContext requestContext);
 }

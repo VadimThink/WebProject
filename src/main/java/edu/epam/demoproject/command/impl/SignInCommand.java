@@ -1,30 +1,31 @@
 package edu.epam.demoproject.command.impl;
 
-import edu.epam.demoproject.command.Command;
-import edu.epam.demoproject.command.PagePath;
-import edu.epam.demoproject.command.RequestParameter;
-import edu.epam.demoproject.dao.DaoException;
+import edu.epam.demoproject.command.*;
+import edu.epam.demoproject.constant.Attribute;
+import edu.epam.demoproject.constant.Message;
+import edu.epam.demoproject.constant.PagePath;
+import edu.epam.demoproject.constant.RequestParameter;
+import edu.epam.demoproject.controller.request.RequestContext;
 import edu.epam.demoproject.service.UserService;
 
-import javax.servlet.http.HttpServletRequest;
 
 public class SignInCommand implements Command {
+    private static final String LOGIN_PAGE_COMMAND = "controller?command=" + CommandName.LOGIN_PAGE;
+    private static final UserService userService = new UserService();
+
     @Override
-    public String execute(HttpServletRequest request) {
-        String page = null;
-        UserService userService = new UserService();
-        String login = request.getParameter(RequestParameter.LOGIN);
-        String password = request.getParameter(RequestParameter.PASSWORD);
-        try {
-            if (userService.checkUserByLoginAndPassword(login, password)){
-                request.setAttribute(RequestParameter.USER, login);
-                page = PagePath.MAIN;
-            } else{
-                page = PagePath.WRONG_AUTH;
-            }
-        } catch (DaoException e) {
-            e.printStackTrace();
+    public CommandResult execute(RequestContext requestContext) {
+        String page;
+        String login = requestContext.getParameter(RequestParameter.LOGIN);
+        String password = requestContext.getParameter(RequestParameter.PASSWORD);
+        if (userService.checkUserByLoginAndPassword(login, password)) {
+            requestContext.addSessionAttribute(Attribute.USER, login);
+            page = PagePath.MAIN;
+            return CommandResult.redirect(page);
+        } else {
+            requestContext.addAttribute(Attribute.ERROR_MESSAGE, Message.WRONG_AUTH);
+            page = LOGIN_PAGE_COMMAND;
+            return CommandResult.forward(page);
         }
-        return page;
     }
 }

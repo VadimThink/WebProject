@@ -1,6 +1,5 @@
 package edu.epam.demoproject.connection;
 
-import edu.epam.demoproject.dao.DaoException;
 import org.apache.logging.log4j.LogManager;
 import org.apache.logging.log4j.Logger;
 
@@ -52,14 +51,14 @@ public class ConnectionPool {
         }
     }
 
-    public ProxyConnection getConnection() throws DaoException {
+    public ProxyConnection getConnection() {
         ProxyConnection proxyConnection = null;
         try {
             proxyConnection = freeConnections.take();
             busyConnections.add(proxyConnection);
         } catch (InterruptedException exp) {
             Logger.error("The connection is not received", exp);
-            throw new DaoException(exp);//todo
+            throw new RuntimeException(exp);
         }
         return proxyConnection;
     }

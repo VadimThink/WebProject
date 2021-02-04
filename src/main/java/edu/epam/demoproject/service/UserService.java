@@ -6,18 +6,17 @@ import edu.epam.demoproject.dao.EntityTransaction;
 import edu.epam.demoproject.dao.impl.UserDaoImpl;
 import edu.epam.demoproject.entity.User;
 import edu.epam.demoproject.util.IdGenerator;
+import org.apache.logging.log4j.LogManager;
+import org.apache.logging.log4j.Logger;
 
 import java.sql.Connection;
 import java.sql.SQLException;
 
 public class UserService {
+    private static final Logger logger = LogManager.getLogger();
+    private static final String DATABASE_ERROR = "Can`t get access to Database";
 
-    public boolean createNewUser(String login, String password) throws DaoException {
-        try {
-            Class.forName("com.mysql.cj.jdbc.Driver");
-        } catch (ClassNotFoundException e) {
-            e.printStackTrace();
-        }
+    public boolean createNewUser(String login, String password) {
         IdGenerator idGenerator = new IdGenerator();
         long id = idGenerator.findId();
         ConnectionPool connectionPool = ConnectionPool.getInstance();
@@ -33,8 +32,9 @@ public class UserService {
                 User newUser = new User(id, login, password, null, null, 2, 0, 0);
                 userDaoImpl.create(newUser);
                 entityTransaction.commit();
-            } catch (SQLException e) {
+            } catch (DaoException e) {
                 e.printStackTrace();
+                logger.error(DATABASE_ERROR);
                 entityTransaction.rollback();
             } finally {
                 entityTransaction.end();
@@ -43,7 +43,7 @@ public class UserService {
         }
     }
 
-    public boolean checkUserByLoginAndPassword(String login, String password) throws DaoException {
+    public boolean checkUserByLoginAndPassword(String login, String password) {
         ConnectionPool connectionPool = ConnectionPool.getInstance();
         Connection connection = connectionPool.getConnection();
         UserDaoImpl userDaoImpl = new UserDaoImpl();
@@ -51,8 +51,9 @@ public class UserService {
         boolean isExist = false;
         try {
             isExist = userDaoImpl.checkUserByLoginAndPassword(login, password);
-        } catch (SQLException e) {
+        } catch (DaoException e) {
             e.printStackTrace();
+            logger.error(DATABASE_ERROR);
         }
         return isExist;
     }

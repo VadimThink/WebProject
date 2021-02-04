@@ -1,13 +1,14 @@
 package edu.epam.demoproject.command;
 
-import edu.epam.demoproject.command.impl.LogOutCommand;
+import edu.epam.demoproject.command.impl.ForwardPageCommand;
 import edu.epam.demoproject.command.impl.SignInCommand;
 import edu.epam.demoproject.command.impl.SignUpCommand;
 
 public enum CommandType {
+
     REGISTER(new SignUpCommand()),
     LOGIN(new SignInCommand()),
-    LOGOUT(new LogOutCommand());
+    LOGIN_PAGE(new ForwardPageCommand(CommandName.LOGIN_PAGE));
 
     private final Command command;
 
@@ -15,6 +16,7 @@ public enum CommandType {
         this.command = command;
 
     }
+
     public Command getCommand() {
         return command;
     }

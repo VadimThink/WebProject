@@ -1,6 +1,7 @@
 package edu.epam.demoproject.dao.impl;
 
 import edu.epam.demoproject.dao.AbstractUserDao;
+import edu.epam.demoproject.dao.DaoException;
 import edu.epam.demoproject.entity.User;
 
 import java.sql.PreparedStatement;
@@ -16,36 +17,45 @@ public class UserDaoImpl extends AbstractUserDao {
     private final static String SQL_CHECK_USER_BY_LOGIN_AND_PASSWORD = "SELECT users.login, users.password FROM users " +
             "WHERE users.login LIKE ? AND users.password LIKE ?";
 
-    void createSeveralUsers(List<User> users){
+    void createSeveralUsers(List<User> users) {
 
     }
 
     @Override
-    public void blockUser(User user){
+    public void blockUser(User user) {
 
     }
 
     @Override
-    public User updateUserId(User user){
+    public User updateUserId(User user) {
         return null;
     }
 
     @Override
-    public long findMaxUserId() throws SQLException{
-        Statement statement = connection.createStatement();
-        ResultSet resultSet = statement.executeQuery(SQL_FIND_MAX_ID);
-        resultSet.next();
-        long id = resultSet.getLong("MAX(users.id)");
+    public long findMaxUserId() throws DaoException {
+        long id;
+        try (Statement statement = connection.createStatement();){
+            ResultSet resultSet = statement.executeQuery(SQL_FIND_MAX_ID);
+            resultSet.next();
+            id = resultSet.getLong("MAX(users.id)");
+        } catch (SQLException e) {
+            throw new DaoException(e);
+        }
         return id;
     }
 
     @Override
-    public boolean checkUserByLoginAndPassword(String login, String password) throws SQLException {
-        PreparedStatement statement = connection.prepareStatement(SQL_CHECK_USER_BY_LOGIN_AND_PASSWORD);
-        statement.setString(1, login);
-        statement.setString(2, password);
-        ResultSet resultSet = statement.executeQuery();
-        return resultSet.next();
+    public boolean checkUserByLoginAndPassword(String login, String password) throws DaoException {
+        boolean isPresent;
+        try (PreparedStatement statement = connection.prepareStatement(SQL_CHECK_USER_BY_LOGIN_AND_PASSWORD)){
+            statement.setString(1, login);
+            statement.setString(2, password);
+            ResultSet resultSet = statement.executeQuery();
+            isPresent = resultSet.next();
+        } catch (SQLException e) {
+            throw new DaoException(e);
+        }
+        return isPresent;
     }
 
     @Override
@@ -71,17 +81,20 @@ public class UserDaoImpl extends AbstractUserDao {
 
 
     @Override
-    public void create(User user) throws SQLException {
-        PreparedStatement statement = connection.prepareStatement(SQL_CREATE);
-        statement.setLong(1, user.getId());
-        statement.setString(2, user.getLogin());
-        statement.setString(3, user.getPassword());
-        statement.setString(4, user.getFirstName());
-        statement.setString(5, user.getLastName());
-        statement.setInt(6, user.getStatusNum());
-        statement.setInt(7, user.getFacultyNum());
-        statement.setInt(8, user.getSpecialtyNum());
-        statement.executeUpdate();
+    public void create(User user) throws DaoException {
+        try (PreparedStatement statement = connection.prepareStatement(SQL_CREATE)){
+            statement.setLong(1, user.getId());
+            statement.setString(2, user.getLogin());
+            statement.setString(3, user.getPassword());
+            statement.setString(4, user.getFirstName());
+            statement.setString(5, user.getLastName());
+            statement.setInt(6, user.getStatusNum());
+            statement.setInt(7, user.getFacultyNum());
+            statement.setInt(8, user.getSpecialtyNum());
+            statement.executeUpdate();
+        } catch (SQLException e) {
+            throw new DaoException(e);
+        }
     }
 
     @Override

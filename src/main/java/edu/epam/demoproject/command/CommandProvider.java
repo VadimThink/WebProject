@@ -3,7 +3,8 @@ package edu.epam.demoproject.command;
 import edu.epam.demoproject.command.impl.EmptyCommand;
 
 public class CommandProvider {
-    private CommandProvider(){}
+    private CommandProvider() {
+    }
 
     public static Command provideCommand(String command) {
         Command currentCommand;

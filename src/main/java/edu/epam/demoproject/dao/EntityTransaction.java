@@ -1,6 +1,6 @@
 package edu.epam.demoproject.dao;
 
-import edu.epam.demoproject.connection.MysqlDataSourceFactory;
+import edu.epam.demoproject.connection.ConnectionPool;
 
 import java.sql.Connection;
 import java.sql.SQLException;
@@ -9,8 +9,9 @@ public class EntityTransaction {
     private Connection connection;
 
     public void begin(AbstractDao dao, AbstractDao... daos) {
+        ConnectionPool connectionPool = ConnectionPool.getInstance();
         if (connection == null){
-            connection = MysqlDataSourceFactory.getConnection();
+            connection = connectionPool.getConnection();
         }
         try{
             connection.setAutoCommit(false);

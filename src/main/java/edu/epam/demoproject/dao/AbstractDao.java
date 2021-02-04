@@ -10,12 +10,12 @@ import java.util.List;
 public abstract class AbstractDao<K, T extends Entity> {
     protected Connection connection;
 
-    public abstract List<T> findAll();
-    public abstract T findById(K id);
-    public abstract boolean delete(T t);
-    public abstract boolean delete(K id);
-    public abstract void create(T t) throws SQLException;
-    public abstract T update(T t);
+    public abstract List<T> findAll() throws DaoException;
+    public abstract T findById(K id) throws DaoException;
+    public abstract boolean delete(T t) throws DaoException;
+    public abstract boolean delete(K id) throws DaoException;
+    public abstract void create(T t) throws DaoException;
+    public abstract T update(T t) throws DaoException;
 
     public void close(Statement statement){
         try{

@@ -1,6 +1,7 @@
 package edu.epam.demoproject.util;
 
-import edu.epam.demoproject.connection.MysqlDataSourceFactory;
+import edu.epam.demoproject.connection.ConnectionPool;
+import edu.epam.demoproject.dao.DaoException;
 import edu.epam.demoproject.dao.impl.UserDaoImpl;
 
 import java.sql.Connection;
@@ -8,16 +9,18 @@ import java.sql.SQLException;
 
 public class IdGenerator {
 
-    public long findId(){
+    public long findId() {
         UserDaoImpl userDaoImpl = new UserDaoImpl();
-        Connection connection = MysqlDataSourceFactory.getConnection();
+        ConnectionPool connectionPool = ConnectionPool.getInstance();
+        Connection connection = null;
+        connection = connectionPool.getConnection();
         userDaoImpl.setConnection(connection);
         long id = 0;
         try {
             id = userDaoImpl.findMaxUserId();
-        } catch (SQLException e) {
+        } catch (DaoException e) {
             e.printStackTrace();
-        }finally {
+        } finally {
             try {
                 connection.close();
             } catch (SQLException e) {
