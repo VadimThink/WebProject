@@ -8,5 +8,6 @@ public abstract class AbstractUserDao extends AbstractDao<Long, User> {
     public abstract boolean checkUserByLoginAndPassword(String login, String password) throws DaoException;
     public abstract void blockUser(User user) throws DaoException;
     public abstract User updateUserId(User user) throws DaoException;
+    public abstract int findRole(String login) throws DaoException;
 
 }

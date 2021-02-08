@@ -3,10 +3,11 @@
 <head>
     <title>Title</title>
 </head>
-<body>
-<form name = mainForm action="controller" method="post">
+<body id = "pagesBody">
+<c:import url="parts/head.jsp"/>
+<form name=mainForm action="controller" method="post">
     <p>${lol}</p>
-    <input type="hidden" name="command" value="logout" />
+    <input type="hidden" name="command" value="logout"/>
 </form>
 </body>
 </html>

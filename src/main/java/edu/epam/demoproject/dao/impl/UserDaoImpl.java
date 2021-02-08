@@ -11,11 +11,12 @@ import java.sql.Statement;
 import java.util.List;
 
 public class UserDaoImpl extends AbstractUserDao {
-    private static final String SQL_CREATE = "INSERT INTO users(id, login, password, first_name, " +
-            "last_name, status_num, faculty_num, specialty_num) VALUES (?, ?, ?, ?, ?, ?, ?, ?)";
+    private static final String SQL_CREATE = "INSERT INTO users(login, password, first_name, " +
+            "last_name, status_num, specialty_num, role_num) VALUES (?, ?, ?, ?, ?, ?, ?)";
     private final static String SQL_FIND_MAX_ID = "SELECT MAX(users.id) FROM users";
     private final static String SQL_CHECK_USER_BY_LOGIN_AND_PASSWORD = "SELECT users.login, users.password FROM users " +
             "WHERE users.login LIKE ? AND users.password LIKE ?";
+    private final static String SQL_FIND_ROLE = "SELECT users.role_num FROM users WHERE users.login LIKE ?";
 
     void createSeveralUsers(List<User> users) {
 
@@ -58,6 +59,19 @@ public class UserDaoImpl extends AbstractUserDao {
         return isPresent;
     }
 
+    public int findRole(String login) throws DaoException{
+        int role;
+        try(PreparedStatement statement = connection.prepareStatement(SQL_FIND_ROLE)){
+            statement.setString(1, login);
+            ResultSet resultSet = statement.executeQuery();
+            resultSet.next();
+            role = resultSet.getInt("users.role_num");
+        }catch (SQLException e){
+            throw new DaoException(e);
+        }
+        return role;
+    }
+
     @Override
     public List<User> findAll() {
         return null;
@@ -83,14 +97,13 @@ public class UserDaoImpl extends AbstractUserDao {
     @Override
     public void create(User user) throws DaoException {
         try (PreparedStatement statement = connection.prepareStatement(SQL_CREATE)){
-            statement.setLong(1, user.getId());
-            statement.setString(2, user.getLogin());
-            statement.setString(3, user.getPassword());
-            statement.setString(4, user.getFirstName());
-            statement.setString(5, user.getLastName());
-            statement.setInt(6, user.getStatusNum());
-            statement.setInt(7, user.getFacultyNum());
-            statement.setInt(8, user.getSpecialtyNum());
+            statement.setString(1, user.getLogin());
+            statement.setString(2, user.getPassword());
+            statement.setString(3, user.getFirstName());
+            statement.setString(4, user.getLastName());
+            statement.setInt(5, user.getStatusNum());
+            statement.setInt(6, user.getSpecialtyNum());
+            statement.setInt(7, user.getRoleNum());
             statement.executeUpdate();
         } catch (SQLException e) {
             throw new DaoException(e);

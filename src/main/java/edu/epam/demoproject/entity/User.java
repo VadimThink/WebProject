@@ -2,32 +2,22 @@ package edu.epam.demoproject.entity;
 
 public class User extends Entity {
 
-    private long id;
     private String login;
     private String password;
     private String firstName;
     private String lastName;
     private int statusNum;
-    private int facultyNum;
     private int specialtyNum;
+    private int roleNum;
 
-    public User(long id, String login, String password, String firstName, String lastName, int statusNum, int facultyNum, int specialtyNum) {
-        this.id = id;
+    public User(String login, String password, String firstName, String lastName, int statusNum, int specialtyNum, int roleNum) {
         this.login = login;
         this.password = password;
         this.firstName = firstName;
         this.lastName = lastName;
         this.statusNum = statusNum;
-        this.facultyNum = facultyNum;
         this.specialtyNum = specialtyNum;
-    }
-
-    public Long getId() {
-        return id;
-    }
-
-    public void setId(Long id) {
-        this.id = id;
+        this.roleNum = roleNum;
     }
 
     public String getLogin() {
@@ -66,24 +56,24 @@ public class User extends Entity {
         return statusNum;
     }
 
-    public void setStatusNum(int status_num) {
-        this.statusNum = status_num;
+    public void setStatusNum(int statusNum) {
+        this.statusNum = statusNum;
     }
 
-    public int getFacultyNum() {
-        return facultyNum;
+    public int getRoleNum() {
+        return roleNum;
     }
 
-    public void setFacultyNum(int faculty_num) {
-        this.facultyNum = faculty_num;
+    public void setRoleNum(int faculty_num) {
+        this.roleNum = roleNum;
     }
 
     public int getSpecialtyNum() {
         return specialtyNum;
     }
 
-    public void setSpecialtyNum(int specialty_num) {
-        this.specialtyNum = specialty_num;
+    public void setSpecialtyNum(int specialtyNum) {
+        this.specialtyNum = specialtyNum;
     }
 
     @Override
@@ -96,7 +86,7 @@ public class User extends Entity {
 
     @Override
     public int hashCode() {
-        int result = (int) (id ^ (id >>> 32));
+        int result = 0;
         result = 31 * result + (login != null ? login.hashCode() : 0);
         result = 31 * result + (password != null ? password.hashCode() : 0);
         return result;

@@ -12,13 +12,15 @@
         <fmt:message key="header.login"/>
     </title>
 </head>
-<body>
+<body id = "pagesBody">
+<c:import url="parts/head.jsp"/>
 <div align="center">
     <form name="loginForm" method="POST" action="${pageContext.request.contextPath}/controller?command=login">
         <h1 align="center">
             <font size="8" color="#0033CC" face="Gabriola">
                 <fmt:message key="message.enterYourAccount"/>
-            </font></h1>
+            </font>
+        </h1>
         <p align="center">
             <fmt:message key="input.header.login"/>
             <input type="text" name="login" placeholder="Login" required
@@ -26,11 +28,11 @@
         </p>
         <p align="center">
             <fmt:message key="input.header.password"/>
-            <input type="text" name="password" placeholder="Password" required
+            <input type="password" name="password" placeholder="Password" required
                    pattern="^[a-zA-Z0-9]([._-](?![._-])|[a-zA-Z0-9]){3,18}[a-zA-Z0-9]$"/>
         </p>
         <p align="center">
-            <button type="submit">
+            <button id = "pagesButton" type="submit">
                 <fmt:message key="button.login"/>
             </button>
         </p>
@@ -42,7 +44,7 @@
         <fmt:message key="message.orCreateNew"/>
     </h2>
     <p align="center">
-        <a href="${pageContext.request.contextPath}/pages/registration.jsp">
+        <a id = "pagesA" href="${pageContext.request.contextPath}/pages/registration.jsp">
             <fmt:message key="button.registration"/>
         </a>
     </p>

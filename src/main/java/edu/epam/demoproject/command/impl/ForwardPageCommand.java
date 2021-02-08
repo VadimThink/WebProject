@@ -22,7 +22,7 @@ public class ForwardPageCommand implements Command {
         }
         switch (commandType) {
             case CommandName.LOGIN_PAGE:
-                return CommandResult.forward(PagePath.LOGIN);
+                return CommandResult.setForwardPage(PagePath.LOGIN);
             default:
                 throw new IllegalArgumentException("Unknown page: " + commandType);
         }// TODO: 04.02.2021

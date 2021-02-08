@@ -1,20 +1,19 @@
-a, button {
+[id = "pagesA"], [id = "pagesButton"] {
     border: 1px solid #CFD8DC;
     width: 260px;
     padding: 10px 10px;
 }
 
-a, button {
+[id = "pagesA"], [id = "pagesButton"] {
     border: none;
     background-color: transparent;
-    border: 1px solid rgb(124, 123, 123);
     padding: 11px;
     font-size: 12px;
     font-weight: 400;
     text-transform: uppercase;
 }
 
-a, button {
+[id = "pagesA"], [id = "pagesButton"] {
     button-decoration: none;
     display: inline-block;
     color: white;
@@ -56,7 +55,7 @@ select {
     width: 268px
 }
 
-body {
+[id = "pagesBody"] {
     background-image: linear-gradient(to right, #9EEFE1 0%, #4830F0 51%, #9eefe1 100%);
     background-size: 200% auto;
 }

@@ -9,11 +9,11 @@ public class CommandResult {
         this.isRedirect = isRedirect;
     }
 
-    public static CommandResult redirect(String page) {
+    public static CommandResult setRedirectPage(String page) {
         return new CommandResult(page, true);
     }
 
-    public static CommandResult forward(String page) {
+    public static CommandResult setForwardPage(String page) {
         return new CommandResult(page, false);
     }
 

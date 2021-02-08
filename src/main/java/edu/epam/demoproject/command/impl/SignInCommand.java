@@ -1,10 +1,7 @@
 package edu.epam.demoproject.command.impl;
 
 import edu.epam.demoproject.command.*;
-import edu.epam.demoproject.constant.Attribute;
-import edu.epam.demoproject.constant.Message;
-import edu.epam.demoproject.constant.PagePath;
-import edu.epam.demoproject.constant.RequestParameter;
+import edu.epam.demoproject.constant.*;
 import edu.epam.demoproject.controller.request.RequestContext;
 import edu.epam.demoproject.service.UserService;
 
@@ -20,12 +17,18 @@ public class SignInCommand implements Command {
         String password = requestContext.getParameter(RequestParameter.PASSWORD);
         if (userService.checkUserByLoginAndPassword(login, password)) {
             requestContext.addSessionAttribute(Attribute.USER, login);
-            page = PagePath.MAIN;
-            return CommandResult.redirect(page);
+            if (userService.checkAdminRole(login)){
+                requestContext.addSessionAttribute(Attribute.ROLE, RoleType.ADMIN);
+                page = PagePath.ADMIN;
+            }else{
+                requestContext.addSessionAttribute(Attribute.ROLE, RoleType.USER);
+                page = PagePath.USER;
+            }
+            return CommandResult.setRedirectPage(page);
         } else {
             requestContext.addAttribute(Attribute.ERROR_MESSAGE, Message.WRONG_AUTH);
             page = LOGIN_PAGE_COMMAND;
-            return CommandResult.forward(page);
+            return CommandResult.setForwardPage(page);
         }
     }
 }

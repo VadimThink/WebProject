@@ -40,7 +40,7 @@ public class Controller extends HttpServlet {
         String page = commandResult.getPage();
         requestFiller.fillData(request, requestContext);
         if (page == null) {
-            page = PagePath.LOGIN;
+            page = PagePath.LOGIN;//todo
             response.sendRedirect(request.getContextPath() + page);
         }
         if (commandResult.isRedirect()) {
