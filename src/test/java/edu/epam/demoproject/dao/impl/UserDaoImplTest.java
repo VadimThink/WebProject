@@ -1,7 +1,8 @@
 package edu.epam.demoproject.dao.impl;
 
-import edu.epam.demoproject.connection.ConnectionPool;
-import edu.epam.demoproject.dao.DaoException;
+import edu.epam.finalproject.connection.ConnectionPool;
+import edu.epam.finalproject.dao.DaoException;
+import edu.epam.finalproject.dao.impl.UserDaoImpl;
 import org.testng.annotations.Test;
 
 import java.sql.Connection;
