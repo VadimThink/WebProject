@@ -6,9 +6,12 @@ public enum CommandType {
 
     REGISTER(new SignUpCommand()),
     LOGIN(new SignInCommand()),
-    LOGIN_PAGE(new ForwardPageCommand(CommandName.LOGIN_PAGE)),
-    ENGLISH(new EnglishLanguageCommand()),
-    RUSSIAN(new RussianLanguageCommand());
+    LOGOUT(new LogoutCommand()),
+    LOGIN_PAGE(new RedirectPageCommand(CommandName.LOGIN_PAGE)),
+    SIGN_UP_PAGE(new RedirectPageCommand(CommandName.SIGN_UP_PAGE)),
+    FORM_PAGE(new RedirectPageCommand(CommandName.FORM_PAGE)),
+    SEND_FORM(new SendFormCommand()),
+    CHANGE_LANGUAGE(new ChangeLocaleCommand());
 
     private final Command command;
 

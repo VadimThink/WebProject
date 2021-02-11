@@ -18,7 +18,7 @@
     <form name="loginForm" method="POST" action="${pageContext.request.contextPath}/controller?command=login">
         <h1 align="center">
             <font size="8" color="#0033CC" face="Gabriola">
-                <fmt:message key="message.enterYourAccount"/>
+                <fmt:message key="header.enterYourAccount"/>
             </font>
         </h1>
         <p align="center">
@@ -41,10 +41,10 @@
         </h2>
     </form>
     <h2 align="center">
-        <fmt:message key="message.orCreateNew"/>
+        <fmt:message key="header.orCreateNew"/>
     </h2>
     <p align="center">
-        <a id = "pagesA" href="${pageContext.request.contextPath}/pages/registration.jsp">
+        <a id = "pagesA" href="${pageContext.request.contextPath}/controller?command=sign_up_page">
             <fmt:message key="button.registration"/>
         </a>
     </p>

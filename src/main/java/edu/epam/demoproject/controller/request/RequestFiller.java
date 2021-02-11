@@ -1,6 +1,7 @@
 package edu.epam.demoproject.controller.request;
 
-import edu.epam.demoproject.constant.Attribute;
+import edu.epam.demoproject.constant.RequestAttribute;
+import edu.epam.demoproject.constant.SessionAttribute;
 
 import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpSession;
@@ -16,7 +17,7 @@ public class RequestFiller {
 
         HttpSession session = request.getSession();
         Set<String> sessionAttributeNames = requestContext.getSessionAttributeNames();
-        if (sessionAttributeNames.contains(Attribute.INVALIDATE_ATTRIBUTE)) {
+        if (sessionAttributeNames.contains(SessionAttribute.INVALIDATE_ATTRIBUTE)) {
             session.invalidate();
         } else {
             for (String attributeName : sessionAttributeNames) {

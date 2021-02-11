@@ -30,7 +30,7 @@ public class Controller extends HttpServlet {
         processRequest(request, response);
     }
 
-    public void processRequest(HttpServletRequest request, HttpServletResponse response) throws IOException, ServletException {
+    private void processRequest(HttpServletRequest request, HttpServletResponse response) throws IOException, ServletException {
         RequestContextCreator requestContextCreator = new RequestContextCreator();
         CommandResult commandResult;
         Command command = CommandProvider.provideCommand(request.getParameter(RequestParameter.COMMAND));
@@ -40,7 +40,7 @@ public class Controller extends HttpServlet {
         String page = commandResult.getPage();
         requestFiller.fillData(request, requestContext);
         if (page == null) {
-            page = PagePath.LOGIN;//todo
+            page = PagePath.ERROR_404;
             response.sendRedirect(request.getContextPath() + page);
         }
         if (commandResult.isRedirect()) {

@@ -15,7 +15,7 @@ public class SessionListener implements HttpSessionListener {
     @Override
     public void sessionCreated(HttpSessionEvent se) {
         HttpSession session = se.getSession();
-        session.setAttribute("currentPage", "index.jsp");
+        session.setAttribute("currentPage", "/pages/login.jsp");
     }
 
     @Override

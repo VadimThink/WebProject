@@ -17,17 +17,17 @@
     <a id="notification">
         <img src="${pageContext.request.contextPath}/pages/parts/pic/bell.png" width="50" height="50"/>
     </a>
-    <a id="russianLanguage" href="${pageContext.request.contextPath}/controller?command=russian>">
+    <a id="russianLanguage" href="${pageContext.request.contextPath}/controller?command=change_language&language=ru">
         <img src="${pageContext.request.contextPath}/pages/parts/pic/rus.png" width="50" height="25"/>
     </a>
-    <a id="englishLanguage" href="${pageContext.request.contextPath}/controller?command=english>">
+    <a id="englishLanguage" href="${pageContext.request.contextPath}/controller?command=change_language&language=en">
         <img src="${pageContext.request.contextPath}/pages/parts/pic/eng.png" width="50" height="25"/>
     </a>
     <ul id="navbar">
         <li>${user} <img id="down" src="${pageContext.request.contextPath}/pages/parts/pic/down.png" width="20"
                          height="20">
             <ul>
-                <a id="headerButton">
+                <a id="headerButton" href="${pageContext.request.contextPath}/controller?command=logout">
                     Выйти
                 </a>
             </ul>

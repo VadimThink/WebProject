@@ -12,21 +12,21 @@
 <c:import url="parts/head.jsp"/>
 <h1 align="center">
     <font size="8" color="#0033CC" face="Gabriola">
-        <fmt:message key="message.welcome">
+        <fmt:message key="header.welcome"/>
     </font>
 </h1>
 <div>
     <h2 align="center">
-        <fmt:message key="header.menu">
+        <fmt:message key="header.menu"/>
     </h2>
     <p align="center">
-        <a id = "pagesA" href="Анкета.html">
-            Заполнить анкету
+        <a id="pagesA" href="${pageContext.request.contextPath}/controller?command=form_page">
+            <fmt:message key="button.fillForm"/>
         </a>
     </p>
     <p align="center">
-        <a id = "pagesButton" href="Баллы.html">
-            Проходные баллы
+        <a id="pagesButton" href="Баллы.html">
+            <fmt:message key="button.passingPoints"/>
         </a>
     </p>
 </div>

@@ -12,7 +12,7 @@
 <c:import url="parts/head.jsp"/>
 <h1 align="center">
     <font size="8" color="#0033CC" face="Gabriola">
-        <fmt:message key="message.loginAsAdmin"/>
+        <fmt:message key="header.loginAsAdmin"/>
     </font>
 </h1>
 <div>
@@ -20,9 +20,15 @@
         <fmt:message key="header.menu"/>
     </h2>
     <p align="center">
-        <a id="pagesA" href="Пользователи.html">Пользователи</a></p>
+        <a id="pagesA" href="Пользователи.html">
+            <fmt:message key="button.users"/>
+        </a>
+    </p>
     <p align="center">
-        <a id="pagesButton" href="Завершение.html">Завершить вступительную компанию</a></p>
+        <a id="pagesButton" href="Завершение.html">
+            <fmt:message key="button.finishCampaign"/>
+        </a>
+    </p>
 </div>
 </body>
 </html>

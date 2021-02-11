@@ -7,7 +7,6 @@ import java.util.HashMap;
 import java.util.Map;
 
 public class RequestContextCreator {
-    private static final String REFERER_HEADER = "Referer";
 
     public RequestContext create(HttpServletRequest request) {
         Map<String, Object> attributes = new HashMap<>();
@@ -29,7 +28,7 @@ public class RequestContextCreator {
             sessionAttributes.put(sessionName, sessionAttribute);
         }
 
-        String requestHeader = request.getHeader(REFERER_HEADER);
-        return new RequestContext(attributes, parameters, sessionAttributes, requestHeader);
+        String requestContextPath = request.getContextPath();
+        return new RequestContext(attributes, parameters, sessionAttributes, requestContextPath);
     }
 }
