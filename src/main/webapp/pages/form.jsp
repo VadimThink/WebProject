@@ -58,32 +58,13 @@
     <input type="email" name="email" required>
 </p>
 <p align="center">
-    <fmt:message key="input.header.faculty"/>
-</p>
-<p align="center">
-    <select name="faculty" size="1" required>
-        <option value="1">ФКСИС
-        </option>
-        <option value="2">ФИТУ
-        </option>
-        <option value="3">ФИК
-        </option>
-        <option value="4">ФРЭ
-        </option>
-        <option value="5">ИЭФ
-        </option>
-        <option value="6">ФКП
-        </option>
-    </select>
-</p>
-<p align="center">
     <fmt:message key="input.header.specialty"/>
 </p>
 <p align="center">
     <select name="specialty" size="1" required>
-        <option value="0">
-            Не выбрано
-        </option>
+        <c:forEach items="${specialtyList}" var="specialty" varStatus="counter">
+            <option value="${specialty.specialtyNum}">${specialty.specialtyName}</option>
+        </c:forEach>
     </select>
 </p>
 <p align="center">
@@ -105,7 +86,7 @@
 <p align="center">
     <button id=pagesButton>
         <fmt:message key="button.send"/>
-    </button>>
+    </button>
 </p>
 </form>
 </body>

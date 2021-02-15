@@ -2,13 +2,16 @@ package edu.epam.finalproject.dao;
 
 import edu.epam.finalproject.constant.RoleType;
 import edu.epam.finalproject.constant.StatusType;
+import edu.epam.finalproject.entity.Specialty;
 import edu.epam.finalproject.entity.User;
 
 import java.sql.Date;
+import java.util.List;
 
 public abstract class AbstractUserDao extends AbstractDao<Long, User> {
 
     public abstract long findMaxUserId() throws DaoException;
+    public abstract List<User> findAllUsers() throws DaoException;
     public abstract boolean checkUserByLoginAndPassword(String login, String password) throws DaoException;
     public abstract void blockUser(User user) throws DaoException;
     public abstract int findRole(String login) throws DaoException;
@@ -31,4 +34,5 @@ public abstract class AbstractUserDao extends AbstractDao<Long, User> {
     public abstract boolean updateUserMathScore(String login, int mathScore) throws DaoException;
     public abstract boolean updateUserThirdScore(String login, int thirdScore) throws DaoException;
 
+    public abstract void createUser(User user, String password) throws DaoException;
 }

@@ -2,12 +2,18 @@ package edu.epam.finalproject.command.impl;
 
 import edu.epam.finalproject.command.Command;
 import edu.epam.finalproject.command.CommandResult;
+import edu.epam.finalproject.command.PagePath;
+import edu.epam.finalproject.command.RequestAttribute;
 import edu.epam.finalproject.constant.*;
 import edu.epam.finalproject.controller.request.RequestContext;
+import edu.epam.finalproject.service.ServiceException;
 import edu.epam.finalproject.service.UserService;
+import org.apache.logging.log4j.LogManager;
+import org.apache.logging.log4j.Logger;
 
 public class SendFormCommand implements Command {
     private static final UserService userService = new UserService();
+    private static final Logger logger = LogManager.getLogger(SendFormCommand.class);
 
     @Override
     public CommandResult execute(RequestContext requestContext) {
@@ -26,8 +32,14 @@ public class SendFormCommand implements Command {
         int languageScore = Integer.parseInt(requestContext.getParameter(RequestParameter.LANGUAGE_SCORE));
         int mathScore = Integer.parseInt(requestContext.getParameter(RequestParameter.MATH_SCORE));
         int thirdScore = Integer.parseInt(requestContext.getParameter(RequestParameter.THIRD_SCORE));
-        boolean isUpdated = userService.updateUserFormData(login, firstName, secondName, thirdName, birthday, country, locality, address,
-                phone, email, specialty_num, gpa, languageScore, mathScore, thirdScore);
+        boolean isUpdated = false;
+        try {
+            isUpdated = userService.updateUserFormData(login, firstName, secondName, thirdName, birthday, country, locality, address,
+                    phone, email, specialty_num, gpa, languageScore, mathScore, thirdScore);
+        } catch (ServiceException e) {
+            e.printStackTrace();
+            logger.error(e);
+        }
         String page;
         if (isUpdated){
             page = PagePath.USER;

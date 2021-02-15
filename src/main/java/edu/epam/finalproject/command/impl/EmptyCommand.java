@@ -2,7 +2,7 @@ package edu.epam.finalproject.command.impl;
 
 import edu.epam.finalproject.command.Command;
 import edu.epam.finalproject.command.CommandResult;
-import edu.epam.finalproject.constant.PagePath;
+import edu.epam.finalproject.command.PagePath;
 import edu.epam.finalproject.controller.request.RequestContext;
 
 

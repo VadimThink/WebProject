@@ -20,7 +20,7 @@
         <fmt:message key="header.menu"/>
     </h2>
     <p align="center">
-        <a id="pagesA" href="Пользователи.html">
+        <a id="pagesA" href="${pageContext.request.contextPath}/controller?command=users_list">
             <fmt:message key="button.users"/>
         </a>
     </p>

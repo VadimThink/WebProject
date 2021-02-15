@@ -1,23 +1,22 @@
 package edu.epam.finalproject.entity;
 
+import edu.epam.finalproject.constant.RoleType;
+import edu.epam.finalproject.constant.StatusType;
+
 public class User extends Entity {
 
     private String login;
-    private String password;
     private String firstName;
     private String lastName;
-    private int statusNum;
+    private StatusType status;
     private int specialtyNum;
-    private int roleNum;
+    private RoleType role;
 
-    public User(String login, String password, String firstName, String lastName, int statusNum, int specialtyNum, int roleNum) {
+    public User(String login, StatusType status, RoleType role) {
         this.login = login;
-        this.password = password;
-        this.firstName = firstName;
-        this.lastName = lastName;
-        this.statusNum = statusNum;
-        this.specialtyNum = specialtyNum;
-        this.roleNum = roleNum;
+        this.status = status;
+        this.role = role;
+        this.specialtyNum = 0;
     }
 
     public String getLogin() {
@@ -26,14 +25,6 @@ public class User extends Entity {
 
     public void setLogin(String login) {
         this.login = login;
-    }
-
-    public String getPassword() {
-        return password;
-    }
-
-    public void setPassword(String password) {
-        this.password = password;
     }
 
     public String getFirstName() {
@@ -52,20 +43,20 @@ public class User extends Entity {
         this.lastName = lastName;
     }
 
-    public int getStatusNum() {
-        return statusNum;
+    public StatusType getStatus() {
+        return status;
     }
 
-    public void setStatusNum(int statusNum) {
-        this.statusNum = statusNum;
+    public void setStatus(StatusType status) {
+        this.status = status;
     }
 
-    public int getRoleNum() {
-        return roleNum;
+    public RoleType getRole() {
+        return role;
     }
 
-    public void setRoleNum(int faculty_num) {
-        this.roleNum = roleNum;
+    public void setRole(RoleType role) {
+        this.role = role;
     }
 
     public int getSpecialtyNum() {
@@ -81,14 +72,36 @@ public class User extends Entity {
         if (this == o) return true;
         if (o == null || getClass() != o.getClass()) return false;
         User user = (User) o;
-        return login.equals(user.login) && password.equals(user.password);
+        return specialtyNum == user.specialtyNum &&
+                login.equals(user.login) &&
+                firstName.equals(user.firstName) &&
+                lastName.equals(user.lastName) &&
+                status == user.status &&
+                role == user.role;
     }
 
     @Override
     public int hashCode() {
         int result = 0;
         result = 31 * result + (login != null ? login.hashCode() : 0);
-        result = 31 * result + (password != null ? password.hashCode() : 0);
+        result = 31 * result + (firstName != null ? firstName.hashCode() : 0);
+        result = 31 * result + (lastName != null ? lastName.hashCode() : 0);
+        result = 31 * result + (role != null ? role.hashCode() : 0);
+        result = 31 * result + (status != null ? status.hashCode() : 0);
+        result = 31 * result + specialtyNum ^ (specialtyNum >>> 32);
         return result;
+    }
+
+    @Override
+    public String toString() {
+        final StringBuilder sb = new StringBuilder("User{");
+        sb.append("login='").append(login).append('\'');
+        sb.append(", firstName='").append(firstName).append('\'');
+        sb.append(", lastName='").append(lastName).append('\'');
+        sb.append(", status=").append(status);
+        sb.append(", specialtyNum=").append(specialtyNum);
+        sb.append(", role=").append(role);
+        sb.append('}');
+        return sb.toString();
     }
 }

@@ -1,11 +1,14 @@
 package edu.epam.finalproject.dao;
 
 import edu.epam.finalproject.connection.ConnectionPool;
+import org.apache.logging.log4j.LogManager;
+import org.apache.logging.log4j.Logger;
 
 import java.sql.Connection;
 import java.sql.SQLException;
 
-public class EntityTransaction {//todo добавить логи
+public class EntityTransaction {
+    Logger logger = LogManager.getLogger(EntityTransaction.class);
     private Connection connection;
 
     public void begin(AbstractDao dao, AbstractDao... daos) {
@@ -16,6 +19,7 @@ public class EntityTransaction {//todo добавить логи
         try{
             connection.setAutoCommit(false);
         }catch (SQLException e){
+            logger.error(e);
             e.printStackTrace();
         }
         dao.setConnection(connection);
@@ -28,11 +32,13 @@ public class EntityTransaction {//todo добавить логи
         try{
             connection.setAutoCommit(true);
         }catch (SQLException e){
+            logger.error(e);
             e.printStackTrace();
         }
         try {
             connection.close();
         } catch (SQLException e) {
+            logger.error(e);
             e.printStackTrace();
         }
         connection = null;
@@ -42,6 +48,7 @@ public class EntityTransaction {//todo добавить логи
         try{
             connection.commit();
         }catch (SQLException e){
+            logger.error(e);
             e.printStackTrace();
         }
     }
@@ -50,6 +57,7 @@ public class EntityTransaction {//todo добавить логи
         try{
             connection.rollback();
         }catch (SQLException e){
+            logger.error(e);
             e.printStackTrace();
         }
     }
