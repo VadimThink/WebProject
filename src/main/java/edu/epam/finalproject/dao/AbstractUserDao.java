@@ -13,7 +13,6 @@ public abstract class AbstractUserDao extends AbstractDao<Long, User> {
     public abstract long findMaxUserId() throws DaoException;
     public abstract List<User> findAllUsers() throws DaoException;
     public abstract boolean checkUserByLoginAndPassword(String login, String password) throws DaoException;
-    public abstract void blockUser(User user) throws DaoException;
     public abstract int findRole(String login) throws DaoException;
     public abstract boolean updateUserLogin(String previousLogin, String newLogin) throws DaoException;
     public abstract boolean updateUserPassword(String login, String password) throws DaoException;
@@ -33,6 +32,7 @@ public abstract class AbstractUserDao extends AbstractDao<Long, User> {
     public abstract boolean updateUserLanguageScore(String login, int languageScore) throws DaoException;
     public abstract boolean updateUserMathScore(String login, int mathScore) throws DaoException;
     public abstract boolean updateUserThirdScore(String login, int thirdScore) throws DaoException;
+    public abstract StatusType findUserStatus(String login) throws DaoException;
 
-    public abstract void createUser(User user, String password) throws DaoException;
+    public abstract boolean createUser(User user, String password) throws DaoException;
 }

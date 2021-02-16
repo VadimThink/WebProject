@@ -8,24 +8,22 @@
 <head>
     <link href="${pageContext.request.contextPath}/css/style.css" rel="stylesheet" type="text/css"/>
 </head>
-<body id="pagesBody">
+<body>
 <c:import url="parts/head.jsp"/>
-<h1 align="center">
-    <font size="8" color="#0033CC" face="Gabriola">
-        <fmt:message key="header.loginAsAdmin"/>
-    </font>
-</h1>
-<div>
+<h2 align="center">
+    <fmt:message key="header.loginAsAdmin"/>
+</h2>
+<div class="fp">
     <h2 align="center">
         <fmt:message key="header.menu"/>
     </h2>
     <p align="center">
-        <a id="pagesA" href="${pageContext.request.contextPath}/controller?command=users_list">
+        <a class="buttonB" href="${pageContext.request.contextPath}/controller?command=users_list">
             <fmt:message key="button.users"/>
         </a>
     </p>
     <p align="center">
-        <a id="pagesButton" href="Завершение.html">
+        <a class="buttonB" href="Завершение.html">
             <fmt:message key="button.finishCampaign"/>
         </a>
     </p>

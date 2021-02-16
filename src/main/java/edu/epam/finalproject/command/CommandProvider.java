@@ -1,6 +1,6 @@
 package edu.epam.finalproject.command;
 
-import edu.epam.finalproject.command.impl.EmptyCommand;
+import edu.epam.finalproject.command.impl.general.EmptyCommand;
 
 public class CommandProvider {
     private CommandProvider() {

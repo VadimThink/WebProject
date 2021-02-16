@@ -123,4 +123,33 @@ public class UserService {
         return userList;
     }
 
+    public boolean updateUserStatus(String login, StatusType status) throws ServiceException{
+        EntityTransaction entityTransaction = new EntityTransaction();
+        UserDaoImpl userDaoImpl = new UserDaoImpl();
+        entityTransaction.begin(userDaoImpl);
+        try {
+            userDaoImpl.updateUserStatus(login, status);
+            entityTransaction.commit();
+        }catch (DaoException e){
+            logger.error(DATABASE_ERROR, e);
+            entityTransaction.rollback();
+            throw new ServiceException(e);
+        }
+        entityTransaction.end();
+        return true;
+    }
+
+    public boolean isUserNotBlocked(String login) throws ServiceException{
+        EntityTransaction entityTransaction = new EntityTransaction();
+        UserDaoImpl userDaoImpl = new UserDaoImpl();
+        entityTransaction.begin(userDaoImpl);
+        StatusType status;
+        try {
+            status = userDaoImpl.findUserStatus(login);
+        }catch (DaoException e){
+            throw new ServiceException(e);
+        }
+        return status != StatusType.BLOCKED;
+    }
+
 }

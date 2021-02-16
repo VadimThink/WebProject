@@ -16,11 +16,6 @@ import static edu.epam.finalproject.dao.SqlRequest.*;
 public class UserDaoImpl extends AbstractUserDao {
 
     @Override
-    public void blockUser(User user) {
-
-    }
-
-    @Override
     public long findMaxUserId() throws DaoException {
         long id;
         try (Statement statement = connection.createStatement()) {
@@ -295,6 +290,20 @@ public class UserDaoImpl extends AbstractUserDao {
     }
 
     @Override
+    public StatusType findUserStatus(String login) throws DaoException {
+        int statusNum;
+        try (PreparedStatement statement = connection.prepareStatement(SQL_FIND_STATUS)){
+            statement.setString(1, login);
+            ResultSet resultSet = statement.executeQuery();
+            resultSet.next();
+            statusNum = resultSet.getInt(1);
+        }catch (SQLException e){
+            throw new DaoException(e);
+        }
+        return StatusType.values()[statusNum];
+    }
+
+    @Override
     public List<User> findAll() {
         return null;
     }
@@ -322,7 +331,7 @@ public class UserDaoImpl extends AbstractUserDao {
 
 
     @Override
-    public void createUser(User user, String password) throws DaoException {
+    public boolean createUser(User user, String password) throws DaoException {
         try (PreparedStatement statement = connection.prepareStatement(SqlRequest.SQL_CREATE)) {
             statement.setString(1, user.getLogin());
             statement.setString(2, password);//TODO ЗАШИФРУЙ ПАРОЛЬ
@@ -332,6 +341,7 @@ public class UserDaoImpl extends AbstractUserDao {
         } catch (SQLException e) {
             throw new DaoException(e);
         }
+        return true;
     }
 
     @Override

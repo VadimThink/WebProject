@@ -11,12 +11,32 @@
         <fmt:message key="header.login"/>
     </title>
 </head>
-<body id="pagesBody">
+<body>
 <c:import url="parts/head.jsp"/>
-<div align="center">
+<div class="users" align="center">
     <c:forEach items="${usersList}" var="user" varStatus="counter">
         <p>
-            ${user.login} ${user.status} ${user.role}
+                ${user.login} ${user.status} ${user.role}
+            <c:choose>
+                <c:when test="${user.isBlocked()}">
+                    <a class="buttonB" href="${pageContext.request.contextPath}/controller?command=unblock_User&userLogin=${user.login}">
+                        <fmt:message key="button.unblockUser"/>
+                    </a>
+                </c:when>
+                <c:otherwise>
+                    <a class="buttonB" href="${pageContext.request.contextPath}/controller?command=block_User&userLogin=${user.login}">
+                        <fmt:message key="button.blockUser"/>
+                    </a>
+                </c:otherwise>
+            </c:choose>
+            <c:choose>
+                <c:when test="${user.isUnactive()}">
+                    <a class="buttonB" href="${pageContext.request.contextPath}/controller?command=activate_User&userLogin=${user.login}">
+                        <fmt:message key="button.activateUser"/>
+                    </a>
+                </c:when>
+                <c:otherwise></c:otherwise>
+            </c:choose>
         </p>
     </c:forEach>
 </div>

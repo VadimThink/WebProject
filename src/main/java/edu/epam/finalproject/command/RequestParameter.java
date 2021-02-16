@@ -1,4 +1,4 @@
-package edu.epam.finalproject.constant;
+package edu.epam.finalproject.command;
 
 public class RequestParameter {
 
@@ -26,5 +26,6 @@ public class RequestParameter {
     public static final String LANGUAGE_SCORE = "languageScore";
     public static final String MATH_SCORE = "mathScore";
     public static final String THIRD_SCORE = "thirdScore";
+    public static final String USER_LOGIN = "userLogin";
 
 }

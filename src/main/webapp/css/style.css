@@ -1,37 +1,22 @@
-[id = "pagesA"], [id = "pagesButton"] {
-    border: 1px solid #CFD8DC;
-    width: 260px;
+a.buttonB, button.buttonB{
+    display: inline-block;
+    width: 200px;
     padding: 10px 10px;
-}
-
-[id = "pagesA"], [id = "pagesButton"] {
-    border: none;
-    background-color: transparent;
-    padding: 11px;
+    border: 1px solid rgb(124, 123, 123);
     font-size: 12px;
     font-weight: 400;
     text-transform: uppercase;
-}
-
-[id = "pagesA"], [id = "pagesButton"] {
-    button-decoration: none;
-    display: inline-block;
-    color: white;
-    padding: 10px 30px;
+    color: #616161;
     margin: 10px 20px;
     border-radius: 10px;
     font-family: 'Montserrat', sans-serif;
-    text-transform: uppercase;
-    text-decoration: underline;
     letter-spacing: 2px;
-    background-image: linear-gradient(to right, #9EEFE1 0%, #4830F0 51%, #9eefe1 100%);
-    background-size: 200% auto;
-    box-shadow: 0 0 20px rgba(0, 0, 0, .1);
-    transition: .5s;
+    background-color: #8181811e;
 }
 
 h2 {
-    color: #0033CC;
+    color:#616161;
+    font-size: 30px;
 }
 
 input {
@@ -43,7 +28,7 @@ input {
     border-bottom: 1px solid #ccc;
 }
 
-select {
+select{
     border-radius: 0;
     background: white;
     height: 34px;
@@ -55,9 +40,30 @@ select {
     width: 268px
 }
 
-[id = "pagesBody"] {
-    background-image: linear-gradient(to right, #9EEFE1 0%, #4830F0 51%, #9eefe1 100%);
+body {
+    background-image: linear-gradient(to right, #d4d7ff 0%, #ABDCFF 20%, #ab8cff 51%);
     background-size: 200% auto;
+}
+
+div.fp {
+    position: absolute;
+    top: 50%;
+    left: 50%;
+    margin-right: -50%;
+    transform: translate(-50%, -50%);
+    border: 5px double rgb(168, 168, 255);
+    border-radius: 10px;
+    box-shadow: 0 0 50px rgba(0, 0, 0, .1);
+    background-color: rgba(255, 255, 255, 0.712);
+    padding: 10px;
+}
+
+div.users {
+    border: 5px double rgb(168, 168, 255);
+    border-radius: 10px;
+    box-shadow: 0 0 50px rgba(0, 0, 0, .1);
+    background-color: rgba(255, 255, 255, 0.712);
+    padding: 10px;
 }
 
 table {
@@ -65,18 +71,31 @@ table {
     box-shadow: 0 0 20px rgba(0, 0, 0, .1);
 }
 
-div {
-    position: absolute;
-    top: 50%;
-    left: 50%;
-    margin-right: -50%;
-    transform: translate(-50%, -50%);
-    border-radius: 10px;
+.line1, .line2, .line3  {
+    display: flex;
+    justify-content: space-around;
+}
+.line1 div, .line2 div, .line3 div {
+    padding: 10px;
+    margin-inline-start : 10px;
+    border: none;
     box-shadow: 0 0 20px rgba(0, 0, 0, .1);
+    border-radius: 10px;
+
+}
+.box{
+    flex-basis: 40%;
+    background-color: rgb(255, 255, 255);
+}
+h3 {
+    margin-top: 10px;
+    font-size:30px;
+    color:#616161;
 }
 
+
 p {
-    font-style: italic;
-    color: #0033CC;
+    color:#616161;
     font-weight: bold;
+    font-size: 20px;
 }

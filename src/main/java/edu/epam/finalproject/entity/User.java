@@ -51,6 +51,12 @@ public class User extends Entity {
         this.status = status;
     }
 
+    public boolean isBlocked(){
+        return status == StatusType.BLOCKED;
+    }
+
+    public boolean isUnactive(){ return status == StatusType.UNACTIVE;}
+
     public RoleType getRole() {
         return role;
     }

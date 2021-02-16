@@ -23,16 +23,18 @@
     <a id="englishLanguage" href="${pageContext.request.contextPath}/controller?command=change_language&language=en">
         <img src="${pageContext.request.contextPath}/pages/parts/pic/eng.png" width="50" height="25"/>
     </a>
+    <c:if test="${!empty sessionScope.user}">
     <ul id="navbar">
         <li>${user} <img id="down" src="${pageContext.request.contextPath}/pages/parts/pic/down.png" width="20"
                          height="20">
             <ul>
-                <a id="headerButton" href="${pageContext.request.contextPath}/controller?command=logout">
+                <a class="buttonA" href="${pageContext.request.contextPath}/controller?command=logout">
                     Выйти
                 </a>
             </ul>
         </li>
     </ul>
+    </c:if>
 </header>
 </body>
 </html>

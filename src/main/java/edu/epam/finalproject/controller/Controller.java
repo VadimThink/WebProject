@@ -4,7 +4,7 @@ import edu.epam.finalproject.command.Command;
 import edu.epam.finalproject.command.CommandProvider;
 import edu.epam.finalproject.command.CommandResult;
 import edu.epam.finalproject.command.PagePath;
-import edu.epam.finalproject.constant.RequestParameter;
+import edu.epam.finalproject.command.RequestParameter;
 import edu.epam.finalproject.connection.ConnectionPool;
 import edu.epam.finalproject.controller.request.RequestContext;
 import edu.epam.finalproject.controller.request.RequestContextCreator;
@@ -33,7 +33,8 @@ public class Controller extends HttpServlet {
     private void processRequest(HttpServletRequest request, HttpServletResponse response) throws IOException, ServletException {
         RequestContextCreator requestContextCreator = new RequestContextCreator();//todo сделать синглотон
         CommandResult commandResult;
-        Command command = CommandProvider.provideCommand(request.getParameter(RequestParameter.COMMAND));//строчку разделить
+        String requestParameter = request.getParameter(RequestParameter.COMMAND);
+        Command command = CommandProvider.provideCommand(requestParameter);
         RequestContext requestContext = requestContextCreator.create(request);
         RequestFiller requestFiller = new RequestFiller();
         commandResult = command.execute(requestContext);

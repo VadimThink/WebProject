@@ -1,4 +1,4 @@
-package edu.epam.finalproject.command.impl;
+package edu.epam.finalproject.command.impl.user;
 
 import edu.epam.finalproject.command.Command;
 import edu.epam.finalproject.command.CommandResult;

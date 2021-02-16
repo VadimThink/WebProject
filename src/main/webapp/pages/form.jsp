@@ -9,7 +9,7 @@
     <title>Title</title>
     <link href="${pageContext.request.contextPath}/css/style.css" rel="stylesheet" type="text/css"/>
 </head>
-<body id=pagesBody>
+<body >
 <c:import url="parts/head.jsp"/>
 <h1 align="center">
     <font size="8" color="#0033CC" face="Gabriola">
@@ -84,7 +84,7 @@
     <input type="number" name="thirdScore" max="100" min="0" required>
 </p>
 <p align="center">
-    <button id=pagesButton>
+    <button class="buttonB">
         <fmt:message key="button.send"/>
     </button>
 </p>

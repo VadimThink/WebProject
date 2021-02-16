@@ -3,7 +3,7 @@
 <head>
     <title>Title</title>
 </head>
-<body id = "pagesBody">
+<body>
 <c:import url="parts/head.jsp"/>
 <form name=mainForm action="controller" method="post">
     <p>${lol}</p>

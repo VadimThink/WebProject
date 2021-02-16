@@ -9,6 +9,7 @@ public class SqlRequest {
     public final static String SQL_CHECK_USER_BY_LOGIN_AND_PASSWORD = "SELECT users.login, users.password FROM users " +
             "WHERE users.login LIKE ? AND users.password LIKE ?";
     public final static String SQL_FIND_ROLE = "SELECT users.role_num FROM users WHERE users.login LIKE ?";
+    public final static String SQL_FIND_STATUS = "SELECT users.status_num FROM users WHERE users.login LIKE ?";
     public final static String SQL_UPDATE_LOGIN = "UPDATE users SET users.login = ? WHERE users.login LIKE ?";
     public final static String SQL_UPDATE_PASSWORD = "UPDATE users SET users.password = ? WHERE users.login LIKE ?";
     public final static String SQL_UPDATE_ROLE_NUM = "UPDATE users SET users.role_num = ? WHERE users.login LIKE ?";

@@ -1,4 +1,4 @@
-package edu.epam.finalproject.command.impl;
+package edu.epam.finalproject.command.impl.admin;
 
 import edu.epam.finalproject.command.Command;
 import edu.epam.finalproject.command.CommandResult;
@@ -30,6 +30,6 @@ public class UsersListCommand implements Command {
         }
         requestContext.addAttribute(RequestAttribute.USERS_LIST, usersList);
         requestContext.addSessionAttribute(SessionAttribute.CURRENT_PAGE, PagePath.USERS_LIST);
-        return CommandResult.setForwardPage(PagePath.USERS_LIST);
+        return CommandResult.setForwardPage(PagePath.USERS);
     }
 }
