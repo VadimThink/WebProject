@@ -14,9 +14,25 @@
 <body>
 <c:import url="parts/head.jsp"/>
 <div class="users" align="center">
+    <p align="center">
+        <fmt:message key="message.${errorMessage}"/>
+    </p>
+    <c:if test="${firstId > 0}">
+        <c:choose>
+            <c:when test="${((firstId - 6) > 0) && (firstId < usersNumber)}">
+                <a class="buttonB" href="${pageContext.request.contextPath}/controller?command=users_pagination&lastId=${firstId-6}">
+                    back
+                </a>
+            </c:when>
+            <c:otherwise>
+                <a class="buttonB" href="${pageContext.request.contextPath}/controller?command=users_list">
+                    back
+                </a>
+            </c:otherwise>
+        </c:choose>
+    </c:if>
     <c:forEach items="${usersList}" var="user" varStatus="counter">
-        <p>
-                ${user.login} ${user.status} ${user.role}
+        <p>${user.login} ${user.status} ${user.role}
             <c:choose>
                 <c:when test="${user.isBlocked()}">
                     <a class="buttonB" href="${pageContext.request.contextPath}/controller?command=unblock_User&userLogin=${user.login}">
@@ -39,6 +55,11 @@
             </c:choose>
         </p>
     </c:forEach>
+    <c:if test="${lastId < usersNumber}">
+        <a class="buttonB" href="${pageContext.request.contextPath}/controller?command=users_pagination&lastId=${lastId}">
+            forward
+        </a>
+    </c:if>
 </div>
 </body>
 </html>

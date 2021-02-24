@@ -42,7 +42,7 @@ public class SendFormCommand implements Command {
             page = PagePath.USER;
         }else {
             page = PagePath.FORM;
-            requestContext.addAttribute(RequestAttribute.ERROR_MESSAGE, Message.THIS_USER_IS_EXIST);
+            requestContext.addAttribute(RequestAttribute.ERROR_MESSAGE, Message.CANT_FIND_USER);
         }
         requestContext.addSessionAttribute(SessionAttribute.CURRENT_PAGE, page);
         return CommandResult.setRedirectPage(page);

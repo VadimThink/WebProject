@@ -5,6 +5,7 @@ import edu.epam.finalproject.constant.StatusType;
 
 public class User extends Entity {
 
+    private long id;
     private String login;
     private String firstName;
     private String lastName;
@@ -12,11 +13,27 @@ public class User extends Entity {
     private int specialtyNum;
     private RoleType role;
 
+    public User(long id, String login, StatusType status, RoleType role) {
+        this.id = id;
+        this.login = login;
+        this.status = status;
+        this.role = role;
+        this.specialtyNum = 0;
+    }
+
     public User(String login, StatusType status, RoleType role) {
         this.login = login;
         this.status = status;
         this.role = role;
         this.specialtyNum = 0;
+    }
+
+    public long getId() {
+        return id;
+    }
+
+    public void setId(long id) {
+        this.id = id;
     }
 
     public String getLogin() {

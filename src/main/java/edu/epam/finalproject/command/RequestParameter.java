@@ -27,5 +27,7 @@ public class RequestParameter {
     public static final String MATH_SCORE = "mathScore";
     public static final String THIRD_SCORE = "thirdScore";
     public static final String USER_LOGIN = "userLogin";
+    public static final String LAST_ID = "lastId";
+    public static final String USERS_NUMBER = "usersNumber";
 
 }

@@ -1,10 +1,5 @@
 package edu.epam.finalproject;
 
-import edu.epam.finalproject.dao.DaoException;
-import edu.epam.finalproject.dao.EntityTransaction;
-import edu.epam.finalproject.dao.impl.SpecialtyDaoImpl;
-import edu.epam.finalproject.dao.impl.UserDaoImpl;
-import edu.epam.finalproject.entity.Specialty;
 import edu.epam.finalproject.entity.User;
 import edu.epam.finalproject.service.ServiceException;
 import edu.epam.finalproject.service.UserService;

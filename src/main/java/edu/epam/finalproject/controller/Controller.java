@@ -55,7 +55,6 @@ public class Controller extends HttpServlet {
     public void destroy() {
         ConnectionPool pool = ConnectionPool.getInstance();
         pool.destroyPool();
-
     }
 
 }

@@ -19,15 +19,29 @@ public class UsersListCommand implements Command {
     private static final UserService userService = new UserService();
     private static final Logger logger = LogManager.getLogger(UsersListCommand.class);
 
+    private static final int FIRST_ID = 0;
+    private static final int NUMBER = 6;
+
     @Override
-    public CommandResult execute(RequestContext requestContext) {
+    public CommandResult execute(RequestContext requestContext) {//todo Добавить подсчёт админов
         List<User> usersList = new ArrayList<>();
+        long usersNumber = 0;
+        try{
+            usersNumber = userService.findUsersNumber();
+        }catch (ServiceException e){
+            e.printStackTrace();
+            logger.error(e);
+        }
+        requestContext.addAttribute(RequestAttribute.USERS_NUMBER, usersNumber);
         try {
-            usersList = userService.findAllUsers();
+            usersList = userService.findUsersInRange(FIRST_ID, NUMBER);
         } catch (ServiceException e) {
             e.printStackTrace();
             logger.error(e);
         }
+        long lastId = usersList.get(usersList.size() - 1).getId();
+        requestContext.addAttribute(RequestAttribute.FIRST_ID, FIRST_ID);
+        requestContext.addAttribute(RequestAttribute.LAST_ID, lastId);
         requestContext.addAttribute(RequestAttribute.USERS_LIST, usersList);
         requestContext.addSessionAttribute(SessionAttribute.CURRENT_PAGE, PagePath.USERS_LIST);
         return CommandResult.setForwardPage(PagePath.USERS);

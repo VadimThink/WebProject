@@ -123,6 +123,40 @@ public class UserService {
         return userList;
     }
 
+    public List<User> findUsersInRange(long firstId, long number) throws ServiceException {
+        EntityTransaction entityTransaction = new EntityTransaction();
+        UserDaoImpl userDaoImpl = new UserDaoImpl();
+        entityTransaction.begin(userDaoImpl);
+        List<User> userList;
+        try{
+            userList = userDaoImpl.findUsersInRange(firstId, number);
+            entityTransaction.commit();
+        }catch (DaoException e){
+            logger.error(DATABASE_ERROR, e);
+            entityTransaction.rollback();
+            throw new ServiceException(e);
+        }
+        entityTransaction.end();
+        return userList;
+    }
+
+    public long findUsersNumber() throws ServiceException{
+        EntityTransaction entityTransaction = new EntityTransaction();
+        UserDaoImpl userDaoImpl = new UserDaoImpl();
+        entityTransaction.begin(userDaoImpl);
+        long number;
+        try {
+            number = userDaoImpl.findMaxUserId();
+            entityTransaction.commit();
+        } catch (DaoException e) {
+            logger.error(DATABASE_ERROR, e);
+            entityTransaction.rollback();
+            throw new ServiceException(e);
+        }
+        entityTransaction.end();
+        return number;
+    }
+
     public boolean updateUserStatus(String login, StatusType status) throws ServiceException{
         EntityTransaction entityTransaction = new EntityTransaction();
         UserDaoImpl userDaoImpl = new UserDaoImpl();

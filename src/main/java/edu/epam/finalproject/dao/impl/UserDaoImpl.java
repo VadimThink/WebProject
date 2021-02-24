@@ -37,7 +37,8 @@ public class UserDaoImpl extends AbstractUserDao {
                 String login = resultSet.getString(1);
                 int statusNum = resultSet.getInt(2);
                 int roleNum = resultSet.getInt(3);
-                User user = new User(login, StatusType.values()[statusNum], RoleType.values()[roleNum]);
+                long id = resultSet.getLong(4);
+                User user = new User(id, login, StatusType.values()[statusNum], RoleType.values()[roleNum]);
                 usersList.add(user);
             }
         } catch (SQLException e) {
@@ -45,6 +46,27 @@ public class UserDaoImpl extends AbstractUserDao {
         }
         return usersList;
     }
+
+    @Override
+    public List<User> findUsersInRange(long firstId, long number) throws DaoException {
+        List<User> usersList = new ArrayList<>();
+        try (PreparedStatement statement = connection.prepareStatement(SQL_FIND_USERS_IN_RANGE)) {
+            statement.setLong(1, firstId);
+            statement.setLong(2, number);
+            ResultSet resultSet = statement.executeQuery();
+            while (resultSet.next()) {
+                String login = resultSet.getString(1);
+                int statusNum = resultSet.getInt(2);
+                long id = resultSet.getLong(3);
+                User user = new User(id ,login, StatusType.values()[statusNum], RoleType.USER);
+                usersList.add(user);
+            }
+        } catch (SQLException e) {
+            throw new DaoException(e);
+        }
+        return usersList;
+    }
+
 
     @Override
     public boolean checkUserByLoginAndPassword(String login, String password) throws DaoException {

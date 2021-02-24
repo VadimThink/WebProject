@@ -1,6 +1,6 @@
 package edu.epam.finalproject.dao.impl;
 
-import edu.epam.finalproject.dao.AbstractSpecialtyDao;
+import edu.epam.finalproject.dao.AbstractCommandDao;
 import edu.epam.finalproject.dao.DaoException;
 import edu.epam.finalproject.entity.Entity;
 import edu.epam.finalproject.entity.Specialty;
@@ -13,7 +13,7 @@ import java.util.List;
 
 import static edu.epam.finalproject.dao.SqlRequest.SQL_FIND_ALL_SPECIALTIES;
 
-public class SpecialtyDaoImpl extends AbstractSpecialtyDao {
+public class CommandDaoImpl extends AbstractCommandDao {
 
     @Override
     public List<Specialty> findSpecialtyList() throws DaoException {

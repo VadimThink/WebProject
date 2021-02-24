@@ -8,7 +8,7 @@ import edu.epam.finalproject.constant.SessionAttribute;
 import edu.epam.finalproject.controller.request.RequestContext;
 import edu.epam.finalproject.entity.Specialty;
 import edu.epam.finalproject.service.ServiceException;
-import edu.epam.finalproject.service.SpecialtyService;
+import edu.epam.finalproject.service.CommandService;
 import org.apache.logging.log4j.LogManager;
 import org.apache.logging.log4j.Logger;
 
@@ -17,13 +17,13 @@ import java.util.List;
 
 public class FormPageCommand implements Command {
     private static final Logger logger = LogManager.getLogger(FormPageCommand.class);
-    private static final SpecialtyService specialtyService = new SpecialtyService();
+    private static final CommandService commandService = new CommandService();
 
     @Override
     public CommandResult execute(RequestContext requestContext) {
         List<Specialty> specialtyList = new ArrayList<>();
         try {
-            specialtyList = specialtyService.findSpecialtyList();
+            specialtyList = commandService.findSpecialtyList();
         } catch (ServiceException e) {
             e.printStackTrace();
             logger.error(e);
