@@ -23,7 +23,7 @@ public class UsersListCommand implements Command {
     private static final int NUMBER = 6;
 
     @Override
-    public CommandResult execute(RequestContext requestContext) {//todo Добавить подсчёт админов
+    public CommandResult execute(RequestContext requestContext) {
         List<User> usersList = new ArrayList<>();
         long usersNumber = 0;
         try{

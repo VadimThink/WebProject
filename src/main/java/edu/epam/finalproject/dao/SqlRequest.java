@@ -6,7 +6,7 @@ public class SqlRequest {
             "status_num, role_num) VALUES (?, ?, ?, ?)";
     public final static String SQL_FIND_MAX_ID = "SELECT MAX(users.id) FROM users";
     public final static String SQL_FIND_ALL_USERS = "SELECT users.login, users.status_num, users.role_num, users.id FROM users";
-    public static final String SQL_FIND_USERS_IN_RANGE = "SELECT users.login, users.status_num, users.id " +
+    public static final String SQL_FIND_USERS_IN_RANGE = "SELECT users.login, users.status_num, users.id, users.role_num " +
             " FROM users LIMIT ?,?";
     public final static String SQL_CHECK_USER_BY_LOGIN_AND_PASSWORD = "SELECT users.login, users.password FROM users " +
             "WHERE users.login LIKE ? AND users.password LIKE ?";

@@ -173,6 +173,22 @@ public class UserService {
         return true;
     }
 
+    public boolean updateUserRole(String login, RoleType role) throws ServiceException{
+        EntityTransaction entityTransaction = new EntityTransaction();
+        UserDaoImpl userDaoImpl = new UserDaoImpl();
+        entityTransaction.begin(userDaoImpl);
+        try {
+            userDaoImpl.updateUserRole(login, role);
+            entityTransaction.commit();
+        }catch (DaoException e){
+            logger.error(DATABASE_ERROR, e);
+            entityTransaction.rollback();
+            throw new ServiceException(e);
+        }
+        entityTransaction.end();
+        return true;
+    }
+
     public boolean isUserNotBlocked(String login) throws ServiceException{
         EntityTransaction entityTransaction = new EntityTransaction();
         UserDaoImpl userDaoImpl = new UserDaoImpl();

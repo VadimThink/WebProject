@@ -29,7 +29,7 @@ public class UserDaoImpl extends AbstractUserDao {
     }
 
     @Override
-    public List<User> findAllUsers() throws DaoException { //todo сделать запрос по частям, а не доставать всех
+    public List<User> findAllUsers() throws DaoException {
         List<User> usersList = new ArrayList<>();
         try (Statement statement = connection.createStatement()) {
             ResultSet resultSet = statement.executeQuery(SQL_FIND_ALL_USERS);
@@ -58,7 +58,8 @@ public class UserDaoImpl extends AbstractUserDao {
                 String login = resultSet.getString(1);
                 int statusNum = resultSet.getInt(2);
                 long id = resultSet.getLong(3);
-                User user = new User(id ,login, StatusType.values()[statusNum], RoleType.USER);
+                int roleNum = resultSet.getInt(4);
+                User user = new User(id ,login, StatusType.values()[statusNum], RoleType.values()[roleNum]);
                 usersList.add(user);
             }
         } catch (SQLException e) {

@@ -12,7 +12,7 @@
 <body>
 <header>
     <p id="Site" align="left">
-        Сайтик
+        Абитуриент
     </p>
     <a id="notification">
         <img src="${pageContext.request.contextPath}/pages/parts/pic/bell.png" width="50" height="50"/>
@@ -23,18 +23,29 @@
     <a id="englishLanguage" href="${pageContext.request.contextPath}/controller?command=change_language&language=en">
         <img src="${pageContext.request.contextPath}/pages/parts/pic/eng.png" width="50" height="25"/>
     </a>
-    <c:if test="${!empty sessionScope.user}">
-    <ul id="navbar">
-        <li>${user} <img id="down" src="${pageContext.request.contextPath}/pages/parts/pic/down.png" width="20"
-                         height="20">
-            <ul>
-                <a class="buttonA" href="${pageContext.request.contextPath}/controller?command=logout">
-                    Выйти
-                </a>
+    <c:choose>
+        <c:when test="${!empty sessionScope.user}">
+            <ul id="navbar">
+                <li>${user} <img id="down" src="${pageContext.request.contextPath}/pages/parts/pic/down.png" width="20"
+                                 height="20">
+                    <ul>
+                        <a class="buttonA" href="${pageContext.request.contextPath}/controller?command=logout">
+                            <fmt:message key="button.exit"/>
+                        </a>
+                    </ul>
+                </li>
             </ul>
-        </li>
-    </ul>
-    </c:if>
+        </c:when>
+        <c:otherwise>
+            <ul id="navbar">
+                <li>
+                    <a class="buttonB" href="${pageContext.request.contextPath}/controller?command=login_page">
+                        <fmt:message key="button.login"/>
+                    </a>
+                </li>
+            </ul>
+        </c:otherwise>
+    </c:choose>
 </header>
 </body>
 </html>

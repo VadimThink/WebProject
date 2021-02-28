@@ -82,6 +82,10 @@ public class User extends Entity {
         this.role = role;
     }
 
+    public boolean isUserRole(){
+        return role == RoleType.USER;
+    }
+
     public int getSpecialtyNum() {
         return specialtyNum;
     }

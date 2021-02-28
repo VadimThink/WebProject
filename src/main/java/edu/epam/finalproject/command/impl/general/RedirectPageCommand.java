@@ -30,6 +30,30 @@ public class RedirectPageCommand implements Command {
                 requestContext.addSessionAttribute(SessionAttribute.CURRENT_PAGE, PagePath.REGISTRATION);
                 return CommandResult.setRedirectPage(PagePath.REGISTRATION);
             }
+            case CommandName.FIC_PAGE -> {
+                requestContext.addSessionAttribute(SessionAttribute.CURRENT_PAGE, PagePath.FIC);
+                return CommandResult.setRedirectPage(PagePath.FIC);
+            }
+            case CommandName.FITC_PAGE -> {
+                requestContext.addSessionAttribute(SessionAttribute.CURRENT_PAGE, PagePath.FITC);
+                return  CommandResult.setRedirectPage(PagePath.FITC);
+            }
+            case CommandName.FCSN_PAGE -> {
+                requestContext.addSessionAttribute(SessionAttribute.CURRENT_PAGE, PagePath.FCSN);
+                return CommandResult.setRedirectPage(PagePath.FCSN);
+            }
+            case CommandName.FCP_PAGE -> {
+                requestContext.addSessionAttribute(SessionAttribute.CURRENT_PAGE, PagePath.FCP);
+                return CommandResult.setRedirectPage(PagePath.FCP);
+            }
+            case CommandName.FRE_PAGE -> {
+                requestContext.addSessionAttribute(SessionAttribute.CURRENT_PAGE, PagePath.FRE);
+                return CommandResult.setRedirectPage(PagePath.FRE);
+            }
+            case CommandName.FEE_PAGE -> {
+                requestContext.addSessionAttribute(SessionAttribute.CURRENT_PAGE, PagePath.FEE);
+                return CommandResult.setRedirectPage(PagePath.FEE);
+            }
             default -> throw new IllegalArgumentException("Unknown page: " + commandType);
         }
     }

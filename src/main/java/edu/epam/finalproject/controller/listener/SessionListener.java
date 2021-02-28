@@ -2,6 +2,7 @@ package edu.epam.finalproject.controller.listener;
 
 import edu.epam.finalproject.command.PagePath;
 import edu.epam.finalproject.constant.SessionAttribute;
+import org.apache.logging.log4j.Level;
 import org.apache.logging.log4j.LogManager;
 import org.apache.logging.log4j.Logger;
 
@@ -13,13 +14,15 @@ import javax.servlet.http.HttpSessionListener;
 @WebListener
 public class SessionListener implements HttpSessionListener {
     private static final String EN = "en";
+    private static final String SESSION_CREATED = "Session was created";
     public static final Logger logger = LogManager.getLogger(SessionListener.class);
 
     @Override
     public void sessionCreated(HttpSessionEvent se) {
         HttpSession session = se.getSession();
-        session.setAttribute(SessionAttribute.CURRENT_PAGE, PagePath.LOGIN);
+        session.setAttribute(SessionAttribute.CURRENT_PAGE, PagePath.HOME);
         session.setAttribute(SessionAttribute.LANGUAGE, EN);
+        logger.info(SESSION_CREATED);
     }
 
     @Override

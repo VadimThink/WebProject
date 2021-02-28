@@ -12,7 +12,7 @@ public class LogoutCommand implements Command {
     public CommandResult execute(RequestContext requestContext) {
         requestContext.addSessionAttribute(SessionAttribute.INVALIDATE_ATTRIBUTE, true);
 
-        return CommandResult.setRedirectPage(PagePath.LOGIN);
+        return CommandResult.setRedirectPage(PagePath.HOME);
     }
 
 }

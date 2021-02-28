@@ -85,6 +85,14 @@ a.buttonA {
     background: rgba(255, 255, 255, 0.781);
 }
 
+a.buttonl{
+    position: absolute;
+    top: 0.4%;
+    left: 80%;
+    margin-right: -50%;
+    font-size: 30px;
+}
+
 [id="down"] {
     position: absolute;
     top: 20%;

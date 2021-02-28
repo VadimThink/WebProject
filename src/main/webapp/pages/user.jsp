@@ -13,7 +13,7 @@
 <h2 align="center">
     <fmt:message key="header.welcome"/>
 </h2>
-<div>
+<div class="fp">
     <h2 align="center">
         <fmt:message key="header.menu"/>
     </h2>
