@@ -5,6 +5,8 @@ import edu.epam.finalproject.dao.SqlRequest;
 import edu.epam.finalproject.constant.StatusType;
 import edu.epam.finalproject.dao.AbstractUserDao;
 import edu.epam.finalproject.dao.DaoException;
+import edu.epam.finalproject.entity.Specialty;
+import edu.epam.finalproject.entity.SpecialtyList;
 import edu.epam.finalproject.entity.User;
 
 import java.sql.*;
@@ -90,7 +92,8 @@ public class UserDaoImpl extends AbstractUserDao {
             int mathScore = resultSet.getInt(13);
             int thirdScore = resultSet.getInt(14);
             int resultScore = resultSet.getInt(15);
-            currentUser = new User(specialtyNum, firstName, lastName, thirdName, birthday, country, locality, address,
+            Specialty specialty = SpecialtyList.getInstance().getSpecialtyList().get(specialtyNum);
+            currentUser = new User(specialty, firstName, lastName, thirdName, birthday, country, locality, address,
                     phone, email, gpa, languageScore, mathScore, thirdScore, resultScore);
         }catch (SQLException e){
             throw new DaoException(e);

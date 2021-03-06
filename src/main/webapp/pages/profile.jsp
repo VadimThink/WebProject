@@ -17,21 +17,21 @@
 <br/>
 <div class="line5">
     <h2 class="another">
-        Ваш профиль:
+        ${userLogin}
     </h2>
     <div class="box5">
         <table class="table2">
             <tr class="row2">
                 <td class="column2">
                     <font size="4" face="Gabriola" color="#616159" class="forheight">
-                        Имя:
+                        <fmt:message key="form.firstName"/>
                     </font>
                     <a href="redaction" title="Редактировать" class="is"> ${userInfo.firstName}
                     </a>
                 </td>
                 <td class="row2">
                     <font size="4" face="Gabriola" color="#616159" class="forheight">
-                        Фамилия:
+                        <fmt:message key="form.secondName"/>
                     </font>
                     <a href="redaction" title="Редактировать" class="is"> ${userInfo.lastName}
                     </a>
@@ -40,7 +40,7 @@
             <tr class="row2">
                 <td class="column2">
                     <font size="4" face="Gabriola" color="#616159" class="forheight">
-                        Отчество:
+                        <fmt:message key="form.thirdName"/>
                     </font>
                     <a href="redaction" title="Редактировать" class="is">${userInfo.thirdName}
                     </a>
@@ -49,7 +49,7 @@
             <tr class="row2">
                 <td class="column2">
                     <font size="4" face="Gabriola" color="#616159" class="forheight">
-                        Дата рождения:
+                        <fmt:message key="form.birthDate"/>
                     </font>
                     <a href="redaction" title="Редактировать" class="is">${userInfo.birthday}
                     </a>
@@ -62,14 +62,14 @@
             <tr class="row2">
                 <td class="column2">
                     <font size="4" face="Gabriola" color="#616159" class="forheight">
-                        Страна:
+                        <fmt:message key="form.country"/>
                     </font>
                     <a href="redaction" title="Редактировать" class="is">${userInfo.country}
                     </a>
                 </td>
                 <td class="column2">
                     <font size="4" face="Gabriola" color="#616159" class="forheight">
-                        Населённый пункт:
+                        <fmt:message key="form.locality"/>
                     </font>
                     <a href="redaction" title="Редактировать" class="is">${userInfo.locality}
                     </a>
@@ -78,7 +78,7 @@
             <tr class="row2">
                 <td class="column2">
                     <font size="4" face="Gabriola" color="#616159" class="forheight">
-                        Адрес:
+                        <fmt:message key="form.address"/>
                     </font>
                     <a href="redaction" title="Редактировать" class="is">${userInfo.address}
                     </a>
@@ -87,14 +87,14 @@
             <tr class="row2">
                 <td class="column2">
                     <font size="4" face="Gabriola" color="#616159" class="forheight">
-                        Телефон:
+                        <fmt:message key="form.phone"/>
                     </font>
                     <a href="redaction" title="Редактировать" class="is">${userInfo.phone}
                     </a>
                 </td>
                 <td class="column2">
                     <font size="4" face="Gabriola" color="#616159" class="forheight">
-                        Электронная почта:
+                        <fmt:message key="form.email"/>
                     </font>
                     <a href="redaction" title="Редактировать" class="is">${userInfo.email}
                     </a>
@@ -107,23 +107,23 @@
             <tr class="row2">
                 <td class="column2">
                     <font size="4" face="Gabriola" color="#616159" class="forheight">
-                        Факультет:
+                        <fmt:message key="form.faculty"/>
                     </font>
-                    <a href="redaction" title="Редактировать" class="is">КСиС
+                    <a href="redaction" title="Редактировать" class="is">${userInfo.specialty.facultyNum}<%--todo изменить на название--%>
                     </a>
                 </td>
                 <td class="column2">
                     <font size="4" face="Gabriola" color="#616159" class="forheight">
-                        Специальность:
+                        <fmt:message key="form.specialty"/>
                     </font>
-                    <a href="redaction" title="Редактировать" class="is">${userInfo.specialtyNum}<%--todo заменить номер на строку--%>
+                    <a href="redaction" title="Редактировать" class="is">${userInfo.specialty.specialtyName}
                     </a>
                 </td>
             </tr>
             <tr class="row2">
                 <td class="column2">
                     <font size="4" face="Gabriola" color="#616159" class="forheight">
-                        Средний балл аттестата:
+                        <fmt:message key="form.GPA"/>
                     </font>
                     <a href="redaction" title="Редактировать" class="is">${userInfo.gpa}
                     </a>
@@ -132,7 +132,7 @@
             <tr class="row2">
                 <td class="column2">
                     <font size="4" face="Gabriola" color="#616159" class="forheight">
-                        Балл ЦТ по русскому(белорускому) языку:
+                        <fmt:message key="form.languageScore"/>
                     </font>
                     <a href="redaction" title="Редактировать" class="is">${userInfo.languageScore}
                     </a>
@@ -141,7 +141,7 @@
             <tr class="row2">
                 <td class="column2">
                     <font size="4" face="Gabriola" color="#616159" class="forheight">
-                        Балл ЦТ по математике:
+                        <fmt:message key="form.mathScore"/>
                     </font>
                     <a href="redaction" title="Редактировать" class="is">${userInfo.mathScore}
                     </a>
@@ -150,7 +150,7 @@
             <tr class="row2">
                 <td class="column2">
                     <font size="4" face="Gabriola" color="#616159" class="forheight">
-                        Балл ЦТ по физике (иностранному языку):
+                        <fmt:message key="form.thirdScore"/>
                     </font>
                     <a href="redaction" title="Редактировать" class="is">${userInfo.thirdScore}
                     </a>

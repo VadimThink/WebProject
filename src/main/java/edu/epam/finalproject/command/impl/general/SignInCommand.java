@@ -43,10 +43,10 @@ public class SignInCommand implements Command {
                 }
                 if (isAdmin) {
                     requestContext.addSessionAttribute(SessionAttribute.ROLE, RoleType.ADMIN);
-                    page = PagePath.ADMIN;
+                    page = PagePath.ADMIN_MENU;
                 } else {
                     requestContext.addSessionAttribute(SessionAttribute.ROLE, RoleType.USER);
-                    page = PagePath.USER;
+                    page = PagePath.USER_MENU;
                 }
                 requestContext.addSessionAttribute(SessionAttribute.USER, login);
                 requestContext.addSessionAttribute(SessionAttribute.CURRENT_PAGE, page);

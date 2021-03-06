@@ -1,7 +1,6 @@
 package edu.epam.finalproject.command.impl.user;
 
 import edu.epam.finalproject.command.*;
-import edu.epam.finalproject.constant.*;
 import edu.epam.finalproject.controller.request.RequestContext;
 import edu.epam.finalproject.service.ServiceException;
 import edu.epam.finalproject.service.UserService;
@@ -39,7 +38,7 @@ public class SendFormCommand implements Command {
         }
         String page;
         if (isUpdated){
-            page = PagePath.USER;
+            page = PagePath.USER_MENU;
         }else {
             page = PagePath.FORM;
             requestContext.addAttribute(RequestAttribute.ERROR_MESSAGE, Message.CANT_FIND_USER);

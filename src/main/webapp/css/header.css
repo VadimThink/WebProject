@@ -59,10 +59,8 @@ header {
 
 #navbar li ul {
     display: none;
-    position: absolute;
     padding-left: 0;
     width: 120px;
-    padding-top: 3px;
 }
 
 #navbar li:hover ul {

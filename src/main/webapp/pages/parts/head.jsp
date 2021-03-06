@@ -29,6 +29,16 @@
                 <li>${user} <img id="down" src="${pageContext.request.contextPath}/pages/parts/pic/down.png" width="20"
                                  height="20">
                     <ul>
+                        <a class="selectButton" href="${pageContext.request.contextPath}/controller?command=menu">
+                            <fmt:message key="button.menu"/>
+                        </a>
+                    </ul>
+                    <ul>
+                        <a class="selectButton" href="${pageContext.request.contextPath}/controller?command=profile">
+                            <fmt:message key="button.profile"/>
+                        </a>
+                    </ul>
+                    <ul>
                         <a class="selectButton" href="${pageContext.request.contextPath}/controller?command=logout">
                             <fmt:message key="button.exit"/>
                         </a>

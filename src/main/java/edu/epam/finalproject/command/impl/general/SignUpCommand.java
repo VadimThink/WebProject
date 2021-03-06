@@ -1,7 +1,6 @@
 package edu.epam.finalproject.command.impl.general;
 
 import edu.epam.finalproject.command.*;
-import edu.epam.finalproject.constant.*;
 import edu.epam.finalproject.controller.request.RequestContext;
 import edu.epam.finalproject.service.ServiceException;
 import edu.epam.finalproject.service.UserService;
@@ -33,7 +32,7 @@ public class SignUpCommand implements Command {
         }
         if (isCreated) {
             requestContext.addSessionAttribute(SessionAttribute.USER, login);
-            page = PagePath.USER;
+            page = PagePath.USER_MENU;
             requestContext.addSessionAttribute(SessionAttribute.CURRENT_PAGE, page);
             return CommandResult.setRedirectPage(page);
         } else {

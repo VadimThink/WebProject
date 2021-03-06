@@ -22,43 +22,43 @@
 </h2>
 <br>
 <p align="center">
-    <fmt:message key="input.header.firstName"/>
+    <fmt:message key="form.firstName"/>
     <input type="text" name="firstName" required>
 </p>
 <p align="center">
-    <fmt:message key="input.header.secondName"/>
+    <fmt:message key="form.secondName"/>
     <input type="text" name="secondName" required>
 </p>
 <p align="center">
-    <fmt:message key="input.header.thirdName"/>
+    <fmt:message key="form.thirdName"/>
     <input type="text" name="thirdName" value="" required>
 </p>
 <p align="center">
-    <fmt:message key="input.header.birthDate"/>
+    <fmt:message key="form.birthDate"/>
     <input type="date" name="birthday" required>
 </p>
 <p align="center">
-    <fmt:message key="input.header.country"/>
+    <fmt:message key="form.country"/>
     <input type="text" name="country" required>
 </p>
 <p align="center">
-    <fmt:message key="input.header.locality"/>
+    <fmt:message key="form.locality"/>
     <input type="text" name="locality" required>
 </p>
 <p align="center">
-    <fmt:message key="input.header.address"/>
+    <fmt:message key="form.address"/>
     <input type="text" name="address" placeholder="Улица, дом, корпус, квартира" required>
 </p>
 <p align="center">
-    <fmt:message key="input.header.phone"/>
+    <fmt:message key="form.phone"/>
     <input type="tel" name="phone" placeholder="+375331111111" required>
 </p>
 <p align="center">
-    <fmt:message key="input.header.email"/>
+    <fmt:message key="form.email"/>
     <input type="email" name="email" required>
 </p>
 <p align="center">
-    <fmt:message key="input.header.specialty"/>
+    <fmt:message key="form.specialty"/>
 </p>
 <p align="center">
     <select name="specialty" size="1" required>
@@ -68,19 +68,19 @@
     </select>
 </p>
 <p align="center">
-    <fmt:message key="input.header.GPA"/>
+    <fmt:message key="form.GPA"/>
     <input type="number" name="GPA" max="100" min="0" placeholder="98" required>
 </p>
 <p align="center">
-    <fmt:message key="input.header.languageScore"/>
+    <fmt:message key="form.languageScore"/>
     <input type="number" name="languageScore" max="100" min="0" required>
 </p>
 <p align="center">
-    <fmt:message key="input.header.mathScore"/>
+    <fmt:message key="form.mathScore"/>
     <input type="number" name="mathScore" max="100" min="0" required>
 </p>
 <p align="center">
-    <fmt:message key="input.header.thirdScore"/>
+    <fmt:message key="form.thirdScore"/>
     <input type="number" name="thirdScore" max="100" min="0" required>
 </p>
 <p align="center">

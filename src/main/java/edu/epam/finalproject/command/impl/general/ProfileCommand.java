@@ -12,7 +12,7 @@ import org.apache.logging.log4j.Logger;
 
 public class ProfileCommand implements Command {
     private static final UserService userService = new UserService();
-    private static final Logger logger = LogManager.getLogger(UsersListCommand.class);
+    private static final Logger logger = LogManager.getLogger(ProfileCommand.class);
 
     @Override
     public CommandResult execute(RequestContext requestContext) {
@@ -32,6 +32,7 @@ public class ProfileCommand implements Command {
         }
         requestContext.addAttribute(RequestAttribute.USER_INFO, userInfo);
         requestContext.addAttribute(RequestAttribute.USER_LOGIN, login);
+        requestContext.addSessionAttribute(SessionAttribute.CURRENT_PAGE, PagePath.PROFILE_COMMAND + login) ;
         return CommandResult.setForwardPage(PagePath.PROFILE);
     }
 }

@@ -7,7 +7,7 @@ public class User extends Entity {
 
     private long id;
     private StatusType status;
-    private int specialtyNum;
+    private Specialty specialty;
     private RoleType role;
     private String login;
     private String firstName;
@@ -30,24 +30,22 @@ public class User extends Entity {
         this.login = login;
         this.status = status;
         this.role = role;
-        this.specialtyNum = 0;
     }
 
     public User(String login, StatusType status, RoleType role) {
         this.login = login;
         this.status = status;
         this.role = role;
-        this.specialtyNum = 0;
     }
 
     public User() {
 
     }
 
-    public User(int specialtyNum, String firstName, String lastName, String thirdName, String birthday, String country, String locality,
+    public User(Specialty specialty, String firstName, String lastName, String thirdName, String birthday, String country, String locality,
                 String address, String phone, String email, int gpa, int languageScore, int mathScore, int thirdScore,
                 int resultScore) {
-        this.specialtyNum = specialtyNum;
+        this.specialty = specialty;
         this.firstName = firstName;
         this.lastName = lastName;
         this.thirdName = thirdName;
@@ -132,12 +130,12 @@ public class User extends Entity {
         return role == RoleType.USER;
     }
 
-    public int getSpecialtyNum() {
-        return specialtyNum;
+    public Specialty getSpecialty() {
+        return specialty;
     }
 
-    public void setSpecialtyNum(int specialtyNum) {
-        this.specialtyNum = specialtyNum;
+    public void setSpecialty(Specialty specialty) {
+        this.specialty = specialty;
     }
 
     public String getBirthday() {
@@ -236,17 +234,18 @@ public class User extends Entity {
         User user = (User) o;
 
         if (id != user.id) return false;
-        if (specialtyNum != user.specialtyNum) return false;
         if (gpa != user.gpa) return false;
         if (languageScore != user.languageScore) return false;
         if (mathScore != user.mathScore) return false;
         if (thirdScore != user.thirdScore) return false;
         if (resultScore != user.resultScore) return false;
         if (status != user.status) return false;
+        if (specialty != null ? !specialty.equals(user.specialty) : user.specialty != null) return false;
         if (role != user.role) return false;
         if (login != null ? !login.equals(user.login) : user.login != null) return false;
         if (firstName != null ? !firstName.equals(user.firstName) : user.firstName != null) return false;
         if (lastName != null ? !lastName.equals(user.lastName) : user.lastName != null) return false;
+        if (thirdName != null ? !thirdName.equals(user.thirdName) : user.thirdName != null) return false;
         if (birthday != null ? !birthday.equals(user.birthday) : user.birthday != null) return false;
         if (country != null ? !country.equals(user.country) : user.country != null) return false;
         if (locality != null ? !locality.equals(user.locality) : user.locality != null) return false;
@@ -259,7 +258,7 @@ public class User extends Entity {
     public int hashCode() {
         int result = (int) (id ^ (id >>> 32));
         result = 31 * result + (status != null ? status.hashCode() : 0);
-        result = 31 * result + specialtyNum;
+        result = 31 * result + (specialty != null ? specialty.hashCode() : 0);
         result = 31 * result + (role != null ? role.hashCode() : 0);
         result = 31 * result + (login != null ? login.hashCode() : 0);
         result = 31 * result + (firstName != null ? firstName.hashCode() : 0);

@@ -7,6 +7,7 @@ import edu.epam.finalproject.command.RequestAttribute;
 import edu.epam.finalproject.command.SessionAttribute;
 import edu.epam.finalproject.controller.request.RequestContext;
 import edu.epam.finalproject.entity.Specialty;
+import edu.epam.finalproject.entity.SpecialtyList;
 import edu.epam.finalproject.service.ServiceException;
 import edu.epam.finalproject.service.CommandService;
 import org.apache.logging.log4j.LogManager;
@@ -21,13 +22,7 @@ public class FormPageCommand implements Command {
 
     @Override
     public CommandResult execute(RequestContext requestContext) {
-        List<Specialty> specialtyList = new ArrayList<>();
-        try {
-            specialtyList = commandService.findSpecialtyList();
-        } catch (ServiceException e) {
-            e.printStackTrace();
-            logger.error(e);
-        }
+        List<Specialty> specialtyList = SpecialtyList.getInstance().getSpecialtyList();
         requestContext.addAttribute(RequestAttribute.SPECIALTY_LIST, specialtyList);
         requestContext.addSessionAttribute(SessionAttribute.CURRENT_PAGE, PagePath.FORM);
         return CommandResult.setForwardPage(PagePath.FORM);

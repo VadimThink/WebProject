@@ -1,7 +1,7 @@
 package edu.epam.finalproject.command.impl.admin;
 
 import edu.epam.finalproject.command.*;
-import edu.epam.finalproject.constant.Message;
+import edu.epam.finalproject.command.Message;
 import edu.epam.finalproject.command.SessionAttribute;
 import edu.epam.finalproject.controller.request.RequestContext;
 import edu.epam.finalproject.entity.User;
@@ -56,7 +56,7 @@ public class UsersPaginationCommand implements Command {
         requestContext.addAttribute(RequestAttribute.FIRST_ID, firstId);
         requestContext.addAttribute(RequestAttribute.LAST_ID, lastId);
         requestContext.addAttribute(RequestAttribute.USERS_LIST, usersList);
-        requestContext.addSessionAttribute(SessionAttribute.CURRENT_PAGE, PagePath.USERS_PAGINATION);
+        requestContext.addSessionAttribute(SessionAttribute.CURRENT_PAGE, PagePath.USERS_LIST);
         return CommandResult.setForwardPage(PagePath.USERS);
     }
 }

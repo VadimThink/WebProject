@@ -17,6 +17,7 @@ public enum CommandType {
     LOGOUT(new LogoutCommand()),
     LOGIN_PAGE(new RedirectPageCommand(CommandName.LOGIN_PAGE)),
     SIGN_UP_PAGE(new RedirectPageCommand(CommandName.SIGN_UP_PAGE)),
+    MENU(new OpenMenuCommand()),
     FIC_PAGE(new RedirectPageCommand(CommandName.FIC_PAGE)),
     FITC_PAGE(new RedirectPageCommand(CommandName.FITC_PAGE)),
     FCSN_PAGE(new RedirectPageCommand(CommandName.FCSN_PAGE)),
