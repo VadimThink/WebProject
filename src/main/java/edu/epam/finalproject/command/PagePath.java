@@ -17,6 +17,7 @@ public class PagePath {
     public static final String USERS_LIST = "/controller?command=users_list";
     public static final String USERS = "/pages/users.jsp";
     public static final String USERS_PAGINATION = "/controller?command=users_pagination";
+    public static final String PROFILE = "/pages/profile.jsp";
 
     public static final String ERROR_404 = "/pages/error/error404.jsp";
     public static final String ERROR_500 = "/pages/error/error500.jsp";

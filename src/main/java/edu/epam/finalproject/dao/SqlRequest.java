@@ -10,6 +10,11 @@ public class SqlRequest {
             " FROM users LIMIT ?,?";
     public final static String SQL_CHECK_USER_BY_LOGIN_AND_PASSWORD = "SELECT users.login, users.password FROM users " +
             "WHERE users.login LIKE ? AND users.password LIKE ?";
+    public final static String SQL_FIND_USER_INFO = "SELECT users.first_name, users.last_name, users.third_name," +
+            "users.birthday, users.country, users.locality, users.address, users.phone, users.email, users.specialty_num," +
+            "users.gpa, users.language_score, users.math_score, users.third_score, users.result_score " +
+            "FROM users WHERE users.login LIKE ?";
+    //todo добавить факультет  и result
     public final static String SQL_FIND_ROLE = "SELECT users.role_num FROM users WHERE users.login LIKE ?";
     public final static String SQL_FIND_STATUS = "SELECT users.status_num FROM users WHERE users.login LIKE ?";
     public final static String SQL_UPDATE_LOGIN = "UPDATE users SET users.login = ? WHERE users.login LIKE ?";

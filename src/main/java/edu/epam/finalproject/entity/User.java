@@ -6,12 +6,24 @@ import edu.epam.finalproject.constant.StatusType;
 public class User extends Entity {
 
     private long id;
-    private String login;
-    private String firstName;
-    private String lastName;
     private StatusType status;
     private int specialtyNum;
     private RoleType role;
+    private String login;
+    private String firstName;
+    private String lastName;
+    private String thirdName;
+    private String birthday;
+    private String country;
+    private String locality;
+    private String address;
+    private String phone;
+    private String email;
+    private int gpa;
+    private int languageScore;
+    private int mathScore;
+    private int thirdScore;
+    private int resultScore;
 
     public User(long id, String login, StatusType status, RoleType role) {
         this.id = id;
@@ -26,6 +38,30 @@ public class User extends Entity {
         this.status = status;
         this.role = role;
         this.specialtyNum = 0;
+    }
+
+    public User() {
+
+    }
+
+    public User(int specialtyNum, String firstName, String lastName, String thirdName, String birthday, String country, String locality,
+                String address, String phone, String email, int gpa, int languageScore, int mathScore, int thirdScore,
+                int resultScore) {
+        this.specialtyNum = specialtyNum;
+        this.firstName = firstName;
+        this.lastName = lastName;
+        this.thirdName = thirdName;
+        this.birthday = birthday;
+        this.country = country;
+        this.locality = locality;
+        this.address = address;
+        this.phone = phone;
+        this.email = email;
+        this.gpa = gpa;
+        this.languageScore = languageScore;
+        this.mathScore = mathScore;
+        this.thirdScore = thirdScore;
+        this.resultScore = resultScore;
     }
 
     public long getId() {
@@ -60,6 +96,14 @@ public class User extends Entity {
         this.lastName = lastName;
     }
 
+    public String getThirdName() {
+        return thirdName;
+    }
+
+    public void setThirdName(String thirdName) {
+        this.thirdName = thirdName;
+    }
+
     public StatusType getStatus() {
         return status;
     }
@@ -68,11 +112,13 @@ public class User extends Entity {
         this.status = status;
     }
 
-    public boolean isBlocked(){
+    public boolean isBlocked() {
         return status == StatusType.BLOCKED;
     }
 
-    public boolean isUnactive(){ return status == StatusType.UNACTIVE;}
+    public boolean isInactive() {
+        return status == StatusType.INACTIVE;
+    }
 
     public RoleType getRole() {
         return role;
@@ -82,7 +128,7 @@ public class User extends Entity {
         this.role = role;
     }
 
-    public boolean isUserRole(){
+    public boolean isUserRole() {
         return role == RoleType.USER;
     }
 
@@ -94,41 +140,141 @@ public class User extends Entity {
         this.specialtyNum = specialtyNum;
     }
 
+    public String getBirthday() {
+        return birthday;
+    }
+
+    public void setBirthday(String birthday) {
+        this.birthday = birthday;
+    }
+
+    public String getCountry() {
+        return country;
+    }
+
+    public void setCountry(String country) {
+        this.country = country;
+    }
+
+    public String getLocality() {
+        return locality;
+    }
+
+    public void setLocality(String locality) {
+        this.locality = locality;
+    }
+
+    public String getAddress() {
+        return address;
+    }
+
+    public void setAddress(String address) {
+        this.address = address;
+    }
+
+    public String getPhone() {
+        return phone;
+    }
+
+    public void setPhone(String phone) {
+        this.phone = phone;
+    }
+
+    public String getEmail() {
+        return email;
+    }
+
+    public void setEmail(String email) {
+        this.email = email;
+    }
+
+    public int getGpa() {
+        return gpa;
+    }
+
+    public void setGpa(int gpa) {
+        this.gpa = gpa;
+    }
+
+    public int getLanguageScore() {
+        return languageScore;
+    }
+
+    public void setLanguageScore(int languageScore) {
+        this.languageScore = languageScore;
+    }
+
+    public int getMathScore() {
+        return mathScore;
+    }
+
+    public void setMathScore(int mathScore) {
+        this.mathScore = mathScore;
+    }
+
+    public int getThirdScore() {
+        return thirdScore;
+    }
+
+    public void setThirdScore(int thirdScore) {
+        this.thirdScore = thirdScore;
+    }
+
+    public int getResultScore() {
+        return resultScore;
+    }
+
+    public void setResultScore(int resultScore) {
+        this.resultScore = resultScore;
+    }
+
     @Override
     public boolean equals(Object o) {
         if (this == o) return true;
         if (o == null || getClass() != o.getClass()) return false;
+
         User user = (User) o;
-        return specialtyNum == user.specialtyNum &&
-                login.equals(user.login) &&
-                firstName.equals(user.firstName) &&
-                lastName.equals(user.lastName) &&
-                status == user.status &&
-                role == user.role;
+
+        if (id != user.id) return false;
+        if (specialtyNum != user.specialtyNum) return false;
+        if (gpa != user.gpa) return false;
+        if (languageScore != user.languageScore) return false;
+        if (mathScore != user.mathScore) return false;
+        if (thirdScore != user.thirdScore) return false;
+        if (resultScore != user.resultScore) return false;
+        if (status != user.status) return false;
+        if (role != user.role) return false;
+        if (login != null ? !login.equals(user.login) : user.login != null) return false;
+        if (firstName != null ? !firstName.equals(user.firstName) : user.firstName != null) return false;
+        if (lastName != null ? !lastName.equals(user.lastName) : user.lastName != null) return false;
+        if (birthday != null ? !birthday.equals(user.birthday) : user.birthday != null) return false;
+        if (country != null ? !country.equals(user.country) : user.country != null) return false;
+        if (locality != null ? !locality.equals(user.locality) : user.locality != null) return false;
+        if (address != null ? !address.equals(user.address) : user.address != null) return false;
+        if (phone != null ? !phone.equals(user.phone) : user.phone != null) return false;
+        return email != null ? email.equals(user.email) : user.email == null;
     }
 
     @Override
     public int hashCode() {
-        int result = 0;
+        int result = (int) (id ^ (id >>> 32));
+        result = 31 * result + (status != null ? status.hashCode() : 0);
+        result = 31 * result + specialtyNum;
+        result = 31 * result + (role != null ? role.hashCode() : 0);
         result = 31 * result + (login != null ? login.hashCode() : 0);
         result = 31 * result + (firstName != null ? firstName.hashCode() : 0);
         result = 31 * result + (lastName != null ? lastName.hashCode() : 0);
-        result = 31 * result + (role != null ? role.hashCode() : 0);
-        result = 31 * result + (status != null ? status.hashCode() : 0);
-        result = 31 * result + specialtyNum ^ (specialtyNum >>> 32);
+        result = 31 * result + (birthday != null ? birthday.hashCode() : 0);
+        result = 31 * result + (country != null ? country.hashCode() : 0);
+        result = 31 * result + (locality != null ? locality.hashCode() : 0);
+        result = 31 * result + (address != null ? address.hashCode() : 0);
+        result = 31 * result + (phone != null ? phone.hashCode() : 0);
+        result = 31 * result + (email != null ? email.hashCode() : 0);
+        result = 31 * result + gpa;
+        result = 31 * result + languageScore;
+        result = 31 * result + mathScore;
+        result = 31 * result + thirdScore;
+        result = 31 * result + resultScore;
         return result;
-    }
-
-    @Override
-    public String toString() {
-        final StringBuilder sb = new StringBuilder("User{");
-        sb.append("login='").append(login).append('\'');
-        sb.append(", firstName='").append(firstName).append('\'');
-        sb.append(", lastName='").append(lastName).append('\'');
-        sb.append(", status=").append(status);
-        sb.append(", specialtyNum=").append(specialtyNum);
-        sb.append(", role=").append(role);
-        sb.append('}');
-        return sb.toString();
     }
 }

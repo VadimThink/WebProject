@@ -84,7 +84,7 @@
     <input type="number" name="thirdScore" max="100" min="0" required>
 </p>
 <p align="center">
-    <button class="buttonB">
+    <button class="classicButton">
         <fmt:message key="button.send"/>
     </button>
 </p>

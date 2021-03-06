@@ -11,4 +11,5 @@ public class CommandName {
     public static final String FRE_PAGE = "fre_page";
     public static final String FCSN_PAGE = "fcsn_page";
     public static final String FEE_PAGE = "fee_page";
+    public static final String HOME_PAGE = "home_page";
 }

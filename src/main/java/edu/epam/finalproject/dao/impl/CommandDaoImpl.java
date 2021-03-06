@@ -35,31 +35,17 @@ public class CommandDaoImpl extends AbstractCommandDao {
 
     @Override
     public List findAll() throws DaoException {
-        return null;
+        throw new UnsupportedOperationException();
     }
 
-    @Override
-    public Entity findById(Object id) throws DaoException {
-        return null;
-    }
-
-    @Override
-    public boolean delete(Entity entity) throws DaoException {
-        return false;
-    }
-
-    @Override
-    public boolean delete(Object id) throws DaoException {
-        return false;
-    }
 
     @Override
     public void create(Entity entity) throws DaoException {
-
+        throw new UnsupportedOperationException();
     }
 
     @Override
     public Entity update(Entity entity) throws DaoException {
-        return null;
+        throw new UnsupportedOperationException();
     }
 }

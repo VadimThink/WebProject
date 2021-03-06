@@ -4,7 +4,7 @@ import edu.epam.finalproject.command.Command;
 import edu.epam.finalproject.command.CommandName;
 import edu.epam.finalproject.command.CommandResult;
 import edu.epam.finalproject.command.PagePath;
-import edu.epam.finalproject.constant.SessionAttribute;
+import edu.epam.finalproject.command.SessionAttribute;
 import edu.epam.finalproject.controller.request.RequestContext;
 
 
@@ -53,6 +53,10 @@ public class RedirectPageCommand implements Command {
             case CommandName.FEE_PAGE -> {
                 requestContext.addSessionAttribute(SessionAttribute.CURRENT_PAGE, PagePath.FEE);
                 return CommandResult.setRedirectPage(PagePath.FEE);
+            }
+            case CommandName.HOME_PAGE ->{
+                requestContext.addSessionAttribute(SessionAttribute.CURRENT_PAGE, PagePath.HOME);
+                return CommandResult.setRedirectPage(PagePath.HOME);
             }
             default -> throw new IllegalArgumentException("Unknown page: " + commandType);
         }

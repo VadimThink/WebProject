@@ -1,4 +1,4 @@
-a.buttonB, button.buttonB{
+a.classicButton, button.classicButton{
     display: inline-block;
     width: 200px;
     padding: 10px 10px;
@@ -126,6 +126,7 @@ table.table2{
     font-size: 14px;
     border-collapse: collapse;
     text-align: left;
+    background: none;
 }
 th.row2, td.column2 {
     border-style: none;

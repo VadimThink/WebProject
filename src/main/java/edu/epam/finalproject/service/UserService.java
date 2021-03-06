@@ -6,7 +6,7 @@ import edu.epam.finalproject.dao.DaoException;
 import edu.epam.finalproject.dao.EntityTransaction;
 import edu.epam.finalproject.dao.impl.UserDaoImpl;
 import edu.epam.finalproject.entity.User;
-import edu.epam.finalproject.util.DateToSqlConverter;
+import edu.epam.finalproject.util.DateConverter;
 import org.apache.logging.log4j.LogManager;
 import org.apache.logging.log4j.Logger;
 
@@ -23,8 +23,8 @@ public class UserService {
         entityTransaction.begin(userDaoImpl);
         if (!checkUserByLoginAndPassword(login, password)) {
             try {
-                User newUser = new User(login, StatusType.UNACTIVE,  RoleType.USER);
-                userDaoImpl.createUser(newUser, password);
+                User newUser = new User(login, StatusType.INACTIVE,  RoleType.USER);
+                userDaoImpl.create(newUser, password);
                 entityTransaction.commit();
             } catch (DaoException e) {
                 entityTransaction.rollback();
@@ -80,7 +80,7 @@ public class UserService {
         EntityTransaction entityTransaction = new EntityTransaction();
         UserDaoImpl userDaoImpl = new UserDaoImpl();
         entityTransaction.begin(userDaoImpl);
-        Date birthdayDate = DateToSqlConverter.convert(birthday);
+        Date birthdayDate = DateConverter.convertStringToSqlDate(birthday);
         try {
             userDaoImpl.updateUserFirstName(login, firstName);
             userDaoImpl.updateUserLastName(login, lastName);
@@ -112,7 +112,7 @@ public class UserService {
         entityTransaction.begin(userDaoImpl);
         List<User> userList;
         try {
-            userList = userDaoImpl.findAllUsers();
+            userList = userDaoImpl.findAll();
             entityTransaction.commit();
         } catch (DaoException e) {
             logger.error(DATABASE_ERROR, e);
@@ -140,7 +140,7 @@ public class UserService {
         return userList;
     }
 
-    public long findUsersNumber() throws ServiceException{
+    public long findNumberOfUsers() throws ServiceException{
         EntityTransaction entityTransaction = new EntityTransaction();
         UserDaoImpl userDaoImpl = new UserDaoImpl();
         entityTransaction.begin(userDaoImpl);
@@ -155,6 +155,23 @@ public class UserService {
         }
         entityTransaction.end();
         return number;
+    }
+
+    public User findUserInfo(String login) throws ServiceException{
+        EntityTransaction entityTransaction = new EntityTransaction();
+        UserDaoImpl userDaoImpl = new UserDaoImpl();
+        entityTransaction.begin(userDaoImpl);
+        User currentUser;
+        try{
+            currentUser = userDaoImpl.findUserInfo(login);
+            entityTransaction.commit();
+        }catch (DaoException e){
+            logger.error(DATABASE_ERROR, e);
+            entityTransaction.rollback();
+            throw new ServiceException(e);
+        }
+        entityTransaction.end();
+        return currentUser;
     }
 
     public boolean updateUserStatus(String login, StatusType status) throws ServiceException{

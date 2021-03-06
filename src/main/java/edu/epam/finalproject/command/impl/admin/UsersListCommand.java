@@ -4,7 +4,7 @@ import edu.epam.finalproject.command.Command;
 import edu.epam.finalproject.command.CommandResult;
 import edu.epam.finalproject.command.PagePath;
 import edu.epam.finalproject.command.RequestAttribute;
-import edu.epam.finalproject.constant.SessionAttribute;
+import edu.epam.finalproject.command.SessionAttribute;
 import edu.epam.finalproject.controller.request.RequestContext;
 import edu.epam.finalproject.entity.User;
 import edu.epam.finalproject.service.ServiceException;
@@ -27,7 +27,7 @@ public class UsersListCommand implements Command {
         List<User> usersList = new ArrayList<>();
         long usersNumber = 0;
         try{
-            usersNumber = userService.findUsersNumber();
+            usersNumber = userService.findNumberOfUsers();
         }catch (ServiceException e){
             e.printStackTrace();
             logger.error(e);

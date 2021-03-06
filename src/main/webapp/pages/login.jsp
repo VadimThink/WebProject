@@ -30,7 +30,7 @@
                    pattern="^[a-zA-Z0-9]([._-](?![._-])|[a-zA-Z0-9]){3,18}[a-zA-Z0-9]$"/>
         </p>
         <p align="center">
-            <button class="buttonB" type="submit">
+            <button class="classicButton" type="submit">
                 <fmt:message key="button.login"/>
             </button>
         </p>
@@ -42,7 +42,7 @@
         <fmt:message key="header.orCreateNew"/>
     </h2>
     <p align="center">
-        <a class="buttonB" href="${pageContext.request.contextPath}/controller?command=sign_up_page">
+        <a class="classicButton" href="${pageContext.request.contextPath}/controller?command=sign_up_page">
             <fmt:message key="button.registration"/>
         </a>
     </p>

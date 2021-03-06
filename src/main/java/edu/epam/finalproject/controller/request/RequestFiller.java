@@ -1,6 +1,6 @@
 package edu.epam.finalproject.controller.request;
 
-import edu.epam.finalproject.constant.SessionAttribute;
+import edu.epam.finalproject.command.SessionAttribute;
 
 import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpSession;

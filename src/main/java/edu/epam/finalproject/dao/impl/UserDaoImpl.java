@@ -29,7 +29,7 @@ public class UserDaoImpl extends AbstractUserDao {
     }
 
     @Override
-    public List<User> findAllUsers() throws DaoException {
+    public List<User> findAll() throws DaoException {
         List<User> usersList = new ArrayList<>();
         try (Statement statement = connection.createStatement()) {
             ResultSet resultSet = statement.executeQuery(SQL_FIND_ALL_USERS);
@@ -68,6 +68,35 @@ public class UserDaoImpl extends AbstractUserDao {
         return usersList;
     }
 
+    @Override
+    public User findUserInfo(String login) throws DaoException{
+        User currentUser;
+        try(PreparedStatement statement = connection.prepareStatement(SQL_FIND_USER_INFO)){
+            statement.setString(1,login);
+            ResultSet resultSet = statement.executeQuery();
+            resultSet.next();
+            String firstName = resultSet.getString(1);
+            String lastName = resultSet.getString(2);
+            String thirdName = resultSet.getString(3);
+            String birthday = resultSet.getString(4);
+            String country = resultSet.getString(5);
+            String locality = resultSet.getString(6);
+            String address = resultSet.getString(7);
+            String phone = resultSet.getString(8);
+            String email = resultSet.getString(9);
+            int specialtyNum = resultSet.getInt(10);
+            int gpa = resultSet.getInt(11);
+            int languageScore = resultSet.getInt(12);
+            int mathScore = resultSet.getInt(13);
+            int thirdScore = resultSet.getInt(14);
+            int resultScore = resultSet.getInt(15);
+            currentUser = new User(specialtyNum, firstName, lastName, thirdName, birthday, country, locality, address,
+                    phone, email, gpa, languageScore, mathScore, thirdScore, resultScore);
+        }catch (SQLException e){
+            throw new DaoException(e);
+        }
+        return currentUser;
+    }
 
     @Override
     public boolean checkUserByLoginAndPassword(String login, String password) throws DaoException {
@@ -326,35 +355,15 @@ public class UserDaoImpl extends AbstractUserDao {
         return StatusType.values()[statusNum];
     }
 
-    @Override
-    public List<User> findAll() {
-        return null;
-    }
-
-    @Override
-    public User findById(Long id) {
-        return null;
-    }
-
-
-    @Override
-    public boolean delete(User user) {
-        return false;
-    }
-
-    @Override
-    public boolean delete(Long id) {
-        return false;
-    }
 
     @Override
     public void create(User user) throws DaoException {
-
+        throw new UnsupportedOperationException();
     }
 
 
     @Override
-    public boolean createUser(User user, String password) throws DaoException {
+    public boolean create(User user, String password) throws DaoException {
         try (PreparedStatement statement = connection.prepareStatement(SqlRequest.SQL_CREATE)) {
             statement.setString(1, user.getLogin());
             statement.setString(2, password);//TODO ЗАШИФРУЙ ПАРОЛЬ

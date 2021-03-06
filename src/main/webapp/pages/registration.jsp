@@ -35,7 +35,7 @@
                    pattern="^[a-zA-Z0-9]([._-](?![._-])|[a-zA-Z0-9]){3,18}[a-zA-Z0-9]$"/>
         </p>
         <p>
-            <button class="buttonB">
+            <button class="classicButton">
                 <fmt:message key="button.registration"/>
             </button>
         </p>

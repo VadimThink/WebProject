@@ -12,7 +12,7 @@
 <body>
 <header>
     <p id="Site" align="left">
-        Абитуриент
+        <a href="${pageContext.request.contextPath}/controller?command=home_page">Абитуриент</a><%-- TODO ПОМЕНЯТЬ НА КАРТИНКУ --%>
     </p>
     <a id="notification">
         <img src="${pageContext.request.contextPath}/pages/parts/pic/bell.png" width="50" height="50"/>
@@ -29,7 +29,7 @@
                 <li>${user} <img id="down" src="${pageContext.request.contextPath}/pages/parts/pic/down.png" width="20"
                                  height="20">
                     <ul>
-                        <a class="buttonA" href="${pageContext.request.contextPath}/controller?command=logout">
+                        <a class="selectButton" href="${pageContext.request.contextPath}/controller?command=logout">
                             <fmt:message key="button.exit"/>
                         </a>
                     </ul>
@@ -39,7 +39,7 @@
         <c:otherwise>
             <ul id="navbar">
                 <li>
-                    <a class="buttonB" href="${pageContext.request.contextPath}/controller?command=login_page">
+                    <a class="classicButton" href="${pageContext.request.contextPath}/controller?command=login_page">
                         <fmt:message key="button.login"/>
                     </a>
                 </li>

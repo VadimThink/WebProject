@@ -11,7 +11,7 @@ import java.util.List;
 public abstract class AbstractUserDao extends AbstractDao<Long, User> {
 
     public abstract long findMaxUserId() throws DaoException;
-    public abstract List<User> findAllUsers() throws DaoException;
+    public abstract User findUserInfo(String login) throws DaoException;
     public abstract List<User> findUsersInRange(long firstId, long number) throws DaoException;
     public abstract boolean checkUserByLoginAndPassword(String login, String password) throws DaoException;
     public abstract int findRole(String login) throws DaoException;
@@ -35,5 +35,5 @@ public abstract class AbstractUserDao extends AbstractDao<Long, User> {
     public abstract boolean updateUserThirdScore(String login, int thirdScore) throws DaoException;
     public abstract StatusType findUserStatus(String login) throws DaoException;
 
-    public abstract boolean createUser(User user, String password) throws DaoException;
+    public abstract boolean create(User user, String password) throws DaoException;
 }

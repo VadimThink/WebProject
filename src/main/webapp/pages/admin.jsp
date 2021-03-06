@@ -18,12 +18,12 @@
         <fmt:message key="header.menu"/>
     </h2>
     <p align="center">
-        <a class="buttonB" href="${pageContext.request.contextPath}/controller?command=users_list">
+        <a class="classicButton" href="${pageContext.request.contextPath}/controller?command=users_list">
             <fmt:message key="button.users"/>
         </a>
     </p>
     <p align="center">
-        <a class="buttonB" href="Завершение.html">
+        <a class="classicButton" href="Завершение.html">
             <fmt:message key="button.finishCampaign"/>
         </a>
     </p>

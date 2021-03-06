@@ -18,12 +18,12 @@
         <fmt:message key="header.menu"/>
     </h2>
     <p align="center">
-        <a class="buttonB" href="${pageContext.request.contextPath}/controller?command=form_page">
+        <a class="classicButton" href="${pageContext.request.contextPath}/controller?command=form_page">
             <fmt:message key="button.fillForm"/>
         </a>
     </p>
     <p align="center">
-        <a class="buttonB" href="Баллы.html">
+        <a class="classicButton" href="Баллы.html">
             <fmt:message key="button.passingPoints"/>
         </a>
     </p>

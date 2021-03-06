@@ -11,9 +11,6 @@ public abstract class AbstractDao<K, T extends Entity> {
     protected Connection connection;
 
     public abstract List<T> findAll() throws DaoException;
-    public abstract T findById(K id) throws DaoException;
-    public abstract boolean delete(T t) throws DaoException;
-    public abstract boolean delete(K id) throws DaoException;
     public abstract void create(T t) throws DaoException;
     public abstract T update(T t) throws DaoException;
 

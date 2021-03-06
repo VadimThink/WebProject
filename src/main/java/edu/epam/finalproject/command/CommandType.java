@@ -24,13 +24,15 @@ public enum CommandType {
     FCP_PAGE(new RedirectPageCommand(CommandName.FCP_PAGE)),
     FEE_PAGE(new RedirectPageCommand(CommandName.FEE_PAGE)),
     FORM_PAGE(new FormPageCommand()),
+    HOME_PAGE(new RedirectPageCommand(CommandName.HOME_PAGE)),
     SEND_FORM(new SendFormCommand()),
     USERS_LIST(new UsersListCommand()),
     USERS_PAGINATION(new UsersPaginationCommand()),
     BLOCK_USER(new ChangeUserStatusCommand(StatusType.BLOCKED)),
-    UNBLOCK_USER(new ChangeUserStatusCommand(StatusType.ACTIVE)),
+    UNBLOCK_USER(new ChangeUserStatusCommand(StatusType.INACTIVE)),
     ACTIVATE_USER(new ChangeUserStatusCommand(StatusType.ACTIVE)),
     MAKE_USER_ADMIN(new ChangeUserRoleCommand(RoleType.ADMIN)),
+    PROFILE(new ProfileCommand()),
     CHANGE_LANGUAGE(new ChangeLocaleCommand());
 
     private final Command command;

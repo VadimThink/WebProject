@@ -1,8 +1,7 @@
 package edu.epam.finalproject.controller.listener;
 
 import edu.epam.finalproject.command.PagePath;
-import edu.epam.finalproject.constant.SessionAttribute;
-import org.apache.logging.log4j.Level;
+import edu.epam.finalproject.command.SessionAttribute;
 import org.apache.logging.log4j.LogManager;
 import org.apache.logging.log4j.Logger;
 

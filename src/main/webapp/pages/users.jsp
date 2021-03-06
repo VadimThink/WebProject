@@ -22,52 +22,56 @@
         <c:choose>
             <c:when test="${((firstId - 6) > 0) && (firstId < usersNumber)}">
                 <p align="center">
-                    <a class="buttonB"
+                    <a class="classicButton"
                        href="${pageContext.request.contextPath}/controller?command=users_pagination&lastId=${firstId-6}">
                         back
                     </a>
                 </p>
             </c:when>
             <c:otherwise>
-                <a class="buttonB" href="${pageContext.request.contextPath}/controller?command=users_list">
+                <a class="classicButton" href="${pageContext.request.contextPath}/controller?command=users_list">
                     back
                 </a>
             </c:otherwise>
         </c:choose>
     </c:if>
     <c:forEach items="${usersList}" var="user" varStatus="counter">
-        <p align="left">${user.login} ${user.status} ${user.role}
+        <p align="center">${user.login} ${user.status} ${user.role}
             <c:choose>
                 <c:when test="${user.isBlocked()}">
-                    <a class="buttonB"
+                    <a class="classicButton"
                        href="${pageContext.request.contextPath}/controller?command=unblock_User&userLogin=${user.login}">
                         <fmt:message key="button.unblockUser"/>
                     </a>
                 </c:when>
                 <c:otherwise>
-                    <a class="buttonB"
+                    <a class="classicButton"
                        href="${pageContext.request.contextPath}/controller?command=block_User&userLogin=${user.login}">
                         <fmt:message key="button.blockUser"/>
                     </a>
                 </c:otherwise>
             </c:choose>
-            <c:if test="${user.isUnactive()}">
-                <a class="buttonB"
+            <c:if test="${user.isInactive()}">
+                <a class="classicButton"
                    href="${pageContext.request.contextPath}/controller?command=activate_User&userLogin=${user.login}">
                     <fmt:message key="button.activateUser"/>
                 </a>
             </c:if>
             <c:if test="${user.isUserRole()}">
-                <a class="buttonB"
+                <a class="classicButton"
                    href="${pageContext.request.contextPath}/controller?command=make_user_admin&userLogin=${user.login}">
                     <fmt:message key="button.makeUserAdmin"/>
                 </a>
             </c:if>
+            <a class="classicButton"
+               href="${pageContext.request.contextPath}/controller?command=profile&login=${user.login}">
+                Open profile
+            </a>
         </p>
     </c:forEach>
     <c:if test="${lastId < usersNumber}">
         <p align="center">
-            <a class="buttonB"
+            <a class="classicButton"
                href="${pageContext.request.contextPath}/controller?command=users_pagination&lastId=${lastId}">
                 forward
             </a>

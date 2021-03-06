@@ -2,7 +2,7 @@ package edu.epam.finalproject.command.impl.admin;
 
 import edu.epam.finalproject.command.*;
 import edu.epam.finalproject.constant.Message;
-import edu.epam.finalproject.constant.SessionAttribute;
+import edu.epam.finalproject.command.SessionAttribute;
 import edu.epam.finalproject.controller.request.RequestContext;
 import edu.epam.finalproject.entity.User;
 import edu.epam.finalproject.service.ServiceException;
@@ -27,7 +27,7 @@ public class UsersPaginationCommand implements Command {
         long usersNumber = 0;
         long lastId = firstId;
         try {
-            usersNumber = userService.findUsersNumber();
+            usersNumber = userService.findNumberOfUsers();
         } catch (ServiceException e) {
             e.printStackTrace();
             logger.error(e);

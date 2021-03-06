@@ -4,12 +4,12 @@ import java.sql.Date;
 import java.time.LocalDate;
 import java.time.format.DateTimeFormatter;
 
-public class DateToSqlConverter {
+public class DateConverter {
 
-    public static Date convert(String date){
+    public static Date convertStringToSqlDate(String date){
         DateTimeFormatter formatter = DateTimeFormatter.ofPattern("yyyy-MM-dd");
         LocalDate localDate = LocalDate.parse(date, formatter);
-        java.sql.Date sqlDate = java.sql.Date.valueOf(localDate);
+        Date sqlDate = Date.valueOf(localDate);
         return sqlDate;
     }
 
