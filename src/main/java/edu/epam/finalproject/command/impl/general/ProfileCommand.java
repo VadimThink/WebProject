@@ -21,6 +21,9 @@ public class ProfileCommand implements Command {
         String login;
         if (role == RoleType.ADMIN){
             login = requestContext.getParameter(RequestParameter.LOGIN);
+            if (login == null){
+                login = (String) requestContext.getSessionAttribute(SessionAttribute.USER);
+            }
         }else{
             login = (String) requestContext.getSessionAttribute(SessionAttribute.USER);
         }
@@ -28,7 +31,6 @@ public class ProfileCommand implements Command {
             userInfo = userService.findUserInfo(login);
         } catch (ServiceException e) {
             logger.error(e);
-            e.printStackTrace();
         }
         requestContext.addAttribute(RequestAttribute.USER_INFO, userInfo);
         requestContext.addAttribute(RequestAttribute.USER_LOGIN, login);

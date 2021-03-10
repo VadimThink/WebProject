@@ -23,11 +23,11 @@ public class SignUpCommand implements Command {
             requestContext.addSessionAttribute(SessionAttribute.CURRENT_PAGE, page);
             return CommandResult.setForwardPage(page);
         }
+
         boolean isCreated = false;
         try {
             isCreated = userService.createNewUser(login, password);
         }catch (ServiceException e){
-            e.printStackTrace();
             logger.error(e);
         }
         if (isCreated) {

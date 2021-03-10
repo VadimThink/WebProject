@@ -17,7 +17,7 @@
 <br/>
 <div class="line1">
     <div class="box">
-        <h3><img src="${pageContext.request.contextPath}/pages/images/fic.png" width="30"
+        <h3><img src="${pageContext.request.contextPath}/WEB-INF/pages/images/fic.png" width="30"
                  height="30"> Факультет Инфокоммуникаций
         </h3>
         <p> К настоящему времени сформировалась целая отрасль инфокоммуникаций, связанная с передачей информации,
@@ -27,7 +27,7 @@
         </p>
     </div>
     <div class="box">
-        <h3><img src="${pageContext.request.contextPath}/pages/images/fcp.png" width="30"
+        <h3><img src="${pageContext.request.contextPath}/WEB-INF/pages/images/fcp.png" width="30"
                  height="30" > Факультет компьютерного проектирования
         </h3>
         <p> Факультет, опираясь на обширные связи с отечественными и зарубежными предприятиями и фирмами, высококлассными
@@ -40,7 +40,7 @@
 <br>
 <div class="line2">
     <div class="box">
-        <h3> <img src="${pageContext.request.contextPath}/pages/images/fre.png" width="30"
+        <h3> <img src="${pageContext.request.contextPath}/WEB-INF/pages/images/fre.png" width="30"
                   height="30" > Факультет радиоэлектроники
         </h3>
         <p> Обучение на факультете сочетает фундаментальную подготовку по математике, физике, химии, программированию с углубленным изучением основ современной радиотехники
@@ -50,7 +50,7 @@
         </p>
     </div>
     <div class="box">
-        <h3> <img src="${pageContext.request.contextPath}/pages/images/fee.png" width="30"
+        <h3> <img src="${pageContext.request.contextPath}/WEB-INF/pages/images/fee.png" width="30"
                   height="30" > Инженерно-экономический факультет
         </h3>
         <p> Инженерно-экономический факультет готовит специалистов, обладающих интегрированными знаниями в области экономики и современных информационных технологий,
@@ -64,7 +64,7 @@
 <br>
 <div class="line3">
     <div class="box">
-        <h3> <img src="${pageContext.request.contextPath}/pages/images/fcsn.png" width="30"
+        <h3> <img src="${pageContext.request.contextPath}/WEB-INF/pages/images/fcsn.png" width="30"
                   height="30" > Факультет компьютерных систем и сетей
         </h3>
         <p> На сегодняшний день на факультете обучаются около 2000 студентов по четырем специальностям - «Вычислительные машины,
@@ -74,7 +74,7 @@
         </p>
     </div>
     <div class="box">
-        <h3><img src="${pageContext.request.contextPath}/pages/images/fitc.png" width="60"
+        <h3><img src="${pageContext.request.contextPath}/WEB-INF/pages/images/fitc.png" width="60"
                  height="30" > Факультет информационных технологий и управления
         </h3>
         <p> Сегодня ФИТиУ - это крупный учебный и научный центр, где обучается более 1900 студентов I и II ступени

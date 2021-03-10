@@ -13,7 +13,7 @@ public class CommandService {
     private static final Logger logger = LogManager.getLogger(CommandService.class);
     private static final String DATABASE_ERROR = "Can`t get access to Database";
 
-    public List<Specialty> findSpecialtyList() throws ServiceException { //todo сделать хранение списка специальностей, а не вызовом каждый раз
+    public List<Specialty> findSpecialtyList() throws ServiceException {
         EntityTransaction entityTransaction = new EntityTransaction();
         CommandDaoImpl specialtyDaoImpl = new CommandDaoImpl();
         entityTransaction.begin(specialtyDaoImpl);

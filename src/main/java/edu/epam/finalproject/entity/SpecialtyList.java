@@ -23,7 +23,7 @@ public class SpecialtyList extends Entity {
             specialtyList = service.findSpecialtyList();
         } catch (ServiceException e) {
             logger.error(ERROR_FIND_SPECIALTY_LIST, e);
-            e.printStackTrace();
+            throw new RuntimeException(e);
         }
     }
 

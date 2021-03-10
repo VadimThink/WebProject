@@ -20,7 +20,6 @@ public class EntityTransaction {
             connection.setAutoCommit(false);
         }catch (SQLException e){
             logger.error(e);
-            e.printStackTrace();
         }
         dao.setConnection(connection);
         for(AbstractDao daoElement  : daos){
@@ -33,13 +32,11 @@ public class EntityTransaction {
             connection.setAutoCommit(true);
         }catch (SQLException e){
             logger.error(e);
-            e.printStackTrace();
         }
         try {
             connection.close();
         } catch (SQLException e) {
             logger.error(e);
-            e.printStackTrace();
         }
         connection = null;
     }
@@ -49,7 +46,6 @@ public class EntityTransaction {
             connection.commit();
         }catch (SQLException e){
             logger.error(e);
-            e.printStackTrace();
         }
     }
 
@@ -58,7 +54,6 @@ public class EntityTransaction {
             connection.rollback();
         }catch (SQLException e){
             logger.error(e);
-            e.printStackTrace();
         }
     }
 }

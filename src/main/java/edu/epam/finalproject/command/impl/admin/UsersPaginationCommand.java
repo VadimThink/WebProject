@@ -29,7 +29,6 @@ public class UsersPaginationCommand implements Command {
         try {
             usersNumber = userService.findNumberOfUsers();
         } catch (ServiceException e) {
-            e.printStackTrace();
             logger.error(e);
         }
         requestContext.addAttribute(RequestAttribute.USERS_NUMBER, usersNumber);
@@ -38,7 +37,6 @@ public class UsersPaginationCommand implements Command {
             try {
                 usersList = userService.findUsersInRange(firstId, DEFAULT_NUMBER_OF_USERS);
             } catch (ServiceException e) {
-                e.printStackTrace();
                 logger.error(e);
             }
             lastId = usersList.get(usersList.size() - 1).getId();
@@ -48,7 +46,6 @@ public class UsersPaginationCommand implements Command {
             try {
                 usersList = userService.findUsersInRange(firstId, offset);
             } catch (ServiceException e) {
-                e.printStackTrace();
                 logger.error(e);
             }
             lastId = usersList.get(usersList.size() - 1).getId();

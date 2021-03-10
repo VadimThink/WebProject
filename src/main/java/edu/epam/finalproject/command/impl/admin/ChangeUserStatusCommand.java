@@ -28,7 +28,6 @@ public class ChangeUserStatusCommand implements Command {
         try{
             userService.updateUserStatus(login, statusType);
         }catch (ServiceException e){
-            e.printStackTrace();
             logger.error(e);
         }
         String page = PagePath.USERS_LIST;

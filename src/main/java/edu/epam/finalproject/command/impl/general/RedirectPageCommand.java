@@ -36,7 +36,7 @@ public class RedirectPageCommand implements Command {
             }
             case CommandName.FITC_PAGE -> {
                 requestContext.addSessionAttribute(SessionAttribute.CURRENT_PAGE, PagePath.FITC);
-                return  CommandResult.setRedirectPage(PagePath.FITC);
+                return CommandResult.setRedirectPage(PagePath.FITC);
             }
             case CommandName.FCSN_PAGE -> {
                 requestContext.addSessionAttribute(SessionAttribute.CURRENT_PAGE, PagePath.FCSN);
@@ -54,7 +54,7 @@ public class RedirectPageCommand implements Command {
                 requestContext.addSessionAttribute(SessionAttribute.CURRENT_PAGE, PagePath.FEE);
                 return CommandResult.setRedirectPage(PagePath.FEE);
             }
-            case CommandName.HOME_PAGE ->{
+            case CommandName.HOME_PAGE -> {
                 requestContext.addSessionAttribute(SessionAttribute.CURRENT_PAGE, PagePath.HOME);
                 return CommandResult.setRedirectPage(PagePath.HOME);
             }

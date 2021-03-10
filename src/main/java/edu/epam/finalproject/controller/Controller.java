@@ -18,9 +18,11 @@ import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpServletResponse;
 import java.io.IOException;
 
-
+//todo сделать защиту от f5, валидаторы, отправку email
 @WebServlet(name = "controller", urlPatterns = {"/controller", "*.do"})
 public class Controller extends HttpServlet {
+    private static final RequestContextCreator requestContextCreator = new RequestContextCreator();
+    private static final RequestFiller requestFiller = new RequestFiller();
 
     public void doGet(HttpServletRequest request, HttpServletResponse response) throws IOException, ServletException {
         processRequest(request, response);
@@ -31,12 +33,10 @@ public class Controller extends HttpServlet {
     }
 
     private void processRequest(HttpServletRequest request, HttpServletResponse response) throws IOException, ServletException {
-        RequestContextCreator requestContextCreator = new RequestContextCreator();//todo сделать синглотон
         CommandResult commandResult;
-        String requestParameter = request.getParameter(RequestParameter.COMMAND);
-        Command command = CommandProvider.provideCommand(requestParameter);
         RequestContext requestContext = requestContextCreator.create(request);
-        RequestFiller requestFiller = new RequestFiller();
+        String requestParameter = request.getParameter(RequestParameter.COMMAND);
+        Command command = CommandProvider.provideCommand(requestParameter, requestContext);
         commandResult = command.execute(requestContext);
         String page = commandResult.getPage();
         requestFiller.fillData(request, requestContext);

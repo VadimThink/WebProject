@@ -33,7 +33,6 @@ public class SendFormCommand implements Command {
             isUpdated = userService.updateUserFormData(login, firstName, secondName, thirdName, birthday, country, locality, address,
                     phone, email, specialty_num, gpa, languageScore, mathScore, thirdScore);
         } catch (ServiceException e) {
-            e.printStackTrace();
             logger.error(e);
         }
         String page;

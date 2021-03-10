@@ -28,7 +28,6 @@ public class ChangeUserRoleCommand implements Command {
         try{
             userService.updateUserRole(login, role);
         }catch (ServiceException e){
-            e.printStackTrace();
             logger.error(e);
         }
         String page = PagePath.USERS_LIST;

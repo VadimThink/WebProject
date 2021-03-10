@@ -28,7 +28,6 @@ public class UserService {
                 entityTransaction.commit();
             } catch (DaoException e) {
                 entityTransaction.rollback();
-                e.printStackTrace();
                 logger.error(DATABASE_ERROR, e);
             }
             entityTransaction.end();
@@ -48,7 +47,6 @@ public class UserService {
             entityTransaction.commit();
         } catch (DaoException e) {
             entityTransaction.rollback();
-            e.printStackTrace();
             logger.error(DATABASE_ERROR, e);
             throw new ServiceException(e);
         }
@@ -174,6 +172,14 @@ public class UserService {
         return currentUser;
     }
 
+    /**
+     * Update user status boolean.
+     *
+     * @param login  the login
+     * @param status the status
+     * @return the boolean
+     * @throws ServiceException the service exception
+     */
     public boolean updateUserStatus(String login, StatusType status) throws ServiceException{
         EntityTransaction entityTransaction = new EntityTransaction();
         UserDaoImpl userDaoImpl = new UserDaoImpl();

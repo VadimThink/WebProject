@@ -29,14 +29,12 @@ public class UsersListCommand implements Command {
         try{
             usersNumber = userService.findNumberOfUsers();
         }catch (ServiceException e){
-            e.printStackTrace();
             logger.error(e);
         }
         requestContext.addAttribute(RequestAttribute.USERS_NUMBER, usersNumber);
         try {
             usersList = userService.findUsersInRange(FIRST_ID, NUMBER);
         } catch (ServiceException e) {
-            e.printStackTrace();
             logger.error(e);
         }
         long lastId = usersList.get(usersList.size() - 1).getId();

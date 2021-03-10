@@ -1,6 +1,8 @@
 package edu.epam.finalproject.dao;
 
 import edu.epam.finalproject.entity.Entity;
+import org.apache.logging.log4j.LogManager;
+import org.apache.logging.log4j.Logger;
 
 import java.sql.Connection;
 import java.sql.SQLException;
@@ -8,6 +10,7 @@ import java.sql.Statement;
 import java.util.List;
 
 public abstract class AbstractDao<K, T extends Entity> {
+    private static final Logger logger = LogManager.getLogger(AbstractDao.class);
     protected Connection connection;
 
     public abstract List<T> findAll() throws DaoException;
@@ -20,7 +23,7 @@ public abstract class AbstractDao<K, T extends Entity> {
                 statement.close();
             }
         }catch (SQLException e){
-            //log
+            logger.error(e);
         }
     }
 
@@ -30,7 +33,7 @@ public abstract class AbstractDao<K, T extends Entity> {
                 connection.close();
             }
         }catch (SQLException e){
-            //log
+            logger.error(e);
         }
     }
 

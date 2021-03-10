@@ -7,55 +7,77 @@
 
 <html>
 <head>
-    <link rel="stylesheet" href="${pageContext.request.contextPath}/css/header.css">
+    <link rel="stylesheet" href="${pageContext.request.contextPath}/css/head.css">
+    <link rel="stylesheet" href="${pageContext.request.contextPath}/lib/font-awesome-4.7.0/css/font-awesome.css">
 </head>
 <body>
-<header>
-    <p id="Site" align="left">
-        <a href="${pageContext.request.contextPath}/controller?command=home_page">Абитуриент</a><%-- TODO ПОМЕНЯТЬ НА КАРТИНКУ --%>
-    </p>
-    <a id="notification">
-        <img src="${pageContext.request.contextPath}/pages/parts/pic/bell.png" width="50" height="50"/>
-    </a>
-    <a id="russianLanguage" href="${pageContext.request.contextPath}/controller?command=change_language&language=ru">
-        <img src="${pageContext.request.contextPath}/pages/parts/pic/rus.png" width="50" height="25"/>
-    </a>
-    <a id="englishLanguage" href="${pageContext.request.contextPath}/controller?command=change_language&language=en">
-        <img src="${pageContext.request.contextPath}/pages/parts/pic/eng.png" width="50" height="25"/>
-    </a>
-    <c:choose>
-        <c:when test="${!empty sessionScope.user}">
-            <ul id="navbar">
-                <li>${user} <img id="down" src="${pageContext.request.contextPath}/pages/parts/pic/down.png" width="20"
-                                 height="20">
-                    <ul>
-                        <a class="selectButton" href="${pageContext.request.contextPath}/controller?command=menu">
-                            <fmt:message key="button.menu"/>
-                        </a>
+<div class="header">
+    <div class="Site">
+        <p>
+            <a class="abiturientButton" href="${pageContext.request.contextPath}/controller?command=home_page">
+                Абитуриент
+            </a>
+        </p>
+    </div>
+    <div class="messages">
+        <a class="bellButton" href="">
+            <i class="fa fa-bell fa-2x"></i>
+        </a>
+    </div>
+    <div class="flag">
+        <a href="${pageContext.request.contextPath}/controller?command=change_language&language=ru">
+            <img src="${pageContext.request.contextPath}/pages/parts/pic/rus.png" width="50" height="25">
+        </a>
+    </div>
+    <div clas="flag">
+        <a href="${pageContext.request.contextPath}/controller?command=change_language&language=en">
+            <img src="${pageContext.request.contextPath}/pages/parts/pic/eng.png" width="50" height="25">
+        </a>
+    </div>
+    <div class="navbar">
+        <c:choose>
+            <c:when test="${!empty sessionScope.user}">
+                <nav>
+                    <ul class="topmenu">
+                        <li>
+                            <p>
+                                    ${user}
+                                <i class="fa fa-angle-down"></i>
+                            </p>
+                            <ul class="submenu">
+                                <li>
+                                    <p>
+                                        <a href="${pageContext.request.contextPath}/controller?command=menu">
+                                            <fmt:message key="button.menu"/>
+                                        </a>
+                                    </p>
+                                </li>
+                                <li>
+                                    <p>
+                                        <a href="${pageContext.request.contextPath}/controller?command=profile">
+                                            <fmt:message key="button.profile"/>
+                                        </a>
+                                    </p>
+                                </li>
+                                <li>
+                                    <p>
+                                        <a href="${pageContext.request.contextPath}/controller?command=logout">
+                                            <fmt:message key="button.exit"/>
+                                        </a>
+                                    <p>
+                                </li>
+                            </ul>
+                        </li>
                     </ul>
-                    <ul>
-                        <a class="selectButton" href="${pageContext.request.contextPath}/controller?command=profile">
-                            <fmt:message key="button.profile"/>
-                        </a>
-                    </ul>
-                    <ul>
-                        <a class="selectButton" href="${pageContext.request.contextPath}/controller?command=logout">
-                            <fmt:message key="button.exit"/>
-                        </a>
-                    </ul>
-                </li>
-            </ul>
-        </c:when>
-        <c:otherwise>
-            <ul id="navbar">
-                <li>
-                    <a class="classicButton" href="${pageContext.request.contextPath}/controller?command=login_page">
-                        <fmt:message key="button.login"/>
-                    </a>
-                </li>
-            </ul>
-        </c:otherwise>
-    </c:choose>
-</header>
+                </nav>
+            </c:when>
+            <c:otherwise>
+                <a class="classicButton" href="${pageContext.request.contextPath}/controller?command=login_page">
+                    <fmt:message key="button.login"/>
+                </a>
+            </c:otherwise>
+        </c:choose>
+    </div>
+</div>
 </body>
 </html>

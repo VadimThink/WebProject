@@ -22,7 +22,6 @@ public class SignInCommand implements Command {
         try {
             isUserExist = userService.checkUserByLoginAndPassword(login, password);
         } catch (ServiceException e) {
-            e.printStackTrace();
             logger.error(e);
         }
         if (isUserExist) {
@@ -31,7 +30,6 @@ public class SignInCommand implements Command {
                 isUserNotBlocked = userService.isUserNotBlocked(login);
             } catch (ServiceException e) {
                 logger.error(e);
-                e.printStackTrace();
             }
             if (isUserNotBlocked) {
                 boolean isAdmin = false;

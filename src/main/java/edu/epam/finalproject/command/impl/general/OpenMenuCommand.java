@@ -8,7 +8,7 @@ public class OpenMenuCommand implements Command {
 
     @Override
     public CommandResult execute(RequestContext requestContext) {
-        RoleType role = (RoleType) requestContext.getAttribute(SessionAttribute.ROLE);
+        RoleType role = (RoleType) requestContext.getSessionAttribute(SessionAttribute.ROLE);
         if(role == RoleType.ADMIN){
             return CommandResult.setRedirectPage(PagePath.ADMIN_MENU);
         }else {
