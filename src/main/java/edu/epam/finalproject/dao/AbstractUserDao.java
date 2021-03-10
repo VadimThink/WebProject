@@ -1,8 +1,7 @@
 package edu.epam.finalproject.dao;
 
-import edu.epam.finalproject.constant.RoleType;
-import edu.epam.finalproject.constant.StatusType;
-import edu.epam.finalproject.entity.Specialty;
+import edu.epam.finalproject.entity.RoleType;
+import edu.epam.finalproject.entity.StatusType;
 import edu.epam.finalproject.entity.User;
 
 import java.sql.Date;

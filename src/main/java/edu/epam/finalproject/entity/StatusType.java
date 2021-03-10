@@ -1,4 +1,4 @@
-package edu.epam.finalproject.constant;
+package edu.epam.finalproject.entity;
 
 public enum StatusType {
     ACTIVE,

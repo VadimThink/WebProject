@@ -7,8 +7,8 @@ import edu.epam.finalproject.command.impl.admin.UsersPaginationCommand;
 import edu.epam.finalproject.command.impl.general.*;
 import edu.epam.finalproject.command.impl.user.FormPageCommand;
 import edu.epam.finalproject.command.impl.user.SendFormCommand;
-import edu.epam.finalproject.constant.RoleType;
-import edu.epam.finalproject.constant.StatusType;
+import edu.epam.finalproject.entity.RoleType;
+import edu.epam.finalproject.entity.StatusType;
 
 public enum CommandType {
 

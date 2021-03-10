@@ -1,7 +1,7 @@
 package edu.epam.finalproject.command.impl.general;
 
 import edu.epam.finalproject.command.*;
-import edu.epam.finalproject.constant.RoleType;
+import edu.epam.finalproject.entity.RoleType;
 import edu.epam.finalproject.controller.request.RequestContext;
 
 public class OpenMenuCommand implements Command {

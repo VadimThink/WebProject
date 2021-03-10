@@ -1,10 +1,11 @@
 package edu.epam.finalproject.command.impl.general;
 
 import edu.epam.finalproject.command.*;
-import edu.epam.finalproject.constant.*;
 import edu.epam.finalproject.controller.request.RequestContext;
+import edu.epam.finalproject.entity.RoleType;
 import edu.epam.finalproject.service.ServiceException;
 import edu.epam.finalproject.service.UserService;
+import edu.epam.finalproject.util.PasswordEncrypt;
 import org.apache.logging.log4j.LogManager;
 import org.apache.logging.log4j.Logger;
 
@@ -18,9 +19,10 @@ public class SignInCommand implements Command {
         String page;
         String login = requestContext.getParameter(RequestParameter.LOGIN);
         String password = requestContext.getParameter(RequestParameter.PASSWORD);
+        String encryptedPassword = PasswordEncrypt.encryptPassword(password);
         boolean isUserExist = false;
         try {
-            isUserExist = userService.checkUserByLoginAndPassword(login, password);
+            isUserExist = userService.checkUserByLoginAndPassword(login, encryptedPassword);
         } catch (ServiceException e) {
             logger.error(e);
         }

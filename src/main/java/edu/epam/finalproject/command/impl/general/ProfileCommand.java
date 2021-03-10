@@ -1,8 +1,7 @@
 package edu.epam.finalproject.command.impl.general;
 
 import edu.epam.finalproject.command.*;
-import edu.epam.finalproject.command.impl.admin.UsersListCommand;
-import edu.epam.finalproject.constant.RoleType;
+import edu.epam.finalproject.entity.RoleType;
 import edu.epam.finalproject.controller.request.RequestContext;
 import edu.epam.finalproject.entity.User;
 import edu.epam.finalproject.service.ServiceException;

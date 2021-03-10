@@ -1,8 +1,5 @@
 package edu.epam.finalproject.entity;
 
-import edu.epam.finalproject.constant.RoleType;
-import edu.epam.finalproject.constant.StatusType;
-
 public class User extends Entity {
 
     private long id;

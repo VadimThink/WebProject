@@ -5,7 +5,7 @@ import edu.epam.finalproject.command.CommandResult;
 import edu.epam.finalproject.command.PagePath;
 import edu.epam.finalproject.command.RequestParameter;
 import edu.epam.finalproject.command.SessionAttribute;
-import edu.epam.finalproject.constant.StatusType;
+import edu.epam.finalproject.entity.StatusType;
 import edu.epam.finalproject.controller.request.RequestContext;
 import edu.epam.finalproject.service.ServiceException;
 import edu.epam.finalproject.service.UserService;

@@ -4,6 +4,7 @@ import edu.epam.finalproject.command.*;
 import edu.epam.finalproject.controller.request.RequestContext;
 import edu.epam.finalproject.service.ServiceException;
 import edu.epam.finalproject.service.UserService;
+import edu.epam.finalproject.util.PasswordEncrypt;
 import org.apache.logging.log4j.LogManager;
 import org.apache.logging.log4j.Logger;
 
@@ -23,10 +24,10 @@ public class SignUpCommand implements Command {
             requestContext.addSessionAttribute(SessionAttribute.CURRENT_PAGE, page);
             return CommandResult.setForwardPage(page);
         }
-
+        String encryptedPassword = PasswordEncrypt.encryptPassword(password);
         boolean isCreated = false;
         try {
-            isCreated = userService.createNewUser(login, password);
+            isCreated = userService.createNewUser(login, encryptedPassword);
         }catch (ServiceException e){
             logger.error(e);
         }

@@ -1,8 +1,8 @@
 package edu.epam.finalproject.dao.impl;
 
-import edu.epam.finalproject.constant.RoleType;
+import edu.epam.finalproject.entity.RoleType;
 import edu.epam.finalproject.dao.SqlRequest;
-import edu.epam.finalproject.constant.StatusType;
+import edu.epam.finalproject.entity.StatusType;
 import edu.epam.finalproject.dao.AbstractUserDao;
 import edu.epam.finalproject.dao.DaoException;
 import edu.epam.finalproject.entity.Specialty;
@@ -369,7 +369,7 @@ public class UserDaoImpl extends AbstractUserDao {
     public boolean create(User user, String password) throws DaoException {
         try (PreparedStatement statement = connection.prepareStatement(SqlRequest.SQL_CREATE)) {
             statement.setString(1, user.getLogin());
-            statement.setString(2, password);//TODO ЗАШИФРУЙ ПАРОЛЬ
+            statement.setString(2, password);
             statement.setInt(3, user.getStatus().ordinal());
             statement.setInt(4, user.getRole().ordinal());
             statement.executeUpdate();

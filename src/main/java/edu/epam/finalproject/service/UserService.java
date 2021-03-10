@@ -1,7 +1,7 @@
 package edu.epam.finalproject.service;
 
-import edu.epam.finalproject.constant.RoleType;
-import edu.epam.finalproject.constant.StatusType;
+import edu.epam.finalproject.entity.RoleType;
+import edu.epam.finalproject.entity.StatusType;
 import edu.epam.finalproject.dao.DaoException;
 import edu.epam.finalproject.dao.EntityTransaction;
 import edu.epam.finalproject.dao.impl.UserDaoImpl;
@@ -29,6 +29,7 @@ public class UserService {
             } catch (DaoException e) {
                 entityTransaction.rollback();
                 logger.error(DATABASE_ERROR, e);
+                throw new ServiceException(e);
             }
             entityTransaction.end();
             return true;
