@@ -13,18 +13,24 @@ import edu.epam.finalproject.service.CommandService;
 import org.apache.logging.log4j.LogManager;
 import org.apache.logging.log4j.Logger;
 
+import java.text.SimpleDateFormat;
 import java.util.ArrayList;
+import java.util.Date;
 import java.util.List;
 
 public class FormPageCommand implements Command {
     private static final Logger logger = LogManager.getLogger(FormPageCommand.class);
-    private static final CommandService commandService = new CommandService();
 
     @Override
     public CommandResult execute(RequestContext requestContext) {
+        Date currentDate = new Date();
+        SimpleDateFormat formatForDate = new SimpleDateFormat("yyyy-MM-dd");
+        requestContext.addAttribute(RequestAttribute.CURRENT_DATE, formatForDate.format(currentDate));
         List<Specialty> specialtyList = SpecialtyList.getInstance().getSpecialtyList();
         requestContext.addAttribute(RequestAttribute.SPECIALTY_LIST, specialtyList);
-        requestContext.addSessionAttribute(SessionAttribute.CURRENT_PAGE, PagePath.FORM);
+        String login = (String) requestContext.getAttribute(SessionAttribute.USER);
+        requestContext.addAttribute(RequestAttribute.USER_LOGIN, login);
+        requestContext.addSessionAttribute(SessionAttribute.CURRENT_PAGE, PagePath.FORM_COMMAND + login);
         return CommandResult.setForwardPage(PagePath.FORM);
     }
 }

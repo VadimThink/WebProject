@@ -11,8 +11,7 @@ public class LogoutCommand implements Command {
     @Override
     public CommandResult execute(RequestContext requestContext) {
         requestContext.addSessionAttribute(SessionAttribute.INVALIDATE_ATTRIBUTE, true);
-
-        return CommandResult.setRedirectPage(PagePath.HOME);
+        return CommandResult.setForwardPage(PagePath.HOME);
     }
 
 }

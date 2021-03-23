@@ -13,6 +13,9 @@
 <h2 align="center">
     <fmt:message key="header.welcome"/>
 </h2>
+<h2 align="center">
+    <fmt:message key="message.${errorMessage}"/>
+</h2>
 <div class="fp">
     <h2 align="center">
         <fmt:message key="header.menu"/>

@@ -4,12 +4,14 @@ public class Specialty {
 
     private int specialtyNum;
     private String specialtyName;
-    private int facultyNum;
+    private int plan;
+    private String faculty;
 
-    public Specialty(int specialtyNum, String specialtyName, int facultyNum) {
+    public Specialty(int specialtyNum, String specialtyName, int plan, String faculty) {
         this.specialtyNum = specialtyNum;
         this.specialtyName = specialtyName;
-        this.facultyNum = facultyNum;
+        this.plan = plan;
+        this.faculty = faculty;
     }
 
     public int getSpecialtyNum() {
@@ -28,29 +30,42 @@ public class Specialty {
         this.specialtyName = specialtyName;
     }
 
-    public int getFacultyNum() {
-        return facultyNum;
+    public String getFaculty() {
+        return faculty;
     }
 
-    public void setFacultyNum(int facultyNum) {
-        this.facultyNum = facultyNum;
+    public void setFaculty(String  faculty) {
+        this.faculty = faculty;
+    }
+
+    public int getPlan() {
+        return plan;
+    }
+
+    public void setPlan(int plan) {
+        this.plan = plan;
     }
 
     @Override
     public boolean equals(Object o) {
         if (this == o) return true;
         if (o == null || getClass() != o.getClass()) return false;
+
         Specialty specialty = (Specialty) o;
-        return specialtyNum == specialty.specialtyNum &&
-                facultyNum == specialty.facultyNum &&
-                specialtyName.equals(specialty.specialtyName);
+
+        if (specialtyNum != specialty.specialtyNum) return false;
+        if (plan != specialty.plan) return false;
+        if (specialtyName != null ? !specialtyName.equals(specialty.specialtyName) : specialty.specialtyName != null)
+            return false;
+        return faculty != null ? faculty.equals(specialty.faculty) : specialty.faculty == null;
     }
 
     @Override
     public int hashCode() {
-        int result = specialtyNum ^ (specialtyNum >>> 32);
+        int result = specialtyNum;
         result = 31 * result + (specialtyName != null ? specialtyName.hashCode() : 0);
-        result = 31 * result + facultyNum ^ (facultyNum >>> 32);
+        result = 31 * result + plan;
+        result = 31 * result + (faculty != null ? faculty.hashCode() : 0);
         return result;
     }
 
@@ -59,7 +74,8 @@ public class Specialty {
         final StringBuilder sb = new StringBuilder("Specialty{");
         sb.append("specialtyNum=").append(specialtyNum);
         sb.append(", specialtyName='").append(specialtyName).append('\'');
-        sb.append(", facultyNum=").append(facultyNum);
+        sb.append(", plan=").append(plan);
+        sb.append(", faculty='").append(faculty).append('\'');
         sb.append('}');
         return sb.toString();
     }

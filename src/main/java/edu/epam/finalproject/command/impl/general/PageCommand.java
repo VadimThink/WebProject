@@ -8,11 +8,11 @@ import edu.epam.finalproject.command.SessionAttribute;
 import edu.epam.finalproject.controller.request.RequestContext;
 
 
-public class RedirectPageCommand implements Command {
+public class PageCommand implements Command {
 
     private final String commandType;
 
-    public RedirectPageCommand(String commandType) {
+    public PageCommand(String commandType) {
         this.commandType = commandType;
     }
 
@@ -24,39 +24,39 @@ public class RedirectPageCommand implements Command {
         switch (commandType) {
             case CommandName.LOGIN_PAGE -> {
                 requestContext.addSessionAttribute(SessionAttribute.CURRENT_PAGE, PagePath.LOGIN);
-                return CommandResult.setRedirectPage(PagePath.LOGIN);
+                return CommandResult.setForwardPage(PagePath.LOGIN);
             }
             case CommandName.SIGN_UP_PAGE -> {
                 requestContext.addSessionAttribute(SessionAttribute.CURRENT_PAGE, PagePath.REGISTRATION);
-                return CommandResult.setRedirectPage(PagePath.REGISTRATION);
+                return CommandResult.setForwardPage(PagePath.REGISTRATION);
             }
             case CommandName.FIC_PAGE -> {
                 requestContext.addSessionAttribute(SessionAttribute.CURRENT_PAGE, PagePath.FIC);
-                return CommandResult.setRedirectPage(PagePath.FIC);
+                return CommandResult.setForwardPage(PagePath.FIC);
             }
             case CommandName.FITC_PAGE -> {
                 requestContext.addSessionAttribute(SessionAttribute.CURRENT_PAGE, PagePath.FITC);
-                return CommandResult.setRedirectPage(PagePath.FITC);
+                return CommandResult.setForwardPage(PagePath.FITC);
             }
             case CommandName.FCSN_PAGE -> {
                 requestContext.addSessionAttribute(SessionAttribute.CURRENT_PAGE, PagePath.FCSN);
-                return CommandResult.setRedirectPage(PagePath.FCSN);
+                return CommandResult.setForwardPage(PagePath.FCSN);
             }
             case CommandName.FCP_PAGE -> {
                 requestContext.addSessionAttribute(SessionAttribute.CURRENT_PAGE, PagePath.FCP);
-                return CommandResult.setRedirectPage(PagePath.FCP);
+                return CommandResult.setForwardPage(PagePath.FCP);
             }
             case CommandName.FRE_PAGE -> {
                 requestContext.addSessionAttribute(SessionAttribute.CURRENT_PAGE, PagePath.FRE);
-                return CommandResult.setRedirectPage(PagePath.FRE);
+                return CommandResult.setForwardPage(PagePath.FRE);
             }
             case CommandName.FEE_PAGE -> {
                 requestContext.addSessionAttribute(SessionAttribute.CURRENT_PAGE, PagePath.FEE);
-                return CommandResult.setRedirectPage(PagePath.FEE);
+                return CommandResult.setForwardPage(PagePath.FEE);
             }
             case CommandName.HOME_PAGE -> {
                 requestContext.addSessionAttribute(SessionAttribute.CURRENT_PAGE, PagePath.HOME);
-                return CommandResult.setRedirectPage(PagePath.HOME);
+                return CommandResult.setForwardPage(PagePath.HOME);
             }
             default -> throw new IllegalArgumentException("Unknown page: " + commandType);
         }

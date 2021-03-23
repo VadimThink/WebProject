@@ -10,5 +10,6 @@ public class RequestAttribute {
     public static final String LAST_ID = "lastId";
     public static final String USER_INFO = "userInfo";
     public static final String USER_LOGIN = "userLogin";
+    public static final String CURRENT_DATE = "currentDate";
 
 }

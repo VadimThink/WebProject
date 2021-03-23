@@ -6,6 +6,6 @@
     <title>Title</title>
 </head>
 <body>
-<jsp:forward page="pages/home.jsp"/>
+<jsp:forward page="WEB-INF/pages/home.jsp"/>
 </body>
 </html>

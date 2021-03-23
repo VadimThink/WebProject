@@ -2,6 +2,7 @@
 <%@ taglib prefix="fmt" uri="http://java.sun.com/jsp/jstl/fmt" %>
 <%@ taglib uri="http://java.sun.com/jsp/jstl/core" prefix="c" %>
 
+
 <fmt:setLocale value="${language}"/>
 <fmt:setBundle basename="property.pagecontent"/>
 <html>
@@ -13,6 +14,9 @@
 <h2 align="center">
     <fmt:message key="header.loginAsAdmin"/>
 </h2>
+<h2 align="center">
+    <fmt:message key="message.${errorMessage}"/>
+</h2>
 <div class="fp">
     <h2 align="center">
         <fmt:message key="header.menu"/>
@@ -23,10 +27,11 @@
         </a>
     </p>
     <p align="center">
-        <a class="classicButton" href="Завершение.html">
+        <a class="classicButton" href="${pageContext.request.contextPath}/controller?command=finish_campaign">
             <fmt:message key="button.finishCampaign"/>
         </a>
     </p>
 </div>
+<ctg:footerTag/>
 </body>
 </html>

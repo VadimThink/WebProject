@@ -16,7 +16,7 @@
 <br/>
 <div class="line1">
     <div class="box1">
-        <h3><img src="images/fcsn.png" width="30"
+        <h3><img src="${pageContext.request.contextPath}/images/fcsn.png" width="30"
                  height="30"> Факультет Компьютерных систем и сетей
         </h3>
         <p>Факультет компьютерных систем и сетей является одним из ведущих факультетов в Республике Беларусь по
@@ -97,5 +97,6 @@
         </p>
     </div>
 </div>
+<ctg:footerTag/>
 </body>
 </html>

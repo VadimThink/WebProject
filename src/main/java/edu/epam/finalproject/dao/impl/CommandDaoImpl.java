@@ -23,8 +23,9 @@ public class CommandDaoImpl extends AbstractCommandDao {
             while(resultSet.next()){
                 int specialtyNum = resultSet.getInt(1);
                 String specialtyName = resultSet.getString(2);
-                int facultyNum = resultSet.getInt(3);
-                Specialty specialty = new Specialty(specialtyNum, specialtyName, facultyNum);
+                int plan = resultSet.getInt(3);
+                String faculty = resultSet.getString(4);
+                Specialty specialty = new Specialty(specialtyNum, specialtyName, plan, faculty);
                 specialtyList.add(specialty);
             }
         }catch (SQLException e){

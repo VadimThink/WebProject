@@ -26,12 +26,12 @@
     </div>
     <div class="flag">
         <a href="${pageContext.request.contextPath}/controller?command=change_language&language=ru">
-            <img src="${pageContext.request.contextPath}/pages/parts/pic/rus.png" width="50" height="25">
+            <img src="${pageContext.request.contextPath}/images/rus.png" width="50" height="25">
         </a>
     </div>
     <div clas="flag">
         <a href="${pageContext.request.contextPath}/controller?command=change_language&language=en">
-            <img src="${pageContext.request.contextPath}/pages/parts/pic/eng.png" width="50" height="25">
+            <img src="${pageContext.request.contextPath}/images/eng.png" width="50" height="25">
         </a>
     </div>
     <div class="navbar">

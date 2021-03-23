@@ -16,7 +16,7 @@
 <br/>
 <div class="line1">
     <div class="box1">
-        <h3><img src="images/fee.png" width="30"
+        <h3><img src="${pageContext.request.contextPath}/images/fee.png" width="30"
                  height="30"> Инженерно-экономический факультет
         </h3>
         <p> Факультет был основан в 1994 году. Сегодня это учебный и научный центр, в котором обучается более 1700
@@ -84,5 +84,6 @@
         </p>
     </div>
 </div>
+<ctg:footerTag/>
 </body>
 </html>

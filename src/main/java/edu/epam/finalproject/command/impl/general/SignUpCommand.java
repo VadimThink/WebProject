@@ -2,6 +2,7 @@ package edu.epam.finalproject.command.impl.general;
 
 import edu.epam.finalproject.command.*;
 import edu.epam.finalproject.controller.request.RequestContext;
+import edu.epam.finalproject.entity.RoleType;
 import edu.epam.finalproject.service.ServiceException;
 import edu.epam.finalproject.service.UserService;
 import edu.epam.finalproject.util.PasswordEncrypt;
@@ -34,8 +35,9 @@ public class SignUpCommand implements Command {
         if (isCreated) {
             requestContext.addSessionAttribute(SessionAttribute.USER, login);
             page = PagePath.USER_MENU;
+            requestContext.addSessionAttribute(SessionAttribute.ROLE, RoleType.USER);
             requestContext.addSessionAttribute(SessionAttribute.CURRENT_PAGE, page);
-            return CommandResult.setRedirectPage(page);
+            return CommandResult.setForwardPage(page);
         } else {
             requestContext.addAttribute(RequestAttribute.ERROR_MESSAGE, Message.THIS_USER_IS_EXIST);
             page = PagePath.REGISTRATION;

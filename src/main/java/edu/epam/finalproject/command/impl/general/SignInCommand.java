@@ -50,7 +50,7 @@ public class SignInCommand implements Command {
                 }
                 requestContext.addSessionAttribute(SessionAttribute.USER, login);
                 requestContext.addSessionAttribute(SessionAttribute.CURRENT_PAGE, page);
-                return CommandResult.setRedirectPage(page);
+                return CommandResult.setForwardPage(page);
             } else {
                 requestContext.addAttribute(RequestAttribute.ERROR_MESSAGE, Message.USER_BLOCKED);
                 page = PagePath.LOGIN;

@@ -16,7 +16,7 @@
 <br/>
 <div class="line1">
     <div class="box1">
-        <h3><img src="images/fitc.png" width="60"
+        <h3><img src="${pageContext.request.contextPath}/images/fitc.png" width="60"
                  height="30"> Факультет информационных технологий и управления
         </h3>
         <p> ФИТиУ является ровесником университета и был открыт в 1964 году. Первоначально он назывался факультетом

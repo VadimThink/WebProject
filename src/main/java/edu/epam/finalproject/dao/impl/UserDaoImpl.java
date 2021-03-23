@@ -61,7 +61,7 @@ public class UserDaoImpl extends AbstractUserDao {
                 int statusNum = resultSet.getInt(2);
                 long id = resultSet.getLong(3);
                 int roleNum = resultSet.getInt(4);
-                User user = new User(id ,login, StatusType.values()[statusNum], RoleType.values()[roleNum]);
+                User user = new User(id, login, StatusType.values()[statusNum], RoleType.values()[roleNum]);
                 usersList.add(user);
             }
         } catch (SQLException e) {
@@ -71,10 +71,31 @@ public class UserDaoImpl extends AbstractUserDao {
     }
 
     @Override
-    public User findUserInfo(String login) throws DaoException{
+    public List<User> findAllUsersWithCurrentSpecialty(Specialty specialty) throws DaoException {
+        List<User> userList = new ArrayList<>();
+        try (PreparedStatement statement = connection.prepareStatement(SQL_FIND_ALL_USERS_WITH_CURRENT_SPECIALTY)) {
+            statement.setInt(1, specialty.getSpecialtyNum());
+            ResultSet resultSet = statement.executeQuery();
+            while (resultSet.next()) {
+                String login = resultSet.getString(1);
+                String firstName = resultSet.getString(2);
+                String lastName = resultSet.getString(3);
+                String thirdName = resultSet.getString(4);
+                int resultScore = resultSet.getInt(5);
+                User user = new User(login, firstName, lastName, thirdName, resultScore);
+                userList.add(user);
+            }
+        } catch (SQLException e) {
+            throw new DaoException(e);
+        }
+        return userList;
+    }
+
+    @Override
+    public User findUserInfo(String login) throws DaoException {
         User currentUser;
-        try(PreparedStatement statement = connection.prepareStatement(SQL_FIND_USER_INFO)){
-            statement.setString(1,login);
+        try (PreparedStatement statement = connection.prepareStatement(SQL_FIND_USER_INFO)) {
+            statement.setString(1, login);
             ResultSet resultSet = statement.executeQuery();
             resultSet.next();
             String firstName = resultSet.getString(1);
@@ -95,7 +116,7 @@ public class UserDaoImpl extends AbstractUserDao {
             Specialty specialty = SpecialtyList.getInstance().getSpecialtyList().get(specialtyNum);
             currentUser = new User(specialty, firstName, lastName, thirdName, birthday, country, locality, address,
                     phone, email, gpa, languageScore, mathScore, thirdScore, resultScore);
-        }catch (SQLException e){
+        } catch (SQLException e) {
             throw new DaoException(e);
         }
         return currentUser;
@@ -345,14 +366,43 @@ public class UserDaoImpl extends AbstractUserDao {
     }
 
     @Override
+    public boolean updateUserResultScore(String login, int resultScore) throws DaoException {
+        try (PreparedStatement statement = connection.prepareStatement(SQL_UPDATE_RESULT_SCORE)) {
+            statement.setInt(1, resultScore);
+            statement.setString(2, login);
+            statement.executeUpdate();
+        } catch (SQLException e) {
+            throw new DaoException(e);
+        }
+        return true;
+    }
+
+    @Override
+    public boolean updateUserEnrolled(String login, boolean isEnrolled) throws DaoException {
+        int enrolledValue;
+        if (isEnrolled)
+            enrolledValue = 1;
+        else
+            enrolledValue = 0;
+        try (PreparedStatement statement = connection.prepareStatement(SQL_UPDATE_ENROLLED)) {
+            statement.setInt(1, enrolledValue);
+            statement.setString(2, login);
+            statement.executeUpdate();
+        }catch (SQLException e){
+            throw new DaoException(e);
+        }
+        return true;
+    }
+
+    @Override
     public StatusType findUserStatus(String login) throws DaoException {
         int statusNum;
-        try (PreparedStatement statement = connection.prepareStatement(SQL_FIND_STATUS)){
+        try (PreparedStatement statement = connection.prepareStatement(SQL_FIND_STATUS)) {
             statement.setString(1, login);
             ResultSet resultSet = statement.executeQuery();
             resultSet.next();
             statusNum = resultSet.getInt(1);
-        }catch (SQLException e){
+        } catch (SQLException e) {
             throw new DaoException(e);
         }
         return StatusType.values()[statusNum];

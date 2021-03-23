@@ -35,8 +35,12 @@ public class User extends Entity {
         this.role = role;
     }
 
-    public User() {
-
+    public User(String login, String firstName, String lastName, String thirdName, int resultScore) {
+        this.login = login;
+        this.firstName = firstName;
+        this.lastName = lastName;
+        this.thirdName = thirdName;
+        this.resultScore = resultScore;
     }
 
     public User(Specialty specialty, String firstName, String lastName, String thirdName, String birthday, String country, String locality,
@@ -272,5 +276,31 @@ public class User extends Entity {
         result = 31 * result + thirdScore;
         result = 31 * result + resultScore;
         return result;
+    }
+
+    @Override
+    public String toString() {
+        final StringBuilder sb = new StringBuilder("User{");
+        sb.append("id=").append(id);
+        sb.append(", status=").append(status);
+        sb.append(", specialty=").append(specialty);
+        sb.append(", role=").append(role);
+        sb.append(", login='").append(login).append('\'');
+        sb.append(", firstName='").append(firstName).append('\'');
+        sb.append(", lastName='").append(lastName).append('\'');
+        sb.append(", thirdName='").append(thirdName).append('\'');
+        sb.append(", birthday='").append(birthday).append('\'');
+        sb.append(", country='").append(country).append('\'');
+        sb.append(", locality='").append(locality).append('\'');
+        sb.append(", address='").append(address).append('\'');
+        sb.append(", phone='").append(phone).append('\'');
+        sb.append(", email='").append(email).append('\'');
+        sb.append(", gpa=").append(gpa);
+        sb.append(", languageScore=").append(languageScore);
+        sb.append(", mathScore=").append(mathScore);
+        sb.append(", thirdScore=").append(thirdScore);
+        sb.append(", resultScore=").append(resultScore);
+        sb.append('}');
+        return sb.toString();
     }
 }

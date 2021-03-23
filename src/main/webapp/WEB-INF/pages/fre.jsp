@@ -16,7 +16,7 @@
 <br/>
 <div class="line1">
     <div class="box1">
-        <h3> <img src="images/fre.png" width="30"
+        <h3> <img src="${pageContext.request.contextPath}/images/fre.png" width="30"
                   height="30" > Факультет радиоэлектроники
         </h3>
         <p> Факультет образован как радиотехнический в 1964 году (в год основания МРТИ) и его путь развития неотрывно связан с 50-летней историей МРТИ - БГУИР.

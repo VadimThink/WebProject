@@ -11,7 +11,7 @@ public class EmptyCommand implements Command {
     @Override
     public CommandResult execute(RequestContext requestContext) {
         String page = PagePath.ERROR_404;
-        return CommandResult.setRedirectPage(page);
+        return CommandResult.setForwardPage(page);
     }
 
 }

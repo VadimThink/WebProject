@@ -16,46 +16,46 @@
         <fmt:message key="header.fillTheForm"/>
     </font>
 </h1>
-<form name="dataForm" method="POST" action="${pageContext.request.contextPath}/controller?command=send_form">
+<form name="dataForm" method="POST" action="${pageContext.request.contextPath}/controller?command=send_form&login=${userLogin}">
 <h2 align="center"><font size="8" color="#FF0000" face="Gabriola">
     <fmt:message key="message.${errorMessage}"/></font>
 </h2>
 <br>
 <p align="center">
     <fmt:message key="form.firstName"/>
-    <input type="text" name="firstName" required>
+    <input type="text" name="firstName" value="${userInfo.firstName}"  required>
 </p>
 <p align="center">
-    <fmt:message key="form.secondName"/>
-    <input type="text" name="secondName" required>
+    <fmt:message key="form.lastName"/>
+    <input type="text" name="secondName" value="${userInfo.lastName}" required>
 </p>
 <p align="center">
     <fmt:message key="form.thirdName"/>
-    <input type="text" name="thirdName" value="" required>
+    <input type="text" name="thirdName" value="${userInfo.thirdName}">
 </p>
 <p align="center">
     <fmt:message key="form.birthDate"/>
-    <input type="date" name="birthday" required>
+    <input type="date" name="birthday" required value="${userInfo.birthday}" max="${currentDate}">
 </p>
 <p align="center">
     <fmt:message key="form.country"/>
-    <input type="text" name="country" required>
+    <input type="text" name="country" required value="${userInfo.country}">
 </p>
 <p align="center">
     <fmt:message key="form.locality"/>
-    <input type="text" name="locality" required>
+    <input type="text" name="locality" required value="${userInfo.locality}">
 </p>
 <p align="center">
     <fmt:message key="form.address"/>
-    <input type="text" name="address" placeholder="Улица, дом, корпус, квартира" required>
+    <input type="text" name="address" value="${userInfo.address}" placeholder="Улица, дом, корпус, квартира" required>
 </p>
 <p align="center">
     <fmt:message key="form.phone"/>
-    <input type="tel" name="phone" placeholder="+375331111111" required>
+    <input type="tel" name="phone" value="${userInfo.phone}" placeholder="+375331111111" required>
 </p>
 <p align="center">
     <fmt:message key="form.email"/>
-    <input type="email" name="email" required>
+    <input type="email" name="email" value="${userInfo.email}" required>
 </p>
 <p align="center">
     <fmt:message key="form.specialty"/>
@@ -69,19 +69,19 @@
 </p>
 <p align="center">
     <fmt:message key="form.GPA"/>
-    <input type="number" name="GPA" max="100" min="0" placeholder="98" required>
+    <input type="number" name="GPA" max="100" min="0" value="${userInfo.gpa}" required>
 </p>
 <p align="center">
     <fmt:message key="form.languageScore"/>
-    <input type="number" name="languageScore" max="100" min="0" required>
+    <input type="number" name="languageScore" max="100" min="0" value="${userInfo.languageScore}" required>
 </p>
 <p align="center">
     <fmt:message key="form.mathScore"/>
-    <input type="number" name="mathScore" max="100" min="0" required>
+    <input type="number" name="mathScore" max="100" min="0" value="${userInfo.mathScore}" required>
 </p>
 <p align="center">
     <fmt:message key="form.thirdScore"/>
-    <input type="number" name="thirdScore" max="100" min="0" required>
+    <input type="number" name="thirdScore" max="100" min="0" value="${userInfo.thirdScore}" required>
 </p>
 <p align="center">
     <button class="classicButton">

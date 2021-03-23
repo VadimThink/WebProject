@@ -10,9 +10,11 @@ public class OpenMenuCommand implements Command {
     public CommandResult execute(RequestContext requestContext) {
         RoleType role = (RoleType) requestContext.getSessionAttribute(SessionAttribute.ROLE);
         if(role == RoleType.ADMIN){
-            return CommandResult.setRedirectPage(PagePath.ADMIN_MENU);
+            requestContext.addSessionAttribute(SessionAttribute.CURRENT_PAGE, PagePath.ADMIN_MENU);
+            return CommandResult.setForwardPage(PagePath.ADMIN_MENU);
         }else {
-            return CommandResult.setRedirectPage(PagePath.USER_MENU);
+            requestContext.addSessionAttribute(SessionAttribute.CURRENT_PAGE,PagePath.USER_MENU);
+            return CommandResult.setForwardPage(PagePath.USER_MENU);
         }
     }
 }

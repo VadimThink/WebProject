@@ -14,7 +14,9 @@ public class SqlRequest {
             "users.birthday, users.country, users.locality, users.address, users.phone, users.email, users.specialty_num," +
             "users.gpa, users.language_score, users.math_score, users.third_score, users.result_score " +
             "FROM users WHERE users.login LIKE ?";
-    //todo добавить факультет  и result
+    public final static String SQL_FIND_ALL_USERS_WITH_CURRENT_SPECIALTY = "SELECT users.login, users.first_name," +
+            "users.last_name, users.third_name, users.result_score FROM users WHERE users.specialty_num = ? " +
+            "AND users.status_num = 0 AND users.role_num = 1";
     public final static String SQL_FIND_ROLE = "SELECT users.role_num FROM users WHERE users.login LIKE ?";
     public final static String SQL_FIND_STATUS = "SELECT users.status_num FROM users WHERE users.login LIKE ?";
     public final static String SQL_UPDATE_LOGIN = "UPDATE users SET users.login = ? WHERE users.login LIKE ?";
@@ -35,7 +37,9 @@ public class SqlRequest {
     public final static String SQL_UPDATE_LANGUAGE_SCORE = "UPDATE users SET users.language_score = ? WHERE users.login LIKE ?";
     public final static String SQL_UPDATE_MATH_SCORE = "UPDATE users SET users.math_score = ? WHERE users.login LIKE ?";
     public final static String SQL_UPDATE_THIRD_SCORE = "UPDATE users SET users.third_score = ? WHERE users.login LIKE ?";
+    public final static String SQL_UPDATE_RESULT_SCORE = "UPDATE users SET users.result_score = ? WHERE users.login LIKE ?";
+    public final static String SQL_UPDATE_ENROLLED = "UPDATE users SET users.enrolled = ? WHERE users.login LIKE ?";
     public final static String SQL_FIND_ALL_SPECIALTIES = "SELECT specialties.specialty_num, specialties.name, " +
-            "specialties.faculty_num FROM specialties";
+            "specialties.plan, faculties.name FROM specialties JOIN faculties ON specialties.faculty_num = faculties.faculty_num";
 
 }

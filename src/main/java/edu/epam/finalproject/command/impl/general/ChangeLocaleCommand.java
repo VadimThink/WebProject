@@ -24,6 +24,6 @@ public class ChangeLocaleCommand implements Command {
             default:
                 requestContext.addSessionAttribute(RequestParameter.LANGUAGE, RU);
         }
-        return CommandResult.setRedirectPage(pagePath);
+        return CommandResult.setForwardPage(pagePath);
     }
 }

@@ -39,5 +39,26 @@ public class SpecialtyList extends Entity {
         return list;
     }
 
+    public Specialty getSpecialty(int index){
+        return specialtyList.get(index);
+    }
 
+    public int size(){
+        return specialtyList.size();
+    }
+
+    @Override
+    public boolean equals(Object o) {
+        if (this == o) return true;
+        if (o == null || getClass() != o.getClass()) return false;
+
+        SpecialtyList that = (SpecialtyList) o;
+
+        return specialtyList.equals(that.specialtyList);
+    }
+
+    @Override
+    public int hashCode() {
+        return specialtyList.hashCode();
+    }
 }
