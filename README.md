@@ -1,5 +1,5 @@
 ## Selection committee
-
+This is a Java web project. The topic is the selection committee for enrolling applicants in an educational institution.
 ## How it's works:
 Guest can find passing scores for past years. Then register and their status changes on user. User can fill the form and see own profile information. Admin can check users information, activate users to participate in the entrance competition, block and unblock users, make user admin. Admin can start the entrance competition and see enrolled and unenrolled applicants by specialties.
 ## Project features:
@@ -12,7 +12,7 @@ Guest can find passing scores for past years. Then register and their status cha
 * Double submit preventing filter
 * SQL database
 
-function | ADMIN’S SCOPE | CLIENT’S SCOPE | GUEST’S SCOPE
+function | ADMIN’S SCOPE | USER’S SCOPE | GUEST’S SCOPE
 ---------| --------------|----------------|---------------
 change language| * | * | * |
 creating new admin | * |   |  
@@ -26,4 +26,4 @@ register user |   |   | * |
 activate account | * | 
 view passing points | * | * | * |
 start entrance competition | * |   |
-view enrolled and unerolled applicants by specialties | * |   |
+view enrolled and unenrolled applicants by specialties | * |   |
