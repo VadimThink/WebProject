@@ -19,11 +19,6 @@
             </a>
         </p>
     </div>
-    <div class="messages">
-        <a class="bellButton" href="">
-            <i class="fa fa-bell fa-2x"></i>
-        </a>
-    </div>
     <div class="flag">
         <a href="${pageContext.request.contextPath}/controller?command=change_language&language=ru">
             <img src="${pageContext.request.contextPath}/images/rus.png" width="50" height="25">

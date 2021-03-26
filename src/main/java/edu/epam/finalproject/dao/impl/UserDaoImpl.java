@@ -71,10 +71,10 @@ public class UserDaoImpl extends AbstractUserDao {
     }
 
     @Override
-    public List<User> findAllUsersWithCurrentSpecialty(Specialty specialty) throws DaoException {
+    public List<User> findAllUsersWithCurrentSpecialty(int specialtyNum) throws DaoException {
         List<User> userList = new ArrayList<>();
         try (PreparedStatement statement = connection.prepareStatement(SQL_FIND_ALL_USERS_WITH_CURRENT_SPECIALTY)) {
-            statement.setInt(1, specialty.getSpecialtyNum());
+            statement.setInt(1, specialtyNum);
             ResultSet resultSet = statement.executeQuery();
             while (resultSet.next()) {
                 String login = resultSet.getString(1);
@@ -82,7 +82,8 @@ public class UserDaoImpl extends AbstractUserDao {
                 String lastName = resultSet.getString(3);
                 String thirdName = resultSet.getString(4);
                 int resultScore = resultSet.getInt(5);
-                User user = new User(login, firstName, lastName, thirdName, resultScore);
+                int enrolled = resultSet.getInt(6);
+                User user = new User(login, firstName, lastName, thirdName, resultScore, enrolled);
                 userList.add(user);
             }
         } catch (SQLException e) {

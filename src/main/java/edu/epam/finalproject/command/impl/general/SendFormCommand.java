@@ -34,14 +34,14 @@ public class SendFormCommand implements Command {
         String address = requestContext.getParameter(RequestParameter.ADDRESS);
         String phone = requestContext.getParameter(RequestParameter.PHONE);
         String email = requestContext.getParameter(RequestParameter.EMAIL);
-        int specialty_num = Integer.parseInt(requestContext.getParameter(RequestParameter.SPECIALTY));
+        int specialtyNum = Integer.parseInt(requestContext.getParameter(RequestParameter.SPECIALTY));
         int gpa = Integer.parseInt(requestContext.getParameter(RequestParameter.GPA));
         int languageScore = Integer.parseInt(requestContext.getParameter(RequestParameter.LANGUAGE_SCORE));
         int mathScore = Integer.parseInt(requestContext.getParameter(RequestParameter.MATH_SCORE));
         int thirdScore = Integer.parseInt(requestContext.getParameter(RequestParameter.THIRD_SCORE));
         try {
             userService.updateUserFormData(login, firstName, secondName, thirdName, birthday, country, locality, address,
-                    phone, email, specialty_num, gpa, languageScore, mathScore, thirdScore);
+                    phone, email, specialtyNum, gpa, languageScore, mathScore, thirdScore);
         } catch (ServiceException e) {
             logger.error(e);
         }

@@ -15,7 +15,7 @@ public class SqlRequest {
             "users.gpa, users.language_score, users.math_score, users.third_score, users.result_score " +
             "FROM users WHERE users.login LIKE ?";
     public final static String SQL_FIND_ALL_USERS_WITH_CURRENT_SPECIALTY = "SELECT users.login, users.first_name," +
-            "users.last_name, users.third_name, users.result_score FROM users WHERE users.specialty_num = ? " +
+            "users.last_name, users.third_name, users.result_score, users.enrolled FROM users WHERE users.specialty_num = ? " +
             "AND users.status_num = 0 AND users.role_num = 1";
     public final static String SQL_FIND_ROLE = "SELECT users.role_num FROM users WHERE users.login LIKE ?";
     public final static String SQL_FIND_STATUS = "SELECT users.status_num FROM users WHERE users.login LIKE ?";

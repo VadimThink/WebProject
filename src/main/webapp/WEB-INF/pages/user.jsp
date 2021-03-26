@@ -9,6 +9,7 @@
     <link href="${pageContext.request.contextPath}/css/style.css" rel="stylesheet" type="text/css"/>
 </head>
 <body>
+<div class="pageContainer">
 <c:import url="parts/head.jsp"/>
 <h2 align="center">
     <fmt:message key="header.welcome"/>
@@ -30,6 +31,7 @@
             <fmt:message key="button.passingPoints"/>
         </a>
     </p>
+</div>
 </div>
 </body>
 </html>

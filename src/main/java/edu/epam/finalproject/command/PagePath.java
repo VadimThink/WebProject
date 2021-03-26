@@ -15,6 +15,8 @@ public class PagePath {
     public static final String FEE = "WEB-INF/pages/fee.jsp";
     public static final String FCP = "WEB-INF/pages/fcp.jsp";
     public static final String USERS_LIST = "/controller?command=users_list";
+    public static final String ENROLLEE_COMMAND = "/controller?command=enrollee&specialty=";
+    public static final String ENROLLEE = "WEB-INF/pages/students.jsp";
     public static final String USERS = "WEB-INF/pages/users.jsp";
     public static final String USERS_PAGINATION = "/controller?command=users_pagination";
     public static final String PROFILE = "WEB-INF/pages/profile.jsp";

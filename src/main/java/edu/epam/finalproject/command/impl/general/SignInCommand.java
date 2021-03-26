@@ -39,7 +39,6 @@ public class SignInCommand implements Command {
                     isAdmin = userService.checkAdminRole(login);
                 } catch (ServiceException e) {
                     logger.error(e);
-                    e.printStackTrace();
                 }
                 if (isAdmin) {
                     requestContext.addSessionAttribute(SessionAttribute.ROLE, RoleType.ADMIN);

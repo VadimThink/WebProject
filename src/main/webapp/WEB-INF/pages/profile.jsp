@@ -13,6 +13,7 @@
     </title>
 </head>
 <body>
+<div class="pageContainer">
 <c:import url="parts/head.jsp"/>
 <br/>
 <div class="line5">
@@ -149,5 +150,6 @@
     Edit
 </a>
 </p>
+</div>
 </body>
 </html>

@@ -10,6 +10,7 @@
     <link href="${pageContext.request.contextPath}/css/style.css" rel="stylesheet" type="text/css"/>
 </head>
 <body>
+<div class="pageContainer">
 <c:import url="parts/head.jsp"/>
 <h2 align="center">
     <fmt:message key="header.loginAsAdmin"/>
@@ -27,11 +28,16 @@
         </a>
     </p>
     <p align="center">
+        <a class="classicButton" href="${pageContext.request.contextPath}/controller?command=enrollee&specialty=0">
+            <fmt:message key="button.enrollee"/>
+        </a>
+    </p>
+    <p align="center">
         <a class="classicButton" href="${pageContext.request.contextPath}/controller?command=finish_campaign">
             <fmt:message key="button.finishCampaign"/>
         </a>
     </p>
 </div>
-<ctg:footerTag/>
+</div>
 </body>
 </html>

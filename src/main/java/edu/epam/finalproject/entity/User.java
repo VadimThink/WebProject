@@ -21,6 +21,7 @@ public class User extends Entity {
     private int mathScore;
     private int thirdScore;
     private int resultScore;
+    private boolean isEnrolled;
 
     public User(long id, String login, StatusType status, RoleType role) {
         this.id = id;
@@ -35,12 +36,13 @@ public class User extends Entity {
         this.role = role;
     }
 
-    public User(String login, String firstName, String lastName, String thirdName, int resultScore) {
+    public User(String login, String firstName, String lastName, String thirdName, int resultScore, int isEnrolled) {
         this.login = login;
         this.firstName = firstName;
         this.lastName = lastName;
         this.thirdName = thirdName;
         this.resultScore = resultScore;
+        this.isEnrolled = (isEnrolled == 1);
     }
 
     public User(Specialty specialty, String firstName, String lastName, String thirdName, String birthday, String country, String locality,
@@ -227,6 +229,14 @@ public class User extends Entity {
         this.resultScore = resultScore;
     }
 
+    public boolean isEnrolled() {
+        return isEnrolled;
+    }
+
+    public void setEnrolled(boolean enrolled) {
+        isEnrolled = enrolled;
+    }
+
     @Override
     public boolean equals(Object o) {
         if (this == o) return true;
@@ -240,6 +250,7 @@ public class User extends Entity {
         if (mathScore != user.mathScore) return false;
         if (thirdScore != user.thirdScore) return false;
         if (resultScore != user.resultScore) return false;
+        if (isEnrolled != user.isEnrolled) return false;
         if (status != user.status) return false;
         if (specialty != null ? !specialty.equals(user.specialty) : user.specialty != null) return false;
         if (role != user.role) return false;
@@ -264,6 +275,7 @@ public class User extends Entity {
         result = 31 * result + (login != null ? login.hashCode() : 0);
         result = 31 * result + (firstName != null ? firstName.hashCode() : 0);
         result = 31 * result + (lastName != null ? lastName.hashCode() : 0);
+        result = 31 * result + (thirdName != null ? thirdName.hashCode() : 0);
         result = 31 * result + (birthday != null ? birthday.hashCode() : 0);
         result = 31 * result + (country != null ? country.hashCode() : 0);
         result = 31 * result + (locality != null ? locality.hashCode() : 0);
@@ -275,6 +287,7 @@ public class User extends Entity {
         result = 31 * result + mathScore;
         result = 31 * result + thirdScore;
         result = 31 * result + resultScore;
+        result = 31 * result + (isEnrolled ? 1 : 0);
         return result;
     }
 
@@ -300,6 +313,7 @@ public class User extends Entity {
         sb.append(", mathScore=").append(mathScore);
         sb.append(", thirdScore=").append(thirdScore);
         sb.append(", resultScore=").append(resultScore);
+        sb.append(", isEnrolled=").append(isEnrolled);
         sb.append('}');
         return sb.toString();
     }

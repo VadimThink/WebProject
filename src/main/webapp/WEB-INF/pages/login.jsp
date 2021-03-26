@@ -14,8 +14,10 @@
 </head>
 <body>
 <c:import url="parts/head.jsp"/>
+<div class="pageContainer">
 <div class="fp" align="center">
     <form name="loginForm" method="POST" action="${pageContext.request.contextPath}/controller?command=login">
+        <input type="hidden" name="ctoken" value="${sessionScope.stoken}">
         <h2 align="center">
             <fmt:message key="header.enterYourAccount"/>
         </h2>
@@ -46,6 +48,7 @@
             <fmt:message key="button.registration"/>
         </a>
     </p>
+</div>
 </div>
 </body>
 </html>

@@ -10,6 +10,7 @@
     <link href="${pageContext.request.contextPath}/css/style.css" rel="stylesheet" type="text/css"/>
 </head>
 <body >
+<div class="pageContainer">
 <c:import url="parts/head.jsp"/>
 <h1 align="center">
     <font size="8" color="#0033CC" face="Gabriola">
@@ -17,6 +18,7 @@
     </font>
 </h1>
 <form name="dataForm" method="POST" action="${pageContext.request.contextPath}/controller?command=send_form&login=${userLogin}">
+    <input type="hidden" name="ctoken" value="${sessionScope.stoken}">
 <h2 align="center"><font size="8" color="#FF0000" face="Gabriola">
     <fmt:message key="message.${errorMessage}"/></font>
 </h2>
@@ -89,5 +91,6 @@
     </button>
 </p>
 </form>
+</div>
 </body>
 </html>

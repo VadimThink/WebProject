@@ -14,6 +14,11 @@ a.classicButton, button.classicButton{
     background-color: #8181811e;
 }
 
+div.pageContainer {
+    position: relative;
+    min-height: 100vh;
+}
+
 h2 {
     color:#616161;
     font-size: 30px;
@@ -213,7 +218,7 @@ table.buttontable {
     border-collapse: collapse;
     text-align: center;
 }
-td.username, .status, .role, .block, .activate, .profile, .makeadmin{
+td.username, .status, .role, .block, .activate, .profile, .makeadmin,.firstName, .lastName, .thirdName, .enrolled{
     border-style: none;
     height:20px;
     overflow-y:hidden;

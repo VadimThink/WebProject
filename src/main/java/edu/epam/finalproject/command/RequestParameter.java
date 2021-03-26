@@ -29,5 +29,6 @@ public class RequestParameter {
     public static final String USER_LOGIN = "userLogin";
     public static final String LAST_ID = "lastId";
     public static final String USERS_NUMBER = "usersNumber";
+    public static final String CLIENT_TOKEN = "ctoken";
 
 }

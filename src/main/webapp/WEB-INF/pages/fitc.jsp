@@ -12,6 +12,7 @@
     </title>
 </head>
 <body>
+<div class="pageContainer">
 <c:import url="parts/head.jsp"/>
 <br/>
 <div class="line1">
@@ -93,6 +94,7 @@
             * - полупроходной
         </p>
     </div>
+</div>
 </div>
 </body>
 </html>

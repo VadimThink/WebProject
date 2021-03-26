@@ -33,7 +33,8 @@ public enum CommandType {
     PROFILE(new ProfileCommand(false), RoleType.EVERYONE),
     EDIT_PROFILE(new ProfileCommand(true), RoleType.EVERYONE),
     FINISH_CAMPAIGN(new FinishInroductoryCampaignCommand(), RoleType.ADMIN),
-    CHANGE_LANGUAGE(new ChangeLocaleCommand(), RoleType.EVERYONE);
+    CHANGE_LANGUAGE(new ChangeLocaleCommand(), RoleType.EVERYONE),
+    ENROLLEE(new EnrolleeListCommand(), RoleType.ADMIN);
 
     private final Command command;
     private final RoleType role;

@@ -12,6 +12,7 @@
     </title>
 </head>
 <body>
+<div class="pageContainer">
 <c:import url="parts/head.jsp"/>
 <br/>
 <div class="line1">
@@ -97,6 +98,6 @@
         </p>
     </div>
 </div>
-<ctg:footerTag/>
+</div>
 </body>
 </html>

@@ -30,8 +30,7 @@ public class ChangeUserRoleCommand implements Command {
         }catch (ServiceException e){
             logger.error(e);
         }
-        String page = PagePath.USERS_LIST;
-        requestContext.addSessionAttribute(SessionAttribute.CURRENT_PAGE, page);
+        String page = (String) requestContext.getSessionAttribute(SessionAttribute.CURRENT_PAGE);
         return CommandResult.setForwardPage(page);
     }
 }

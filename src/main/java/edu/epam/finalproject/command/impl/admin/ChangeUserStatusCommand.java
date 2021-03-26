@@ -30,8 +30,7 @@ public class ChangeUserStatusCommand implements Command {
         }catch (ServiceException e){
             logger.error(e);
         }
-        String page = PagePath.USERS_LIST;
-        requestContext.addSessionAttribute(SessionAttribute.CURRENT_PAGE, page);
-        return CommandResult.setRedirectPage(page);
+        String page = (String) requestContext.getSessionAttribute(SessionAttribute.CURRENT_PAGE);
+        return CommandResult.setForwardPage(page);
     }
 }

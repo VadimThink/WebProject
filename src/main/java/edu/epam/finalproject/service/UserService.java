@@ -126,13 +126,13 @@ public class UserService {
         return userList;
     }
 
-    public List<User> findAllUsersWithCurrentSpecialty(Specialty specialty) throws ServiceException {
+    public List<User> findAllUsersWithCurrentSpecialty(int specialtyNum) throws ServiceException {
         EntityTransaction entityTransaction = new EntityTransaction();
         UserDaoImpl userDaoImpl = new UserDaoImpl();
         entityTransaction.begin(userDaoImpl);
         List<User> userList;
         try {
-            userList = userDaoImpl.findAllUsersWithCurrentSpecialty(specialty);
+            userList = userDaoImpl.findAllUsersWithCurrentSpecialty(specialtyNum);
             entityTransaction.commit();
         } catch (DaoException e) {
             logger.error(DATABASE_ERROR, e);
@@ -148,7 +148,7 @@ public class UserService {
         SpecialtyList specialtyList = SpecialtyList.getInstance();
         for (int i = 1; i < specialtyList.size(); i++){
             Specialty specialty = specialtyList.getSpecialty(i);
-            List<User> enrolleeListOfThisSpecialty = findAllUsersWithCurrentSpecialty(specialty);
+            List<User> enrolleeListOfThisSpecialty = findAllUsersWithCurrentSpecialty(specialty.getSpecialtyNum());
             if(enrolleeListOfThisSpecialty != null) {
                 enrolleeListOfThisSpecialty.sort(comparator);
                 System.out.println(enrolleeListOfThisSpecialty.toString());

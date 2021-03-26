@@ -6,8 +6,27 @@
 
     <error-page>
         <error-code>404</error-code>
-        <location>/pages/error/error404.jsp</location>
+        <location>/WEB-INF/pages/error/error404.jsp</location>
     </error-page>
-
+    <filter>
+        <filter-name>EncodingFilter</filter-name>
+        <filter-class>edu.epam.finalproject.filter.EncodingFilter</filter-class>
+        <init-param>
+            <param-name>requestEncoding</param-name>
+            <param-value>UTF-8</param-value>
+        </init-param>
+    </filter>
+    <filter>
+        <filter-name>DoublePostingFilter</filter-name>
+        <filter-class>edu.epam.finalproject.filter.DoublePostingPreventingFilter</filter-class>
+    </filter>
+    <filter-mapping>
+        <filter-name>EncodingFilter</filter-name>
+        <url-pattern>/*</url-pattern>
+    </filter-mapping>
+    <filter-mapping>
+        <filter-name>DoublePostingFilter</filter-name>
+        <url-pattern>/controller</url-pattern>
+    </filter-mapping>
 
 </web-app>

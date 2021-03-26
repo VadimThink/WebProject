@@ -11,9 +11,11 @@
     <title>Регистрация</title>
 </head>
 <body>
+<div class="pageContainer">
 <c:import url="parts/head.jsp"/>
 <div class="fp" align="center">
     <form name="signUpForm" action="${pageContext.request.contextPath}/controller?command=register" method="post">
+        <input type="hidden" name="ctoken" value="${sessionScope.stoken}">
         <h1 align="center">
             <font size="8" color="#0033CC" face="Gabriola">
                 <fmt:message key="header.registration"/>
@@ -43,6 +45,7 @@
             <fmt:message key="message.${errorMessage}"/>
         </p>
     </form>
+</div>
 </div>
 </body>
 </html>

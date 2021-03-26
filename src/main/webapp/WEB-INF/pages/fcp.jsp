@@ -14,6 +14,7 @@
 <body>
 <c:import url="parts/head.jsp"/>
 <br/>
+<div class="pageContainer">
 <div class="line1">
     <div class="box1">
         <h3><img src="${pageContext.request.contextPath}/images/fcp.png" width="30"
@@ -105,6 +106,6 @@
         </p>
     </div>
 </div>
-<ctg:footerTag/>
+</div>
 </body>
 </html>

@@ -13,7 +13,7 @@ public abstract class AbstractUserDao extends AbstractDao<Long, User> {
     public abstract long findMaxUserId() throws DaoException;
     public abstract User findUserInfo(String login) throws DaoException;
     public abstract List<User> findUsersInRange(long firstId, long number) throws DaoException;
-    public abstract List<User> findAllUsersWithCurrentSpecialty(Specialty specialty) throws DaoException;
+    public abstract List<User> findAllUsersWithCurrentSpecialty(int specialtyNum) throws DaoException;
     public abstract boolean checkUserByLoginAndPassword(String login, String password) throws DaoException;
     public abstract int findRole(String login) throws DaoException;
     public abstract boolean updateUserLogin(String previousLogin, String newLogin) throws DaoException;
