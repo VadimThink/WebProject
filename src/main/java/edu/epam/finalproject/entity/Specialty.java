@@ -34,7 +34,7 @@ public class Specialty {
         return faculty;
     }
 
-    public void setFaculty(String  faculty) {
+    public void setFaculty(String faculty) {
         this.faculty = faculty;
     }
 

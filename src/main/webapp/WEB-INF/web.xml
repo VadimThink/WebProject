@@ -6,7 +6,14 @@
 
     <error-page>
         <error-code>404</error-code>
-        <location>/WEB-INF/pages/error/error404.jsp</location>
+        <location>/WEB-INF/pages/error/error.jsp</location>
+    </error-page>
+    <error-page>
+        <error-code>500</error-code>
+        <location>/WEB-INF/pages/error/error.jsp</location>
+    </error-page>
+    <error-page>
+        <location>/WEB-INF/pages/error/error.jsp</location>
     </error-page>
     <filter>
         <filter-name>EncodingFilter</filter-name>

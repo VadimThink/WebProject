@@ -36,7 +36,16 @@
             </c:choose>
         </c:if>
         <table class="buttontable">
-        <c:forEach items="${usersList}" var="user" varStatus="counter">
+            <tr style="background: white">
+                <td class="username"><fmt:message key="table.username"/></td>
+                <td class="status"><fmt:message key="table.status"/></td>
+                <td class="role"><fmt:message key="table.role"/></td>
+                <td class="block"><fmt:message key="table.blockUser"/></td>
+                <td class="activate"><fmt:message key="table.activate"/></td>
+                <td class="makeadmin"><fmt:message key="table.makeadmin"/></td>
+                <td class="profile"><fmt:message key="table.profile"/></td>
+            </tr>
+            <c:forEach items="${usersList}" var="user" varStatus="counter">
                 <tr>
                     <td class="username">${user.login}</td>
                     <td class="status">${user.status}</td>
@@ -50,10 +59,12 @@
                                 </a>
                             </c:when>
                             <c:otherwise>
-                                <a class="tableA"
-                                   href="${pageContext.request.contextPath}/controller?command=block_User&userLogin=${user.login}">
-                                    <fmt:message key="button.blockUser"/>
-                                </a>
+                                <c:if test="${user.isUserRole()}">
+                                    <a class="tableA"
+                                       href="${pageContext.request.contextPath}/controller?command=block_User&userLogin=${user.login}">
+                                        <fmt:message key="button.blockUser"/>
+                                    </a>
+                                </c:if>
                             </c:otherwise>
                         </c:choose>
                     </td>
@@ -80,7 +91,7 @@
                         </a>
                     </td>
                 </tr>
-        </c:forEach>
+            </c:forEach>
         </table>
         <br/>
         <c:if test="${lastId < usersNumber}">

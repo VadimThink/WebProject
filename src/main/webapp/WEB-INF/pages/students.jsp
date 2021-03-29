@@ -33,14 +33,14 @@
                 </button>
             </p>
             <table class="buttontable">
-                <tr>
+                <tr style="background: white">
                     <td class="username"><fmt:message key="table.username"/></td>
                     <td class="firstName"><fmt:message key="table.firstName"/></td>
                     <td class="lastName"><fmt:message key="table.lastName"/></td>
                     <td class="thirdName"><fmt:message key="table.thirdName"/></td>
                     <td class="enrolled"><fmt:message key="table.isEnrolled"/></td>
-                    <td class="block"><fmt:message key="table.blockUser"/> </td>
-                    <td class="profile"><fmt:message key="table.profile"/> </td>
+                    <td class="block"><fmt:message key="table.blockUser"/></td>
+                    <td class="profile"><fmt:message key="table.profile"/></td>
                 </tr>
                 <c:forEach items="${usersList}" var="user" varStatus="counter">
                     <tr>

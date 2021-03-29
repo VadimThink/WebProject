@@ -1,19 +1,16 @@
 package edu.epam.finalproject.service;
 
-import edu.epam.finalproject.entity.*;
 import edu.epam.finalproject.dao.DaoException;
 import edu.epam.finalproject.dao.EntityTransaction;
 import edu.epam.finalproject.dao.impl.UserDaoImpl;
+import edu.epam.finalproject.entity.*;
 import edu.epam.finalproject.util.DateConverter;
 import edu.epam.finalproject.util.ScoreComparator;
 import org.apache.logging.log4j.LogManager;
 import org.apache.logging.log4j.Logger;
 
 import java.sql.Date;
-import java.util.Collections;
-import java.util.Comparator;
 import java.util.List;
-import java.util.Stack;
 
 public class UserService {
     private static final Logger logger = LogManager.getLogger(UserService.class);
@@ -146,10 +143,10 @@ public class UserService {
     public boolean enrollUsersByCompetition() throws ServiceException {
         ScoreComparator comparator = new ScoreComparator();
         SpecialtyList specialtyList = SpecialtyList.getInstance();
-        for (int i = 1; i < specialtyList.size(); i++){
+        for (int i = 1; i < specialtyList.size(); i++) {
             Specialty specialty = specialtyList.getSpecialty(i);
             List<User> enrolleeListOfThisSpecialty = findAllUsersWithCurrentSpecialty(specialty.getSpecialtyNum());
-            if(enrolleeListOfThisSpecialty != null) {
+            if (enrolleeListOfThisSpecialty != null) {
                 enrolleeListOfThisSpecialty.sort(comparator);
                 System.out.println(enrolleeListOfThisSpecialty.toString());
                 int counter = 0;
@@ -165,7 +162,7 @@ public class UserService {
         return true;
     }
 
-    public boolean updateUserEnrolled(String login, boolean isEnrolled) throws ServiceException{
+    public boolean updateUserEnrolled(String login, boolean isEnrolled) throws ServiceException {
         EntityTransaction entityTransaction = new EntityTransaction();
         UserDaoImpl userDaoImpl = new UserDaoImpl();
         entityTransaction.begin(userDaoImpl);

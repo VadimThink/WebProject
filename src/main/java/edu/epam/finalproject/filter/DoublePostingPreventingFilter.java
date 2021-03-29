@@ -6,8 +6,6 @@ import org.apache.logging.log4j.LogManager;
 import org.apache.logging.log4j.Logger;
 
 import javax.servlet.*;
-import javax.servlet.annotation.WebFilter;
-import javax.servlet.annotation.WebInitParam;
 import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpServletResponse;
 import javax.servlet.http.HttpSession;
@@ -46,7 +44,7 @@ public class DoublePostingPreventingFilter implements Filter {
                 session.setAttribute(SessionAttribute.SERVER_TOKEN, new Random().nextInt(10000));
                 HttpServletResponse response = (HttpServletResponse) res;
                 //response.sendRedirect(request.getContextPath() + session.getAttribute(SessionAttribute.CURRENT_PAGE));
-                String page = (String)session.getAttribute(SessionAttribute.CURRENT_PAGE);
+                String page = (String) session.getAttribute(SessionAttribute.CURRENT_PAGE);
                 RequestDispatcher dispatcher = request.getRequestDispatcher(page);
                 dispatcher.forward(request, response);
             }

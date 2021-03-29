@@ -160,6 +160,13 @@ h2.another {
     justify-content: space-evenly;
 }
 
+p.profileMessage{
+    position: center;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+}
+
 div.box1{
     flex-basis: 80%;
     background-color: rgb(255, 255, 255);

@@ -15,10 +15,10 @@ public class ChangeLocaleCommand implements Command {
         String language = requestContext.getParameter(RequestParameter.LANGUAGE);
         String pagePath = (String) requestContext.getSessionAttribute(SessionAttribute.CURRENT_PAGE);
         switch (language) {
-            case RU :
+            case RU:
                 requestContext.addSessionAttribute(RequestParameter.LANGUAGE, RU);
                 break;
-            case EN :
+            case EN:
                 requestContext.addSessionAttribute(RequestParameter.LANGUAGE, EN);
                 break;
             default:

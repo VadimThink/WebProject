@@ -1,8 +1,8 @@
 package edu.epam.finalproject.command.impl.general;
 
 import edu.epam.finalproject.command.*;
-import edu.epam.finalproject.entity.RoleType;
 import edu.epam.finalproject.controller.request.RequestContext;
+import edu.epam.finalproject.entity.RoleType;
 import edu.epam.finalproject.entity.Specialty;
 import edu.epam.finalproject.entity.SpecialtyList;
 import edu.epam.finalproject.entity.User;
@@ -21,21 +21,21 @@ public class ProfileCommand implements Command {
 
     private boolean isEdit;
 
-    public ProfileCommand(boolean isEdit){
+    public ProfileCommand(boolean isEdit) {
         this.isEdit = isEdit;
     }
 
     @Override
     public CommandResult execute(RequestContext requestContext) {
         RoleType role = (RoleType) requestContext.getSessionAttribute(SessionAttribute.ROLE);
-        User userInfo = null;
+        User userInfo;
         String login;
-        if (role == RoleType.ADMIN){
+        if (role == RoleType.ADMIN) {
             login = requestContext.getParameter(RequestParameter.LOGIN);
-            if (login == null){
+            if (login == null) {
                 login = (String) requestContext.getSessionAttribute(SessionAttribute.USER);
             }
-        }else{
+        } else {
             login = (String) requestContext.getSessionAttribute(SessionAttribute.USER);
         }
         try {
@@ -47,7 +47,7 @@ public class ProfileCommand implements Command {
         }
         requestContext.addAttribute(RequestAttribute.USER_INFO, userInfo);
         requestContext.addAttribute(RequestAttribute.USER_LOGIN, login);
-        if (isEdit){
+        if (isEdit) {
             Date currentDate = new Date();
             SimpleDateFormat formatForDate = new SimpleDateFormat("yyyy-MM-dd");
             requestContext.addAttribute(RequestAttribute.CURRENT_DATE, formatForDate.format(currentDate));
@@ -55,7 +55,7 @@ public class ProfileCommand implements Command {
             requestContext.addAttribute(RequestAttribute.SPECIALTY_LIST, specialtyList);
             requestContext.addSessionAttribute(SessionAttribute.CURRENT_PAGE, PagePath.EDIT_PROFILE + login);
             return CommandResult.setForwardPage(PagePath.FORM);
-        }else {
+        } else {
             requestContext.addSessionAttribute(SessionAttribute.CURRENT_PAGE, PagePath.PROFILE_COMMAND + login);
             return CommandResult.setForwardPage(PagePath.PROFILE);
         }

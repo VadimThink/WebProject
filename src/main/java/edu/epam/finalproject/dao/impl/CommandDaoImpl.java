@@ -18,9 +18,9 @@ public class CommandDaoImpl extends AbstractCommandDao {
     @Override
     public List<Specialty> findSpecialtyList() throws DaoException {
         List<Specialty> specialtyList = new ArrayList<>();
-        try (Statement statement = connection.createStatement()){
+        try (Statement statement = connection.createStatement()) {
             ResultSet resultSet = statement.executeQuery(SQL_FIND_ALL_SPECIALTIES);
-            while(resultSet.next()){
+            while (resultSet.next()) {
                 int specialtyNum = resultSet.getInt(1);
                 String specialtyName = resultSet.getString(2);
                 int plan = resultSet.getInt(3);
@@ -28,7 +28,7 @@ public class CommandDaoImpl extends AbstractCommandDao {
                 Specialty specialty = new Specialty(specialtyNum, specialtyName, plan, faculty);
                 specialtyList.add(specialty);
             }
-        }catch (SQLException e){
+        } catch (SQLException e) {
             throw new DaoException(e);
         }
         return specialtyList;

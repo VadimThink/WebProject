@@ -1,8 +1,8 @@
 package edu.epam.finalproject.command;
 
 import edu.epam.finalproject.command.impl.general.EmptyCommand;
-import edu.epam.finalproject.entity.RoleType;
 import edu.epam.finalproject.controller.request.RequestContext;
+import edu.epam.finalproject.entity.RoleType;
 
 public class CommandProvider {
     private CommandProvider() {
@@ -15,14 +15,13 @@ public class CommandProvider {
         if (command == null || command.isEmpty()) {
             return new EmptyCommand();
         }
-        if (role == requestContext.getSessionAttribute(SessionAttribute.ROLE) || role == RoleType.EVERYONE){
+        if (role == requestContext.getSessionAttribute(SessionAttribute.ROLE) || role == RoleType.EVERYONE) {
             try {
                 currentCommand = CommandType.valueOf(command.toUpperCase()).getCommand();
             } catch (IllegalArgumentException exp) {
                 currentCommand = new EmptyCommand();
             }
-        }
-        else {
+        } else {
             return new EmptyCommand();
         }
         return currentCommand;

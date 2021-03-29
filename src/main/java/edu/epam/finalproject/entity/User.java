@@ -36,18 +36,18 @@ public class User extends Entity {
         this.role = role;
     }
 
-    public User(String login, String firstName, String lastName, String thirdName, int resultScore, int isEnrolled) {
+    public User(String login, String firstName, String lastName, String thirdName, int resultScore, int enrolled) {
         this.login = login;
         this.firstName = firstName;
         this.lastName = lastName;
         this.thirdName = thirdName;
         this.resultScore = resultScore;
-        this.isEnrolled = (isEnrolled == 1);
+        this.isEnrolled = (enrolled == 1);
     }
 
     public User(Specialty specialty, String firstName, String lastName, String thirdName, String birthday, String country, String locality,
                 String address, String phone, String email, int gpa, int languageScore, int mathScore, int thirdScore,
-                int resultScore) {
+                int resultScore, int enrolled) {
         this.specialty = specialty;
         this.firstName = firstName;
         this.lastName = lastName;
@@ -63,6 +63,7 @@ public class User extends Entity {
         this.mathScore = mathScore;
         this.thirdScore = thirdScore;
         this.resultScore = resultScore;
+        this.isEnrolled = (enrolled == 1);
     }
 
     public long getId() {

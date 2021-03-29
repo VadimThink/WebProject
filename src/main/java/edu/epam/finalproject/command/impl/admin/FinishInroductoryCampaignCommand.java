@@ -16,7 +16,7 @@ public class FinishInroductoryCampaignCommand implements Command {
 
     @Override
     public CommandResult execute(RequestContext requestContext) {
-        try{
+        try {
             userService.enrollUsersByCompetition();
         } catch (ServiceException e) {
             logger.error(e);

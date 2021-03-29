@@ -1,13 +1,9 @@
 package edu.epam.finalproject.dao.impl;
 
-import edu.epam.finalproject.entity.RoleType;
-import edu.epam.finalproject.dao.SqlRequest;
-import edu.epam.finalproject.entity.StatusType;
 import edu.epam.finalproject.dao.AbstractUserDao;
 import edu.epam.finalproject.dao.DaoException;
-import edu.epam.finalproject.entity.Specialty;
-import edu.epam.finalproject.entity.SpecialtyList;
-import edu.epam.finalproject.entity.User;
+import edu.epam.finalproject.dao.SqlRequest;
+import edu.epam.finalproject.entity.*;
 
 import java.sql.*;
 import java.util.ArrayList;
@@ -114,9 +110,10 @@ public class UserDaoImpl extends AbstractUserDao {
             int mathScore = resultSet.getInt(13);
             int thirdScore = resultSet.getInt(14);
             int resultScore = resultSet.getInt(15);
+            int enrolled = resultSet.getInt(16);
             Specialty specialty = SpecialtyList.getInstance().getSpecialtyList().get(specialtyNum);
             currentUser = new User(specialty, firstName, lastName, thirdName, birthday, country, locality, address,
-                    phone, email, gpa, languageScore, mathScore, thirdScore, resultScore);
+                    phone, email, gpa, languageScore, mathScore, thirdScore, resultScore, enrolled);
         } catch (SQLException e) {
             throw new DaoException(e);
         }
@@ -389,7 +386,7 @@ public class UserDaoImpl extends AbstractUserDao {
             statement.setInt(1, enrolledValue);
             statement.setString(2, login);
             statement.executeUpdate();
-        }catch (SQLException e){
+        } catch (SQLException e) {
             throw new DaoException(e);
         }
         return true;

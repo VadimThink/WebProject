@@ -12,7 +12,7 @@ public class SqlRequest {
             "WHERE users.login LIKE ? AND users.password LIKE ?";
     public final static String SQL_FIND_USER_INFO = "SELECT users.first_name, users.last_name, users.third_name," +
             "users.birthday, users.country, users.locality, users.address, users.phone, users.email, users.specialty_num," +
-            "users.gpa, users.language_score, users.math_score, users.third_score, users.result_score " +
+            "users.gpa, users.language_score, users.math_score, users.third_score, users.result_score, users.enrolled " +
             "FROM users WHERE users.login LIKE ?";
     public final static String SQL_FIND_ALL_USERS_WITH_CURRENT_SPECIALTY = "SELECT users.login, users.first_name," +
             "users.last_name, users.third_name, users.result_score, users.enrolled FROM users WHERE users.specialty_num = ? " +

@@ -1,8 +1,6 @@
 package edu.epam.finalproject.command.impl.admin;
 
 import edu.epam.finalproject.command.*;
-import edu.epam.finalproject.command.Message;
-import edu.epam.finalproject.command.SessionAttribute;
 import edu.epam.finalproject.controller.request.RequestContext;
 import edu.epam.finalproject.entity.User;
 import edu.epam.finalproject.service.ServiceException;
@@ -33,16 +31,17 @@ public class UsersPaginationCommand implements Command {
         }
         requestContext.addAttribute(RequestAttribute.USERS_NUMBER, usersNumber);
         long offset = usersNumber - firstId;
-        if(offset > DEFAULT_NUMBER_OF_USERS) {
+        if (offset > DEFAULT_NUMBER_OF_USERS) {
             try {
                 usersList = userService.findUsersInRange(firstId, DEFAULT_NUMBER_OF_USERS);
             } catch (ServiceException e) {
                 logger.error(e);
             }
             lastId = usersList.get(usersList.size() - 1).getId();
-        }if(offset <= 0){
+        }
+        if (offset <= 0) {
             requestContext.addAttribute(RequestAttribute.ERROR_MESSAGE, Message.CANT_FIND_USERS_IN_THIS_RANGE);
-        }else if(offset <= DEFAULT_NUMBER_OF_USERS){
+        } else if (offset <= DEFAULT_NUMBER_OF_USERS) {
             try {
                 usersList = userService.findUsersInRange(firstId, offset);
             } catch (ServiceException e) {

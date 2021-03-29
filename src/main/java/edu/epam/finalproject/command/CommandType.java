@@ -3,7 +3,6 @@ package edu.epam.finalproject.command;
 import edu.epam.finalproject.command.impl.admin.*;
 import edu.epam.finalproject.command.impl.general.*;
 import edu.epam.finalproject.command.impl.user.FormPageCommand;
-import edu.epam.finalproject.command.impl.general.SendFormCommand;
 import edu.epam.finalproject.entity.RoleType;
 import edu.epam.finalproject.entity.StatusType;
 
@@ -48,5 +47,7 @@ public enum CommandType {
         return command;
     }
 
-    public RoleType getRole(){return role;}
+    public RoleType getRole() {
+        return role;
+    }
 }

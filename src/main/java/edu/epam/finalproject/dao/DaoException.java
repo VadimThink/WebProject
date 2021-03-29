@@ -1,6 +1,6 @@
 package edu.epam.finalproject.dao;
 
-public class DaoException extends Exception{
+public class DaoException extends Exception {
 
     public DaoException() {
     }

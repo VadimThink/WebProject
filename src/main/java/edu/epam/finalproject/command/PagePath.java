@@ -25,7 +25,7 @@ public class PagePath {
     public static final String FORM_COMMAND = "/controller?command=form_page&login=";
     public static final String OPEN_MENU_COMMAND = "/controller?command=menu";
 
-    public static final String ERROR_404 = "WEB-INF/pages/error/error404.jsp";
+    public static final String ERROR_404 = "WEB-INF/pages/error/error.jsp";
     public static final String ERROR_500 = "WEB-INF/pages/error/error500.jsp";
 
     private PagePath() {

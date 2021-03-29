@@ -13,24 +13,24 @@ public class EntityTransaction {
 
     public void begin(AbstractDao dao, AbstractDao... daos) {
         ConnectionPool connectionPool = ConnectionPool.getInstance();
-        if (connection == null){
+        if (connection == null) {
             connection = connectionPool.getConnection();
         }
-        try{
+        try {
             connection.setAutoCommit(false);
-        }catch (SQLException e){
+        } catch (SQLException e) {
             logger.error(e);
         }
         dao.setConnection(connection);
-        for(AbstractDao daoElement  : daos){
+        for (AbstractDao daoElement : daos) {
             daoElement.setConnection(connection);
         }
     }
 
-    public void end(){
-        try{
+    public void end() {
+        try {
             connection.setAutoCommit(true);
-        }catch (SQLException e){
+        } catch (SQLException e) {
             logger.error(e);
         }
         try {
@@ -41,18 +41,18 @@ public class EntityTransaction {
         connection = null;
     }
 
-    public void commit(){
-        try{
+    public void commit() {
+        try {
             connection.commit();
-        }catch (SQLException e){
+        } catch (SQLException e) {
             logger.error(e);
         }
     }
 
-    public void rollback(){
-        try{
+    public void rollback() {
+        try {
             connection.rollback();
-        }catch (SQLException e){
+        } catch (SQLException e) {
             logger.error(e);
         }
     }

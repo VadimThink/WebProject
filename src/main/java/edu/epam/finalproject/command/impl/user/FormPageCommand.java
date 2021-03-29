@@ -1,20 +1,13 @@
 package edu.epam.finalproject.command.impl.user;
 
-import edu.epam.finalproject.command.Command;
-import edu.epam.finalproject.command.CommandResult;
-import edu.epam.finalproject.command.PagePath;
-import edu.epam.finalproject.command.RequestAttribute;
-import edu.epam.finalproject.command.SessionAttribute;
+import edu.epam.finalproject.command.*;
 import edu.epam.finalproject.controller.request.RequestContext;
 import edu.epam.finalproject.entity.Specialty;
 import edu.epam.finalproject.entity.SpecialtyList;
-import edu.epam.finalproject.service.ServiceException;
-import edu.epam.finalproject.service.CommandService;
 import org.apache.logging.log4j.LogManager;
 import org.apache.logging.log4j.Logger;
 
 import java.text.SimpleDateFormat;
-import java.util.ArrayList;
 import java.util.Date;
 import java.util.List;
 

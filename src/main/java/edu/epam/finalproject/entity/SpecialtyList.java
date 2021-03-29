@@ -17,7 +17,7 @@ public class SpecialtyList extends Entity {
     private static SpecialtyList instance;
     private List<Specialty> specialtyList;
 
-    private SpecialtyList(){
+    private SpecialtyList() {
         CommandService service = new CommandService();
         try {
             specialtyList = service.findSpecialtyList();
@@ -39,11 +39,11 @@ public class SpecialtyList extends Entity {
         return list;
     }
 
-    public Specialty getSpecialty(int index){
+    public Specialty getSpecialty(int index) {
         return specialtyList.get(index);
     }
 
-    public int size(){
+    public int size() {
         return specialtyList.size();
     }
 

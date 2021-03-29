@@ -1,10 +1,6 @@
 package edu.epam.finalproject.controller;
 
-import edu.epam.finalproject.command.Command;
-import edu.epam.finalproject.command.CommandProvider;
-import edu.epam.finalproject.command.CommandResult;
-import edu.epam.finalproject.command.PagePath;
-import edu.epam.finalproject.command.RequestParameter;
+import edu.epam.finalproject.command.*;
 import edu.epam.finalproject.connection.ConnectionPool;
 import edu.epam.finalproject.controller.request.RequestContext;
 import edu.epam.finalproject.controller.request.RequestContextCreator;
@@ -18,7 +14,7 @@ import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpServletResponse;
 import java.io.IOException;
 
-//todo сделать защиту от f5, валидаторы, отправку email
+//валидаторы
 @WebServlet(name = "controller", urlPatterns = {"/controller", "*.do"})
 public class Controller extends HttpServlet {
     private static final RequestContextCreator requestContextCreator = new RequestContextCreator();
