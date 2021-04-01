@@ -1,4 +1,4 @@
-package edu.epam.finalproject.service;
+package edu.epam.finalproject.logic.service;
 
 public class ServiceException extends Exception {
 

@@ -17,8 +17,6 @@ public abstract class AbstractDao<K, T extends Entity> {
 
     public abstract void create(T t) throws DaoException;
 
-    public abstract T update(T t) throws DaoException;
-
     public void close(Statement statement) {
         try {
             if (statement != null) {

@@ -4,8 +4,8 @@ import edu.epam.finalproject.command.Command;
 import edu.epam.finalproject.command.CommandResult;
 import edu.epam.finalproject.command.SessionAttribute;
 import edu.epam.finalproject.controller.request.RequestContext;
-import edu.epam.finalproject.service.ServiceException;
-import edu.epam.finalproject.service.UserService;
+import edu.epam.finalproject.logic.service.ServiceException;
+import edu.epam.finalproject.logic.service.UserService;
 import org.apache.logging.log4j.LogManager;
 import org.apache.logging.log4j.Logger;
 

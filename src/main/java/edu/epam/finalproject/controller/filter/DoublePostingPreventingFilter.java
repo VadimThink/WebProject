@@ -1,4 +1,4 @@
-package edu.epam.finalproject.filter;
+package edu.epam.finalproject.controller.filter;
 
 import edu.epam.finalproject.command.RequestParameter;
 import edu.epam.finalproject.command.SessionAttribute;

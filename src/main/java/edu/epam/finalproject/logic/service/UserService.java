@@ -1,4 +1,4 @@
-package edu.epam.finalproject.service;
+package edu.epam.finalproject.logic.service;
 
 import edu.epam.finalproject.dao.DaoException;
 import edu.epam.finalproject.dao.EntityTransaction;
@@ -12,10 +12,21 @@ import org.apache.logging.log4j.Logger;
 import java.sql.Date;
 import java.util.List;
 
+/**
+ * The type User service.
+ */
 public class UserService {
     private static final Logger logger = LogManager.getLogger(UserService.class);
     private static final String DATABASE_ERROR = "Can`t get access to Database";
 
+    /**
+     * Create new user boolean.
+     *
+     * @param login    the login
+     * @param password the password
+     * @return the boolean
+     * @throws ServiceException the service exception
+     */
     public boolean createNewUser(String login, String password) throws ServiceException {
         EntityTransaction entityTransaction = new EntityTransaction();
         UserDaoImpl userDaoImpl = new UserDaoImpl();
@@ -37,6 +48,14 @@ public class UserService {
         }
     }
 
+    /**
+     * Check user by login and password boolean.
+     *
+     * @param login    the login
+     * @param password the password
+     * @return the boolean
+     * @throws ServiceException the service exception
+     */
     public boolean checkUserByLoginAndPassword(String login, String password) throws ServiceException {
         EntityTransaction entityTransaction = new EntityTransaction();
         UserDaoImpl userDaoImpl = new UserDaoImpl();
@@ -54,6 +73,13 @@ public class UserService {
         return isExist;
     }
 
+    /**
+     * Check admin role boolean.
+     *
+     * @param login the login
+     * @return the boolean
+     * @throws ServiceException the service exception
+     */
     public boolean checkAdminRole(String login) throws ServiceException {
         EntityTransaction entityTransaction = new EntityTransaction();
         UserDaoImpl userDaoImpl = new UserDaoImpl();
@@ -71,6 +97,27 @@ public class UserService {
         return role == RoleType.ADMIN.ordinal();
     }
 
+    /**
+     * Update user form data boolean.
+     *
+     * @param login         the login
+     * @param firstName     the first name
+     * @param lastName      the last name
+     * @param thirdName     the third name
+     * @param birthday      the birthday
+     * @param country       the country
+     * @param locality      the locality
+     * @param address       the address
+     * @param phone         the phone
+     * @param email         the email
+     * @param specialtyNum  the specialty num
+     * @param gpa           the gpa
+     * @param languageScore the language score
+     * @param mathScore     the math score
+     * @param thirdScore    the third score
+     * @return the boolean
+     * @throws ServiceException the service exception
+     */
     public boolean updateUserFormData(String login, String firstName, String lastName, String thirdName,
                                       String birthday, String country, String locality, String address, String phone,
                                       String email, int specialtyNum, int gpa, int languageScore, int mathScore,
@@ -106,6 +153,12 @@ public class UserService {
         return true;
     }
 
+    /**
+     * Find all users.
+     *
+     * @return the list
+     * @throws ServiceException the service exception
+     */
     public List<User> findAllUsers() throws ServiceException {
         EntityTransaction entityTransaction = new EntityTransaction();
         UserDaoImpl userDaoImpl = new UserDaoImpl();
@@ -123,6 +176,13 @@ public class UserService {
         return userList;
     }
 
+    /**
+     * Find all users with current specialty.
+     *
+     * @param specialtyNum the specialty num
+     * @return the list
+     * @throws ServiceException the service exception
+     */
     public List<User> findAllUsersWithCurrentSpecialty(int specialtyNum) throws ServiceException {
         EntityTransaction entityTransaction = new EntityTransaction();
         UserDaoImpl userDaoImpl = new UserDaoImpl();
@@ -140,6 +200,12 @@ public class UserService {
         return userList;
     }
 
+    /**
+     * Enroll users by competition boolean.
+     *
+     * @return the boolean
+     * @throws ServiceException the service exception
+     */
     public boolean enrollUsersByCompetition() throws ServiceException {
         ScoreComparator comparator = new ScoreComparator();
         SpecialtyList specialtyList = SpecialtyList.getInstance();
@@ -162,6 +228,14 @@ public class UserService {
         return true;
     }
 
+    /**
+     * Update user enrolled boolean.
+     *
+     * @param login      the login
+     * @param isEnrolled the is enrolled
+     * @return the boolean
+     * @throws ServiceException the service exception
+     */
     public boolean updateUserEnrolled(String login, boolean isEnrolled) throws ServiceException {
         EntityTransaction entityTransaction = new EntityTransaction();
         UserDaoImpl userDaoImpl = new UserDaoImpl();
@@ -178,6 +252,14 @@ public class UserService {
         return true;
     }
 
+    /**
+     * Find users in range.
+     *
+     * @param firstId the first id
+     * @param number  the number
+     * @return the list
+     * @throws ServiceException the service exception
+     */
     public List<User> findUsersInRange(long firstId, long number) throws ServiceException {
         EntityTransaction entityTransaction = new EntityTransaction();
         UserDaoImpl userDaoImpl = new UserDaoImpl();
@@ -195,6 +277,12 @@ public class UserService {
         return userList;
     }
 
+    /**
+     * Find number of users.
+     *
+     * @return the long
+     * @throws ServiceException the service exception
+     */
     public long findNumberOfUsers() throws ServiceException {
         EntityTransaction entityTransaction = new EntityTransaction();
         UserDaoImpl userDaoImpl = new UserDaoImpl();
@@ -212,6 +300,13 @@ public class UserService {
         return number;
     }
 
+    /**
+     * Find user info.
+     *
+     * @param login the login
+     * @return the user
+     * @throws ServiceException the service exception
+     */
     public User findUserInfo(String login) throws ServiceException {
         EntityTransaction entityTransaction = new EntityTransaction();
         UserDaoImpl userDaoImpl = new UserDaoImpl();
@@ -230,7 +325,7 @@ public class UserService {
     }
 
     /**
-     * Update user status boolean.
+     * Update user status.
      *
      * @param login  the login
      * @param status the status
@@ -253,6 +348,14 @@ public class UserService {
         return true;
     }
 
+    /**
+     * Update user role.
+     *
+     * @param login the login
+     * @param role  the role
+     * @return the boolean
+     * @throws ServiceException the service exception
+     */
     public boolean updateUserRole(String login, RoleType role) throws ServiceException {
         EntityTransaction entityTransaction = new EntityTransaction();
         UserDaoImpl userDaoImpl = new UserDaoImpl();
@@ -269,6 +372,13 @@ public class UserService {
         return true;
     }
 
+    /**
+     * Is user not blocked boolean.
+     *
+     * @param login the login
+     * @return the boolean
+     * @throws ServiceException the service exception
+     */
     public boolean isUserNotBlocked(String login) throws ServiceException {
         EntityTransaction entityTransaction = new EntityTransaction();
         UserDaoImpl userDaoImpl = new UserDaoImpl();

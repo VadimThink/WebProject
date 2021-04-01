@@ -1,4 +1,4 @@
-package edu.epam.finalproject.service;
+package edu.epam.finalproject.logic.service;
 
 import edu.epam.finalproject.dao.DaoException;
 import edu.epam.finalproject.dao.EntityTransaction;
@@ -13,6 +13,12 @@ public class CommandService {
     private static final Logger logger = LogManager.getLogger(CommandService.class);
     private static final String DATABASE_ERROR = "Can`t get access to Database";
 
+    /**
+     * Find specialty list.
+     *
+     * @return the list
+     * @throws ServiceException the service exception
+     */
     public List<Specialty> findSpecialtyList() throws ServiceException {
         EntityTransaction entityTransaction = new EntityTransaction();
         CommandDaoImpl specialtyDaoImpl = new CommandDaoImpl();

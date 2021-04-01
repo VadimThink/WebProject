@@ -72,6 +72,9 @@
             <fmt:message key="form.specialty"/>
         </p>
         <p align="center">
+            ${userInfo.specialty.specialtyName}
+        </p>
+        <p align="center">
             <select name="specialty" size="1" required>
                 <c:forEach items="${specialtyList}" var="specialty" varStatus="counter">
                     <option value="${specialty.specialtyNum}">${specialty.specialtyName}</option>

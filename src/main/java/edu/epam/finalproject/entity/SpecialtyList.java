@@ -2,8 +2,8 @@ package edu.epam.finalproject.entity;
 
 
 import edu.epam.finalproject.command.impl.general.ProfileCommand;
-import edu.epam.finalproject.service.CommandService;
-import edu.epam.finalproject.service.ServiceException;
+import edu.epam.finalproject.logic.service.CommandService;
+import edu.epam.finalproject.logic.service.ServiceException;
 import org.apache.logging.log4j.LogManager;
 import org.apache.logging.log4j.Logger;
 

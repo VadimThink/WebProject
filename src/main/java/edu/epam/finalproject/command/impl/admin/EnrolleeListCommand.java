@@ -5,8 +5,8 @@ import edu.epam.finalproject.controller.request.RequestContext;
 import edu.epam.finalproject.entity.Specialty;
 import edu.epam.finalproject.entity.SpecialtyList;
 import edu.epam.finalproject.entity.User;
-import edu.epam.finalproject.service.ServiceException;
-import edu.epam.finalproject.service.UserService;
+import edu.epam.finalproject.logic.service.ServiceException;
+import edu.epam.finalproject.logic.service.UserService;
 import org.apache.logging.log4j.LogManager;
 import org.apache.logging.log4j.Logger;
 

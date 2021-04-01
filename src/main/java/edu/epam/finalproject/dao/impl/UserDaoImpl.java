@@ -427,9 +427,4 @@ public class UserDaoImpl extends AbstractUserDao {
         return true;
     }
 
-    @Override
-    public User update(User user) {
-        return null;
-    }
-
 }

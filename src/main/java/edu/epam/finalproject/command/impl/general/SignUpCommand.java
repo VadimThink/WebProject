@@ -3,10 +3,10 @@ package edu.epam.finalproject.command.impl.general;
 import edu.epam.finalproject.command.*;
 import edu.epam.finalproject.controller.request.RequestContext;
 import edu.epam.finalproject.entity.RoleType;
-import edu.epam.finalproject.service.ServiceException;
-import edu.epam.finalproject.service.UserService;
+import edu.epam.finalproject.logic.service.ServiceException;
+import edu.epam.finalproject.logic.service.UserService;
 import edu.epam.finalproject.util.PasswordEncrypt;
-import edu.epam.finalproject.validator.InputValidator;
+import edu.epam.finalproject.logic.validator.InputValidator;
 import org.apache.logging.log4j.LogManager;
 import org.apache.logging.log4j.Logger;
 

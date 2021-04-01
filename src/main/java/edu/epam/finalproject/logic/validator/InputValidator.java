@@ -1,13 +1,48 @@
-package edu.epam.finalproject.validator;
+package edu.epam.finalproject.logic.validator;
 
 import edu.epam.finalproject.entity.SpecialtyList;
 
+/**
+ * The type Input validator.
+ */
 public class InputValidator {
+    /**
+     * The constant SCORE_MIN_SIZE.
+     */
     final static int SCORE_MIN_SIZE = 0;
+    /**
+     * The constant SCORE_MAX_SIZE.
+     */
     final static int SCORE_MAX_SIZE = 100;
+    /**
+     * The constant NAME_MAX_LENGTH.
+     */
     final static int NAME_MAX_LENGTH = 20;
+    /**
+     * The constant OTHER_FIELDS_MAX_LENGTH.
+     */
     final static int OTHER_FIELDS_MAX_LENGTH = 50;
 
+    /**
+     * Validate form boolean.
+     *
+     * @param login         the login
+     * @param firstName     the first name
+     * @param lastName      the last name
+     * @param thirdName     the third name
+     * @param birthday      the birthday
+     * @param country       the country
+     * @param locality      the locality
+     * @param address       the address
+     * @param phone         the phone
+     * @param email         the email
+     * @param specialtyNum  the specialty num
+     * @param gpa           the gpa
+     * @param languageScore the language score
+     * @param mathScore     the math score
+     * @param thirdScore    the third score
+     * @return the boolean
+     */
     public static boolean validateForm(String login, String firstName, String lastName, String thirdName,
                                        String birthday, String country, String locality, String address, String phone,
                                        String email, int specialtyNum, int gpa, int languageScore, int mathScore,
@@ -34,6 +69,13 @@ public class InputValidator {
         return true;
     }
 
+    /**
+     * Validate sign in and sign up boolean.
+     *
+     * @param login    the login
+     * @param password the password
+     * @return the boolean
+     */
     public static boolean validateAuth(String login, String password) {
         if (login == null || password == null) {
             return false;

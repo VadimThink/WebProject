@@ -6,11 +6,14 @@ import edu.epam.finalproject.command.RequestParameter;
 import edu.epam.finalproject.command.SessionAttribute;
 import edu.epam.finalproject.controller.request.RequestContext;
 import edu.epam.finalproject.entity.RoleType;
-import edu.epam.finalproject.service.ServiceException;
-import edu.epam.finalproject.service.UserService;
+import edu.epam.finalproject.logic.service.ServiceException;
+import edu.epam.finalproject.logic.service.UserService;
 import org.apache.logging.log4j.LogManager;
 import org.apache.logging.log4j.Logger;
 
+/**
+ * The type Change user role command.
+ */
 public class ChangeUserRoleCommand implements Command {
     private static final UserService userService = new UserService();
     private static final Logger logger = LogManager.getLogger(ChangeUserStatusCommand.class);

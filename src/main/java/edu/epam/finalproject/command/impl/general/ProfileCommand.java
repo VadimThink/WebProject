@@ -2,12 +2,9 @@ package edu.epam.finalproject.command.impl.general;
 
 import edu.epam.finalproject.command.*;
 import edu.epam.finalproject.controller.request.RequestContext;
-import edu.epam.finalproject.entity.RoleType;
-import edu.epam.finalproject.entity.Specialty;
-import edu.epam.finalproject.entity.SpecialtyList;
-import edu.epam.finalproject.entity.User;
-import edu.epam.finalproject.service.ServiceException;
-import edu.epam.finalproject.service.UserService;
+import edu.epam.finalproject.entity.*;
+import edu.epam.finalproject.logic.service.ServiceException;
+import edu.epam.finalproject.logic.service.UserService;
 import org.apache.logging.log4j.LogManager;
 import org.apache.logging.log4j.Logger;
 
@@ -48,6 +45,11 @@ public class ProfileCommand implements Command {
         requestContext.addAttribute(RequestAttribute.USER_INFO, userInfo);
         requestContext.addAttribute(RequestAttribute.USER_LOGIN, login);
         if (isEdit) {
+            try {
+                userService.updateUserStatus(login, StatusType.INACTIVE);
+            } catch (ServiceException e) {
+                logger.error(e);
+            }
             Date currentDate = new Date();
             SimpleDateFormat formatForDate = new SimpleDateFormat("yyyy-MM-dd");
             requestContext.addAttribute(RequestAttribute.CURRENT_DATE, formatForDate.format(currentDate));
