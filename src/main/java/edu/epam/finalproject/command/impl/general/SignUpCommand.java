@@ -11,8 +11,8 @@ import org.apache.logging.log4j.LogManager;
 import org.apache.logging.log4j.Logger;
 
 public class SignUpCommand implements Command {
-    private static final UserService userService = new UserService();
     private static final Logger logger = LogManager.getLogger(SignUpCommand.class);
+    private static final UserService userService = new UserService();
 
     @Override
     public CommandResult execute(RequestContext requestContext) {
@@ -21,36 +21,36 @@ public class SignUpCommand implements Command {
         String password = requestContext.getParameter(RequestParameter.PASSWORD);
         String repeatPassword = requestContext.getParameter(RequestParameter.REPEAT_PASSWORD);
         if (!password.equals(repeatPassword)) {
-            requestContext.addAttribute(RequestAttribute.ERROR_MESSAGE, Message.DIFFERENT_PASSWORDS);
+            requestContext.addAttribute(RequestAttribute.ERROR_MESSAGE, CommandMessage.DIFFERENT_PASSWORDS);
             page = PagePath.REGISTRATION;
             requestContext.addSessionAttribute(SessionAttribute.CURRENT_PAGE, page);
             return CommandResult.setForwardPage(page);
         }
         if (InputValidator.validateAuth(login, password)) {
             String encryptedPassword = PasswordEncrypt.encryptPassword(password);
-            boolean isCreated = false;
+            boolean isCreated;
             try {
                 isCreated = userService.createNewUser(login, encryptedPassword);
             } catch (ServiceException e) {
                 logger.error(e);
+                requestContext.addAttribute(RequestAttribute.ERROR_MESSAGE, CommandMessage.DATABASE_ERROR);
+                page = PagePath.REGISTRATION;
+                requestContext.addSessionAttribute(SessionAttribute.CURRENT_PAGE, page);
+                return CommandResult.setForwardPage(page);
             }
             if (isCreated) {
                 requestContext.addSessionAttribute(SessionAttribute.USER, login);
                 page = PagePath.USER_MENU;
                 requestContext.addSessionAttribute(SessionAttribute.ROLE, RoleType.USER);
-                requestContext.addSessionAttribute(SessionAttribute.CURRENT_PAGE, page);
-                return CommandResult.setForwardPage(page);
             } else {
-                requestContext.addAttribute(RequestAttribute.ERROR_MESSAGE, Message.THIS_USER_IS_EXIST);
+                requestContext.addAttribute(RequestAttribute.ERROR_MESSAGE, CommandMessage.THIS_USER_IS_EXIST);
                 page = PagePath.REGISTRATION;
-                requestContext.addSessionAttribute(SessionAttribute.CURRENT_PAGE, page);
-                return CommandResult.setForwardPage(page);
             }
         } else {
-            requestContext.addAttribute(RequestAttribute.ERROR_MESSAGE, Message.VALIDATION_ERROR);
+            requestContext.addAttribute(RequestAttribute.ERROR_MESSAGE, CommandMessage.VALIDATION_ERROR);
             page = PagePath.REGISTRATION;
-            requestContext.addSessionAttribute(SessionAttribute.CURRENT_PAGE, page);
-            return CommandResult.setForwardPage(page);
         }
+        requestContext.addSessionAttribute(SessionAttribute.CURRENT_PAGE, page);
+        return CommandResult.setForwardPage(page);
     }
 }

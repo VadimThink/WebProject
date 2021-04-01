@@ -20,7 +20,7 @@ public class DoublePostingPreventingFilter implements Filter {
     private final static Logger log = LogManager.getLogger(DoublePostingPreventingFilter.class);
 
     @Override
-    public void init(FilterConfig fg) throws ServletException {
+    public void init(FilterConfig fg) {
     }
 
     @Override
@@ -43,7 +43,6 @@ public class DoublePostingPreventingFilter implements Filter {
                 log.info("Tokens: " + serverToken + "-" + req.getParameter(RequestParameter.CLIENT_TOKEN));
                 session.setAttribute(SessionAttribute.SERVER_TOKEN, new Random().nextInt(10000));
                 HttpServletResponse response = (HttpServletResponse) res;
-                //response.sendRedirect(request.getContextPath() + session.getAttribute(SessionAttribute.CURRENT_PAGE));
                 String page = (String) session.getAttribute(SessionAttribute.CURRENT_PAGE);
                 RequestDispatcher dispatcher = request.getRequestDispatcher(page);
                 dispatcher.forward(request, response);

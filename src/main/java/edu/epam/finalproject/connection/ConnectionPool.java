@@ -16,6 +16,7 @@ import java.util.concurrent.BlockingQueue;
 import java.util.concurrent.LinkedBlockingDeque;
 
 public class ConnectionPool {
+    private static final Logger logger = LogManager.getLogger();
     private static final ConnectionPool instance = new ConnectionPool();
 
     private static final String DATABASE_PROPERTIES = "db.properties";
@@ -25,12 +26,6 @@ public class ConnectionPool {
 
     private final BlockingQueue<ProxyConnection> freeConnections;
     private final Queue<ProxyConnection> busyConnections;
-
-    private static final Logger Logger = LogManager.getLogger();
-
-    public static ConnectionPool getInstance() {
-        return instance;
-    }
 
     private ConnectionPool() {
         freeConnections = new LinkedBlockingDeque<>(DEFAULT_POOL_SIZE);
@@ -47,8 +42,13 @@ public class ConnectionPool {
                 freeConnections.add(new ProxyConnection(DriverManager.getConnection(sqlUrl, properties)));
             }
         } catch (IOException | ClassNotFoundException | SQLException exp) {
+            logger.fatal(exp);
             throw new RuntimeException("Connection pool is not initialize.", exp);
         }
+    }
+
+    public static ConnectionPool getInstance() {
+        return instance;
     }
 
     public ProxyConnection getConnection() {
@@ -57,8 +57,7 @@ public class ConnectionPool {
             proxyConnection = freeConnections.take();
             busyConnections.add(proxyConnection);
         } catch (InterruptedException exp) {
-            Logger.error("The connection is not received", exp);
-            throw new RuntimeException(exp);
+            logger.error("The connection is not received", exp);
         }
         return proxyConnection;
     }
@@ -68,7 +67,7 @@ public class ConnectionPool {
                 && busyConnections.remove(connection)) {
             freeConnections.offer((ProxyConnection) connection);
         } else {
-            Logger.error("Invalid connection type passed");
+            logger.error("Invalid connection type passed");
         }
     }
 
@@ -77,7 +76,7 @@ public class ConnectionPool {
             try {
                 freeConnections.take().reallyClose();
             } catch (SQLException | InterruptedException exp) {
-                Logger.error("The pool was not destroyed", exp);
+                logger.error("The pool was not destroyed", exp);
             }
         }
         deregisterDrivers();
@@ -90,7 +89,7 @@ public class ConnectionPool {
             try {
                 DriverManager.deregisterDriver(driver);
             } catch (SQLException exp) {
-                Logger.error("Error while deregister drivers", exp);
+                logger.error("Error while deregister drivers", exp);
             }
         }
     }

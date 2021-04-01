@@ -10,8 +10,8 @@ import org.apache.logging.log4j.LogManager;
 import org.apache.logging.log4j.Logger;
 
 public class SendFormCommand implements Command {
-    private static final UserService userService = new UserService();
     private static final Logger logger = LogManager.getLogger(SendFormCommand.class);
+    private static final UserService userService = new UserService();
 
     @Override
     public CommandResult execute(RequestContext requestContext) {
@@ -47,15 +47,18 @@ public class SendFormCommand implements Command {
                         phone, email, specialtyNum, gpa, languageScore, mathScore, thirdScore);
             } catch (ServiceException e) {
                 logger.error(e);
+                requestContext.addAttribute(RequestAttribute.ERROR_MESSAGE, CommandMessage.DATABASE_ERROR);
+                page = PagePath.FORM_COMMAND + login;
+                requestContext.addSessionAttribute(SessionAttribute.CURRENT_PAGE, page);
+                return CommandResult.setForwardPage(page);
             }
             page = PagePath.PROFILE_COMMAND + login;
             requestContext.addSessionAttribute(SessionAttribute.CURRENT_PAGE, page);
-            return CommandResult.setForwardPage(page);
         } else {
             page = PagePath.FORM_COMMAND + login;
             requestContext.addSessionAttribute(SessionAttribute.CURRENT_PAGE, page);
-            requestContext.addAttribute(RequestAttribute.ERROR_MESSAGE, Message.VALIDATION_ERROR);
-            return CommandResult.setForwardPage(page);
+            requestContext.addAttribute(RequestAttribute.ERROR_MESSAGE, CommandMessage.VALIDATION_ERROR);
         }
+        return CommandResult.setForwardPage(page);
     }
 }

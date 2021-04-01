@@ -9,6 +9,7 @@ import edu.epam.finalproject.entity.RoleType;
 
 public class OpenMenuCommand implements Command {
 
+
     @Override
     public CommandResult execute(RequestContext requestContext) {
         RoleType role = (RoleType) requestContext.getSessionAttribute(SessionAttribute.ROLE);

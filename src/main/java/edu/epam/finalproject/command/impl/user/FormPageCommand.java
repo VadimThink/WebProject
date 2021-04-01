@@ -13,11 +13,12 @@ import java.util.List;
 
 public class FormPageCommand implements Command {
     private static final Logger logger = LogManager.getLogger(FormPageCommand.class);
+    private static final String DATE_FORMAT = "yyyy-MM-dd";
 
     @Override
     public CommandResult execute(RequestContext requestContext) {
         Date currentDate = new Date();
-        SimpleDateFormat formatForDate = new SimpleDateFormat("yyyy-MM-dd");
+        SimpleDateFormat formatForDate = new SimpleDateFormat(DATE_FORMAT);
         requestContext.addAttribute(RequestAttribute.CURRENT_DATE, formatForDate.format(currentDate));
         List<Specialty> specialtyList = SpecialtyList.getInstance().getSpecialtyList();
         requestContext.addAttribute(RequestAttribute.SPECIALTY_LIST, specialtyList);

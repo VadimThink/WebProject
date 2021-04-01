@@ -20,24 +20,23 @@ public class UsersListCommand implements Command {
 
     @Override
     public CommandResult execute(RequestContext requestContext) {
-        List<User> usersList = new ArrayList<>();
-        long usersNumber = 0;
+        List<User> usersList;
+        long usersNumber;
         try {
             usersNumber = userService.findNumberOfUsers();
-        } catch (ServiceException e) {
-            logger.error(e);
-        }
-        requestContext.addAttribute(RequestAttribute.USERS_NUMBER, usersNumber);
-        try {
+            requestContext.addAttribute(RequestAttribute.USERS_NUMBER, usersNumber);
             usersList = userService.findUsersInRange(FIRST_ID, NUMBER);
+            long lastId = usersList.get(usersList.size() - 1).getId();
+            requestContext.addAttribute(RequestAttribute.FIRST_ID, FIRST_ID);
+            requestContext.addAttribute(RequestAttribute.LAST_ID, lastId);
+            requestContext.addAttribute(RequestAttribute.USERS_LIST, usersList);
+            requestContext.addSessionAttribute(SessionAttribute.CURRENT_PAGE, PagePath.USERS_LIST);
+            return CommandResult.setForwardPage(PagePath.USERS);
         } catch (ServiceException e) {
             logger.error(e);
+            requestContext.addAttribute(RequestAttribute.ERROR_MESSAGE, CommandMessage.DATABASE_ERROR);
+            requestContext.addSessionAttribute(SessionAttribute.CURRENT_PAGE, PagePath.USERS_LIST);
+            return CommandResult.setForwardPage(PagePath.USERS_LIST);
         }
-        long lastId = usersList.get(usersList.size() - 1).getId();
-        requestContext.addAttribute(RequestAttribute.FIRST_ID, FIRST_ID);
-        requestContext.addAttribute(RequestAttribute.LAST_ID, lastId);
-        requestContext.addAttribute(RequestAttribute.USERS_LIST, usersList);
-        requestContext.addSessionAttribute(SessionAttribute.CURRENT_PAGE, PagePath.USERS_LIST);
-        return CommandResult.setForwardPage(PagePath.USERS);
     }
 }

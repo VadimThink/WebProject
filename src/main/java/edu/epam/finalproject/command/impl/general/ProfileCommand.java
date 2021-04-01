@@ -39,16 +39,19 @@ public class ProfileCommand implements Command {
             userInfo = userService.findUserInfo(login);
         } catch (ServiceException e) {
             logger.error(e);
-            requestContext.addAttribute(RequestAttribute.ERROR_MESSAGE, Message.CANT_FIND_USER);
+            requestContext.addAttribute(RequestAttribute.ERROR_MESSAGE, CommandMessage.DATABASE_ERROR);
             return CommandResult.setForwardPage(PagePath.OPEN_MENU_COMMAND);
         }
         requestContext.addAttribute(RequestAttribute.USER_INFO, userInfo);
         requestContext.addAttribute(RequestAttribute.USER_LOGIN, login);
-        if (isEdit) {
+        if (isEdit && !userInfo.isEnrolled()) {
             try {
                 userService.updateUserStatus(login, StatusType.INACTIVE);
             } catch (ServiceException e) {
                 logger.error(e);
+                requestContext.addAttribute(RequestAttribute.ERROR_MESSAGE, CommandMessage.DATABASE_ERROR);
+                requestContext.addSessionAttribute(SessionAttribute.CURRENT_PAGE, PagePath.PROFILE_COMMAND + login);
+                return CommandResult.setForwardPage(PagePath.PROFILE_COMMAND + login);
             }
             Date currentDate = new Date();
             SimpleDateFormat formatForDate = new SimpleDateFormat("yyyy-MM-dd");

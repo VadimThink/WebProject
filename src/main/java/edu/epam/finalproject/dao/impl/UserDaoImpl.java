@@ -19,7 +19,7 @@ public class UserDaoImpl extends AbstractUserDao {
         try (Statement statement = connection.createStatement()) {
             ResultSet resultSet = statement.executeQuery(SQL_FIND_MAX_ID);
             resultSet.next();
-            id = resultSet.getLong("MAX(users.id)");
+            id = resultSet.getLong(1);
         } catch (SQLException e) {
             throw new DaoException(e);
         }
@@ -140,7 +140,7 @@ public class UserDaoImpl extends AbstractUserDao {
             statement.setString(1, login);
             ResultSet resultSet = statement.executeQuery();
             resultSet.next();
-            role = resultSet.getInt("users.role_num");
+            role = resultSet.getInt(1);
         } catch (SQLException e) {
             throw new DaoException(e);
         }
@@ -405,13 +405,6 @@ public class UserDaoImpl extends AbstractUserDao {
         }
         return StatusType.values()[statusNum];
     }
-
-
-    @Override
-    public void create(User user) throws DaoException {
-        throw new UnsupportedOperationException();
-    }
-
 
     @Override
     public boolean create(User user, String password) throws DaoException {

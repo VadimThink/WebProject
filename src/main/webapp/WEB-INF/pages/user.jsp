@@ -22,13 +22,8 @@
         <fmt:message key="header.menu"/>
     </h2>
     <p align="center">
-        <a class="classicButton" href="${pageContext.request.contextPath}/controller?command=form_page">
+        <a class="classicButton" href="${pageContext.request.contextPath}/controller?command=edit_profile&login=${userLogin}">
             <fmt:message key="button.fillForm"/>
-        </a>
-    </p>
-    <p align="center">
-        <a class="classicButton" href="Баллы.html">
-            <fmt:message key="button.passingPoints"/>
         </a>
     </p>
 </div>

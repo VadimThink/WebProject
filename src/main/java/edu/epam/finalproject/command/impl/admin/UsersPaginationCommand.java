@@ -22,37 +22,32 @@ public class UsersPaginationCommand implements Command {
     public CommandResult execute(RequestContext requestContext) {
         long firstId = Long.parseLong(requestContext.getParameter(RequestParameter.LAST_ID));
         List<User> usersList = new ArrayList<>();
-        long usersNumber = 0;
+        long usersNumber;
         long lastId = firstId;
         try {
             usersNumber = userService.findNumberOfUsers();
+            requestContext.addAttribute(RequestAttribute.USERS_NUMBER, usersNumber);
+            long offset = usersNumber - firstId;
+            if (offset > DEFAULT_NUMBER_OF_USERS) {
+                usersList = userService.findUsersInRange(firstId, DEFAULT_NUMBER_OF_USERS);
+                lastId = usersList.get(usersList.size() - 1).getId();
+            }
+            if (offset <= 0) {
+                requestContext.addAttribute(RequestAttribute.ERROR_MESSAGE, CommandMessage.CANT_FIND_USERS_IN_THIS_RANGE);
+            } else if (offset <= DEFAULT_NUMBER_OF_USERS) {
+                usersList = userService.findUsersInRange(firstId, offset);
+                lastId = usersList.get(usersList.size() - 1).getId();
+            }
+            requestContext.addAttribute(RequestAttribute.FIRST_ID, firstId);
+            requestContext.addAttribute(RequestAttribute.LAST_ID, lastId);
+            requestContext.addAttribute(RequestAttribute.USERS_LIST, usersList);
+            requestContext.addSessionAttribute(SessionAttribute.CURRENT_PAGE, PagePath.USERS_LIST);
+            return CommandResult.setForwardPage(PagePath.USERS);
         } catch (ServiceException e) {
             logger.error(e);
+            requestContext.addAttribute(RequestAttribute.ERROR_MESSAGE, CommandMessage.DATABASE_ERROR);
+            requestContext.addSessionAttribute(SessionAttribute.CURRENT_PAGE, PagePath.USERS_LIST);
+            return CommandResult.setForwardPage(PagePath.USERS_LIST);
         }
-        requestContext.addAttribute(RequestAttribute.USERS_NUMBER, usersNumber);
-        long offset = usersNumber - firstId;
-        if (offset > DEFAULT_NUMBER_OF_USERS) {
-            try {
-                usersList = userService.findUsersInRange(firstId, DEFAULT_NUMBER_OF_USERS);
-            } catch (ServiceException e) {
-                logger.error(e);
-            }
-            lastId = usersList.get(usersList.size() - 1).getId();
-        }
-        if (offset <= 0) {
-            requestContext.addAttribute(RequestAttribute.ERROR_MESSAGE, Message.CANT_FIND_USERS_IN_THIS_RANGE);
-        } else if (offset <= DEFAULT_NUMBER_OF_USERS) {
-            try {
-                usersList = userService.findUsersInRange(firstId, offset);
-            } catch (ServiceException e) {
-                logger.error(e);
-            }
-            lastId = usersList.get(usersList.size() - 1).getId();
-        }
-        requestContext.addAttribute(RequestAttribute.FIRST_ID, firstId);
-        requestContext.addAttribute(RequestAttribute.LAST_ID, lastId);
-        requestContext.addAttribute(RequestAttribute.USERS_LIST, usersList);
-        requestContext.addSessionAttribute(SessionAttribute.CURRENT_PAGE, PagePath.USERS_LIST);
-        return CommandResult.setForwardPage(PagePath.USERS);
     }
 }

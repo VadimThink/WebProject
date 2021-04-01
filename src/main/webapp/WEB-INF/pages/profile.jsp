@@ -155,7 +155,7 @@
         <p align="center">
             <a class="classicButton"
                href="${pageContext.request.contextPath}/controller?command=edit_profile&login=${userLogin}">
-                Edit
+                <fmt:message key="button.edit"/>
             </a>
         </p>
     </c:if>

@@ -42,4 +42,8 @@ public class RequestAttribute {
      */
     public static final String CURRENT_DATE = "currentDate";
 
+    private RequestAttribute(){
+
+    }
+
 }

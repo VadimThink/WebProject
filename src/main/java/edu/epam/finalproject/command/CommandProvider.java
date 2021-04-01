@@ -11,8 +11,7 @@ public class CommandProvider {
     public static Command provideCommand(String command, RequestContext requestContext) {
         Command currentCommand;
         RoleType role = CommandType.valueOf(command.toUpperCase()).getRole();
-
-        if (command == null || command.isEmpty()) {
+        if (command.isEmpty()) {
             return new EmptyCommand();
         }
         if (role == requestContext.getSessionAttribute(SessionAttribute.ROLE) || role == RoleType.EVERYONE) {
@@ -22,7 +21,7 @@ public class CommandProvider {
                 currentCommand = new EmptyCommand();
             }
         } else {
-            return new EmptyCommand();
+            currentCommand = new EmptyCommand();
         }
         return currentCommand;
     }

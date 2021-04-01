@@ -5,10 +5,6 @@ package edu.epam.finalproject.command;
  */
 public class RequestParameter {
 
-    private RequestParameter() {
-
-    }
-
     /**
      * The constant LOGIN.
      */
@@ -105,5 +101,9 @@ public class RequestParameter {
      * The constant CLIENT_TOKEN.
      */
     public static final String CLIENT_TOKEN = "ctoken";
+
+    private RequestParameter() {
+
+    }
 
 }

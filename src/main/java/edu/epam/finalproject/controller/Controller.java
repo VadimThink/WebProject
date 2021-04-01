@@ -36,7 +36,7 @@ public class Controller extends HttpServlet {
         String page = commandResult.getPage();
         requestFiller.fillData(request, requestContext);
         if (page == null) {
-            page = PagePath.ERROR_404;
+            page = PagePath.ERROR;
             response.sendRedirect(request.getContextPath() + page);
         }
         if (commandResult.isRedirect()) {

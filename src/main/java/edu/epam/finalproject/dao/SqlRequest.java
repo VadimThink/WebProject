@@ -42,4 +42,8 @@ public class SqlRequest {
     public final static String SQL_FIND_ALL_SPECIALTIES = "SELECT specialties.specialty_num, specialties.name, " +
             "specialties.plan, faculties.name FROM specialties JOIN faculties ON specialties.faculty_num = faculties.faculty_num";
 
+    private SqlRequest(){
+
+    }
+
 }

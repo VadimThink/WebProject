@@ -1,9 +1,6 @@
 package edu.epam.finalproject.command.impl.admin;
 
-import edu.epam.finalproject.command.Command;
-import edu.epam.finalproject.command.CommandResult;
-import edu.epam.finalproject.command.RequestParameter;
-import edu.epam.finalproject.command.SessionAttribute;
+import edu.epam.finalproject.command.*;
 import edu.epam.finalproject.controller.request.RequestContext;
 import edu.epam.finalproject.entity.RoleType;
 import edu.epam.finalproject.logic.service.ServiceException;
@@ -26,13 +23,17 @@ public class ChangeUserRoleCommand implements Command {
 
     @Override
     public CommandResult execute(RequestContext requestContext) {
+        String page;
         String login = requestContext.getParameter(RequestParameter.USER_LOGIN);
         try {
             userService.updateUserRole(login, role);
         } catch (ServiceException e) {
             logger.error(e);
+            requestContext.addAttribute(RequestAttribute.ERROR_MESSAGE, CommandMessage.DATABASE_ERROR);
+            page = (String) requestContext.getSessionAttribute(SessionAttribute.CURRENT_PAGE);
+            return CommandResult.setForwardPage(page);
         }
-        String page = (String) requestContext.getSessionAttribute(SessionAttribute.CURRENT_PAGE);
+        page = (String) requestContext.getSessionAttribute(SessionAttribute.CURRENT_PAGE);
         return CommandResult.setForwardPage(page);
     }
 }

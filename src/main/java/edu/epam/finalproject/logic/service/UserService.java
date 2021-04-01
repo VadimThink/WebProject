@@ -17,7 +17,6 @@ import java.util.List;
  */
 public class UserService {
     private static final Logger logger = LogManager.getLogger(UserService.class);
-    private static final String DATABASE_ERROR = "Can`t get access to Database";
 
     /**
      * Create new user boolean.
@@ -38,7 +37,7 @@ public class UserService {
                 entityTransaction.commit();
             } catch (DaoException e) {
                 entityTransaction.rollback();
-                logger.error(DATABASE_ERROR, e);
+                logger.error(e);
                 throw new ServiceException(e);
             }
             entityTransaction.end();
@@ -66,7 +65,7 @@ public class UserService {
             entityTransaction.commit();
         } catch (DaoException e) {
             entityTransaction.rollback();
-            logger.error(DATABASE_ERROR, e);
+            logger.error(e);
             throw new ServiceException(e);
         }
         entityTransaction.end();
@@ -90,7 +89,7 @@ public class UserService {
             entityTransaction.commit();
         } catch (DaoException e) {
             entityTransaction.rollback();
-            logger.error(DATABASE_ERROR, e);
+            logger.error(e);
             throw new ServiceException(e);
         }
         entityTransaction.end();
@@ -145,7 +144,7 @@ public class UserService {
             userDaoImpl.updateUserResultScore(login, resultScore);
             entityTransaction.commit();
         } catch (DaoException e) {
-            logger.error(DATABASE_ERROR, e);
+            logger.error(e);
             entityTransaction.rollback();
             throw new ServiceException(e);
         }
@@ -168,7 +167,7 @@ public class UserService {
             userList = userDaoImpl.findAll();
             entityTransaction.commit();
         } catch (DaoException e) {
-            logger.error(DATABASE_ERROR, e);
+            logger.error(e);
             entityTransaction.rollback();
             throw new ServiceException(e);
         }
@@ -192,7 +191,7 @@ public class UserService {
             userList = userDaoImpl.findAllUsersWithCurrentSpecialty(specialtyNum);
             entityTransaction.commit();
         } catch (DaoException e) {
-            logger.error(DATABASE_ERROR, e);
+            logger.error(e);
             entityTransaction.rollback();
             throw new ServiceException(e);
         }
@@ -244,7 +243,7 @@ public class UserService {
             userDaoImpl.updateUserEnrolled(login, isEnrolled);
             entityTransaction.commit();
         } catch (DaoException e) {
-            logger.error(DATABASE_ERROR, e);
+            logger.error(e);
             entityTransaction.rollback();
             throw new ServiceException(e);
         }
@@ -269,7 +268,7 @@ public class UserService {
             userList = userDaoImpl.findUsersInRange(firstId, number);
             entityTransaction.commit();
         } catch (DaoException e) {
-            logger.error(DATABASE_ERROR, e);
+            logger.error(e);
             entityTransaction.rollback();
             throw new ServiceException(e);
         }
@@ -292,7 +291,7 @@ public class UserService {
             number = userDaoImpl.findMaxUserId();
             entityTransaction.commit();
         } catch (DaoException e) {
-            logger.error(DATABASE_ERROR, e);
+            logger.error(e);
             entityTransaction.rollback();
             throw new ServiceException(e);
         }
@@ -316,7 +315,7 @@ public class UserService {
             currentUser = userDaoImpl.findUserInfo(login);
             entityTransaction.commit();
         } catch (DaoException e) {
-            logger.error(DATABASE_ERROR, e);
+            logger.error(e);
             entityTransaction.rollback();
             throw new ServiceException(e);
         }
@@ -340,7 +339,7 @@ public class UserService {
             userDaoImpl.updateUserStatus(login, status);
             entityTransaction.commit();
         } catch (DaoException e) {
-            logger.error(DATABASE_ERROR, e);
+            logger.error(e);
             entityTransaction.rollback();
             throw new ServiceException(e);
         }
@@ -364,7 +363,7 @@ public class UserService {
             userDaoImpl.updateUserRole(login, role);
             entityTransaction.commit();
         } catch (DaoException e) {
-            logger.error(DATABASE_ERROR, e);
+            logger.error(e);
             entityTransaction.rollback();
             throw new ServiceException(e);
         }
@@ -387,6 +386,7 @@ public class UserService {
         try {
             status = userDaoImpl.findUserStatus(login);
         } catch (DaoException e) {
+            logger.error(e);
             throw new ServiceException(e);
         }
         return status != StatusType.BLOCKED;

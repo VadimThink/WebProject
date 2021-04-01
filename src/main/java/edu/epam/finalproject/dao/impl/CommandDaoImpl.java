@@ -38,11 +38,5 @@ public class CommandDaoImpl extends AbstractCommandDao {
     public List findAll() throws DaoException {
         throw new UnsupportedOperationException();
     }
-
-
-    @Override
-    public void create(Entity entity) throws DaoException {
-        throw new UnsupportedOperationException();
-    }
     
 }

@@ -11,10 +11,10 @@ import javax.servlet.http.HttpSessionEvent;
 import javax.servlet.http.HttpSessionListener;
 
 @WebListener
-public class SessionListener implements HttpSessionListener {
+public class UserParameterSessionListener implements HttpSessionListener {
     private static final String EN = "en";
     private static final String SESSION_CREATED = "Session was created";
-    public static final Logger logger = LogManager.getLogger(SessionListener.class);
+    public static final Logger logger = LogManager.getLogger(UserParameterSessionListener.class);
 
     @Override
     public void sessionCreated(HttpSessionEvent se) {

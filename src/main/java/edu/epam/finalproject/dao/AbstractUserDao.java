@@ -10,7 +10,7 @@ import java.util.List;
 /**
  * The type Abstract user dao.
  */
-public abstract class AbstractUserDao extends AbstractDao<Long, User> {
+public abstract class AbstractUserDao extends AbstractDao<User> {
 
     /**
      * Find max user id long.

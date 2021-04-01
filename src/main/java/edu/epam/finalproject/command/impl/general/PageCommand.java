@@ -3,7 +3,6 @@ package edu.epam.finalproject.command.impl.general;
 import edu.epam.finalproject.command.*;
 import edu.epam.finalproject.controller.request.RequestContext;
 
-
 public class PageCommand implements Command {
 
     private final String commandType;

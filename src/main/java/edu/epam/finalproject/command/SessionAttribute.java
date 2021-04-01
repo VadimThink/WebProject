@@ -30,4 +30,8 @@ public class SessionAttribute {
      */
     public static final String SERVER_TOKEN = "stoken";
 
+    private SessionAttribute(){
+
+    }
+
 }

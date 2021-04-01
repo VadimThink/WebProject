@@ -97,7 +97,7 @@ public class PagePath {
     /**
      * The constant ERROR_404.
      */
-    public static final String ERROR_404 = "WEB-INF/pages/error/error.jsp";
+    public static final String ERROR = "WEB-INF/pages/error/error.jsp";
 
     private PagePath() {
 

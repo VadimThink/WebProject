@@ -3,7 +3,7 @@ package edu.epam.finalproject.command;
 /**
  * The type Message.
  */
-public class Message {
+public class CommandMessage {
 
     /**
      * The constant WRONG_AUTH.
@@ -20,7 +20,7 @@ public class Message {
     /**
      * The constant CANT_FIND_USER.
      */
-    public static final String CANT_FIND_USER = "cantFindUser";
+    public static final String DATABASE_ERROR = "databaseError";
     /**
      * The constant USER_BLOCKED.
      */
@@ -34,6 +34,6 @@ public class Message {
      */
     public static final String VALIDATION_ERROR = "validationError";
 
-    private Message() {
+    private CommandMessage() {
     }
 }

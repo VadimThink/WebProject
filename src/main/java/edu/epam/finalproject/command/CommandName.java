@@ -41,4 +41,8 @@ public class CommandName {
      * The constant HOME_PAGE.
      */
     public static final String HOME_PAGE = "home_page";
+
+    private CommandName(){
+
+    }
 }
