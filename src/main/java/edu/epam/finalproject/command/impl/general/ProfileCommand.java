@@ -13,8 +13,9 @@ import java.util.Date;
 import java.util.List;
 
 public class ProfileCommand implements Command {
-    private static final UserService userService = new UserService();
     private static final Logger logger = LogManager.getLogger(ProfileCommand.class);
+    private static final UserService userService = new UserService();
+    private static final String DATE_FORMAT = "yyyy-MM-dd";
 
     private boolean isEdit;
 
@@ -54,7 +55,7 @@ public class ProfileCommand implements Command {
                 return CommandResult.setForwardPage(PagePath.PROFILE_COMMAND + login);
             }
             Date currentDate = new Date();
-            SimpleDateFormat formatForDate = new SimpleDateFormat("yyyy-MM-dd");
+            SimpleDateFormat formatForDate = new SimpleDateFormat(DATE_FORMAT);
             requestContext.addAttribute(RequestAttribute.CURRENT_DATE, formatForDate.format(currentDate));
             List<Specialty> specialtyList = SpecialtyList.getInstance().getSpecialtyList();
             requestContext.addAttribute(RequestAttribute.SPECIALTY_LIST, specialtyList);
