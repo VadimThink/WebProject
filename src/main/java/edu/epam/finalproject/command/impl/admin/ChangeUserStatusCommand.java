@@ -24,13 +24,12 @@ public class ChangeUserStatusCommand implements Command {
         String page;
         try {
             userService.updateUserStatus(login, statusType);
+            page = (String) requestContext.getSessionAttribute(SessionAttribute.CURRENT_PAGE);
         } catch (ServiceException e) {
             logger.error(e);
             requestContext.addAttribute(RequestAttribute.ERROR_MESSAGE, CommandMessage.DATABASE_ERROR);
             page = (String) requestContext.getSessionAttribute(SessionAttribute.CURRENT_PAGE);
-            return CommandResult.setForwardPage(page);
         }
-        page = (String) requestContext.getSessionAttribute(SessionAttribute.CURRENT_PAGE);
         return CommandResult.setForwardPage(page);
     }
 }

@@ -22,6 +22,7 @@ public class UsersListCommand implements Command {
     public CommandResult execute(RequestContext requestContext) {
         List<User> usersList;
         long usersNumber;
+        String page;
         try {
             usersNumber = userService.findNumberOfUsers();
             requestContext.addAttribute(RequestAttribute.USERS_NUMBER, usersNumber);
@@ -31,12 +32,13 @@ public class UsersListCommand implements Command {
             requestContext.addAttribute(RequestAttribute.LAST_ID, lastId);
             requestContext.addAttribute(RequestAttribute.USERS_LIST, usersList);
             requestContext.addSessionAttribute(SessionAttribute.CURRENT_PAGE, PagePath.USERS_LIST);
-            return CommandResult.setForwardPage(PagePath.USERS);
+            page = PagePath.USERS;
         } catch (ServiceException e) {
             logger.error(e);
             requestContext.addAttribute(RequestAttribute.ERROR_MESSAGE, CommandMessage.DATABASE_ERROR);
             requestContext.addSessionAttribute(SessionAttribute.CURRENT_PAGE, PagePath.USERS_LIST);
-            return CommandResult.setForwardPage(PagePath.USERS_LIST);
+            page = PagePath.USERS_LIST;
         }
+        return CommandResult.setForwardPage(page);
     }
 }

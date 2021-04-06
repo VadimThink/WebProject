@@ -16,44 +16,46 @@ public class PageCommand implements Command {
         if (commandType == null) {
             throw new IllegalArgumentException("Invalid page.");
         }
+        String page;
         switch (commandType) {
             case CommandName.LOGIN_PAGE -> {
                 requestContext.addSessionAttribute(SessionAttribute.CURRENT_PAGE, PagePath.LOGIN);
-                return CommandResult.setForwardPage(PagePath.LOGIN);
+                page = PagePath.LOGIN;
             }
             case CommandName.SIGN_UP_PAGE -> {
                 requestContext.addSessionAttribute(SessionAttribute.CURRENT_PAGE, PagePath.REGISTRATION);
-                return CommandResult.setForwardPage(PagePath.REGISTRATION);
+                page = PagePath.REGISTRATION;
             }
             case CommandName.FIC_PAGE -> {
                 requestContext.addSessionAttribute(SessionAttribute.CURRENT_PAGE, PagePath.FIC);
-                return CommandResult.setForwardPage(PagePath.FIC);
+                page = PagePath.FIC;
             }
             case CommandName.FITC_PAGE -> {
                 requestContext.addSessionAttribute(SessionAttribute.CURRENT_PAGE, PagePath.FITC);
-                return CommandResult.setForwardPage(PagePath.FITC);
+                page = PagePath.FITC;
             }
             case CommandName.FCSN_PAGE -> {
                 requestContext.addSessionAttribute(SessionAttribute.CURRENT_PAGE, PagePath.FCSN);
-                return CommandResult.setForwardPage(PagePath.FCSN);
+                page = PagePath.FCSN;
             }
             case CommandName.FCP_PAGE -> {
                 requestContext.addSessionAttribute(SessionAttribute.CURRENT_PAGE, PagePath.FCP);
-                return CommandResult.setForwardPage(PagePath.FCP);
+                page = PagePath.FCP;
             }
             case CommandName.FRE_PAGE -> {
                 requestContext.addSessionAttribute(SessionAttribute.CURRENT_PAGE, PagePath.FRE);
-                return CommandResult.setForwardPage(PagePath.FRE);
+                page = PagePath.FRE;
             }
             case CommandName.FEE_PAGE -> {
                 requestContext.addSessionAttribute(SessionAttribute.CURRENT_PAGE, PagePath.FEE);
-                return CommandResult.setForwardPage(PagePath.FEE);
+                page = PagePath.FEE;
             }
             case CommandName.HOME_PAGE -> {
                 requestContext.addSessionAttribute(SessionAttribute.CURRENT_PAGE, PagePath.HOME);
-                return CommandResult.setForwardPage(PagePath.HOME);
+                page = PagePath.HOME;
             }
             default -> throw new IllegalArgumentException("Unknown page: " + commandType);
         }
+        return CommandResult.setForwardPage(page);
     }
 }

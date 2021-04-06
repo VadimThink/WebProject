@@ -14,15 +14,16 @@ public class FinishInroductoryCampaignCommand implements Command {
 
     @Override
     public CommandResult execute(RequestContext requestContext) {
+        String page;
         try {
             userService.enrollUsersByCompetition();
+            page = (String) requestContext.getSessionAttribute(SessionAttribute.CURRENT_PAGE);
         } catch (ServiceException e) {
-        logger.error(e);
-        requestContext.addAttribute(RequestAttribute.ERROR_MESSAGE, CommandMessage.DATABASE_ERROR);
-        requestContext.addSessionAttribute(SessionAttribute.CURRENT_PAGE, PagePath.OPEN_MENU_COMMAND);
-        return CommandResult.setForwardPage(PagePath.OPEN_MENU_COMMAND);
-    }
-        String page = (String) requestContext.getSessionAttribute(SessionAttribute.CURRENT_PAGE);
+            logger.error(e);
+            requestContext.addAttribute(RequestAttribute.ERROR_MESSAGE, CommandMessage.DATABASE_ERROR);
+            requestContext.addSessionAttribute(SessionAttribute.CURRENT_PAGE, PagePath.OPEN_MENU_COMMAND);
+            page = PagePath.OPEN_MENU_COMMAND;
+        }
         return CommandResult.setForwardPage(page);
     }
 }

@@ -54,13 +54,12 @@ public class SignInCommand implements Command {
                 page = PagePath.LOGIN;
             }
             requestContext.addSessionAttribute(SessionAttribute.CURRENT_PAGE, page);
-            return CommandResult.setForwardPage(page);
         } catch (ServiceException e) {
             logger.error(e);
             requestContext.addAttribute(RequestAttribute.ERROR_MESSAGE, CommandMessage.DATABASE_ERROR);
             page = PagePath.LOGIN;
             requestContext.addSessionAttribute(SessionAttribute.CURRENT_PAGE, page);
-            return CommandResult.setForwardPage(page);
         }
+        return CommandResult.setForwardPage(page);
     }
 }
