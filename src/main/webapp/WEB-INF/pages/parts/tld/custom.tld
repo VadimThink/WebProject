@@ -5,7 +5,7 @@
     <tlib-version>1.0</tlib-version> <short-name>ctg</short-name> <uri>customtags</uri>
     <tag>
         <name>footerTag</name>
-        <tag-class>edu.epam.finalproject.tag.FooterTag</tag-class>
+        <tag-class>edu.epam.committee.tag.FooterTag</tag-class>
         <body-content>empty</body-content>
     </tag>
 </taglib>
