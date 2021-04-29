@@ -59,6 +59,10 @@ public class InputValidator {
                 (thirdScore < SCORE_MIN_SIZE || thirdScore > SCORE_MAX_SIZE)) {
             return false;
         }
+        if (checkXSS(login) || checkXSS(firstName) || checkXSS(lastName) || checkXSS(thirdName) || checkXSS(birthday) ||
+         checkXSS(country) || checkXSS(locality) || checkXSS(address) || checkXSS(phone) || checkXSS(email)){
+            return false;
+        }
         if ((login.length() > NAME_MAX_LENGTH) || (firstName.length() > NAME_MAX_LENGTH) ||
                 (lastName.length() > NAME_MAX_LENGTH) || (thirdName.length() > NAME_MAX_LENGTH) ||
                 (country.length() > OTHER_FIELDS_MAX_LENGTH) || (locality.length() > OTHER_FIELDS_MAX_LENGTH) ||
@@ -80,10 +84,25 @@ public class InputValidator {
         if (login == null || password == null) {
             return false;
         }
+        if(checkXSS(login) || checkXSS(password)){
+            return false;
+        }
         if (login.length() > NAME_MAX_LENGTH || password.length() > NAME_MAX_LENGTH) {
             return false;
         }
         return true;
+    }
+
+    private static boolean checkXSS(String parameter){
+        boolean isValid = false;
+        for (int i = 0; i < parameter.length(); i++){
+            char curChar = parameter.charAt(i);
+            if ((curChar == '<') || (curChar == '>') || (curChar == '\\') || (curChar == '\'')){
+                isValid = true;
+                break;
+            }
+        }
+        return isValid;
     }
 
 }

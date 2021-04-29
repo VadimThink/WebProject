@@ -213,7 +213,6 @@ public class UserService {
             List<User> enrolleeListOfThisSpecialty = findAllUsersWithCurrentSpecialty(specialty.getSpecialtyNum());
             if (enrolleeListOfThisSpecialty != null) {
                 enrolleeListOfThisSpecialty.sort(comparator);
-                System.out.println(enrolleeListOfThisSpecialty.toString());
                 int counter = 0;
                 int index = enrolleeListOfThisSpecialty.size() - 1;
                 while (counter < specialty.getPlan() && index >= 0) {
