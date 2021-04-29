@@ -41,6 +41,7 @@
                     <td class="enrolled"><fmt:message key="table.isEnrolled"/></td>
                     <td class="block"><fmt:message key="table.blockUser"/></td>
                     <td class="profile"><fmt:message key="table.profile"/></td>
+                    <td class="resultScore"><fmt:message key="table.resultScore"/></td>
                 </tr>
                 <c:forEach items="${usersList}" var="user" varStatus="counter">
                     <tr>
@@ -71,6 +72,7 @@
                                 Open profile
                             </a>
                         </td>
+                        <td class="resultScore">${user.resultScore}</td>
                     </tr>
                 </c:forEach>
             </table>

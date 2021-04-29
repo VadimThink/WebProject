@@ -23,12 +23,12 @@
         </h2>
         <p align="center">
             <fmt:message key="input.header.login"/>
-            <input type="text" name="login" placeholder="Login" required
+            <input type="text" name="login" placeholder="3-18 symbols, before number use '_'" required
                    pattern="^[a-zA-Z0-9]([._-](?![._-])|[a-zA-Z0-9]){3,18}[a-zA-Z0-9]$"/>
         </p>
         <p align="center">
             <fmt:message key="input.header.password"/>
-            <input type="password" name="password" placeholder="Password" required
+            <input type="password" name="password" placeholder="3-18 symbols, before number use '_'" required
                    pattern="^[a-zA-Z0-9]([._-](?![._-])|[a-zA-Z0-9]){3,18}[a-zA-Z0-9]$"/>
         </p>
         <p align="center">
