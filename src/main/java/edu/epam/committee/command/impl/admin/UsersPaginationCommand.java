@@ -23,6 +23,7 @@ public class UsersPaginationCommand implements Command {
     private static final Logger logger = LogManager.getLogger(UsersListCommand.class);
 
     private static final int DEFAULT_NUMBER_OF_USERS = 6;
+    private static final int MIN_OFFSET = 0;
 
     @Override
     public CommandResult execute(RequestContext requestContext) {
@@ -39,7 +40,7 @@ public class UsersPaginationCommand implements Command {
                 usersList = userService.findUsersInRange(firstId, DEFAULT_NUMBER_OF_USERS);
                 lastId = usersList.get(usersList.size() - 1).getId();
             }
-            if (offset <= 0) {
+            if (offset <= MIN_OFFSET) {
                 requestContext.addAttribute(RequestAttribute.ERROR_MESSAGE, CommandMessage.CANT_FIND_USERS_IN_THIS_RANGE);
             } else if (offset <= DEFAULT_NUMBER_OF_USERS) {
                 usersList = userService.findUsersInRange(firstId, offset);
