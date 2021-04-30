@@ -1,8 +1,18 @@
 package edu.epam.committee.command.impl.general;
 
-import edu.epam.committee.command.*;
+import edu.epam.committee.command.Command;
+import edu.epam.committee.command.CommandMessage;
+import edu.epam.committee.command.CommandResult;
+import edu.epam.committee.command.PagePath;
+import edu.epam.committee.command.RequestAttribute;
+import edu.epam.committee.command.RequestParameter;
+import edu.epam.committee.command.SessionAttribute;
 import edu.epam.committee.controller.request.RequestContext;
-import edu.epam.committee.entity.*;
+import edu.epam.committee.entity.RoleType;
+import edu.epam.committee.entity.Specialty;
+import edu.epam.committee.entity.SpecialtyList;
+import edu.epam.committee.entity.StatusType;
+import edu.epam.committee.entity.User;
 import edu.epam.committee.logic.service.ServiceException;
 import edu.epam.committee.logic.service.UserService;
 import org.apache.logging.log4j.LogManager;

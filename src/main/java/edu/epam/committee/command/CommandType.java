@@ -1,7 +1,19 @@
 package edu.epam.committee.command;
 
-import edu.epam.committee.command.impl.admin.*;
-import edu.epam.committee.command.impl.general.*;
+import edu.epam.committee.command.impl.admin.ChangeUserRoleCommand;
+import edu.epam.committee.command.impl.admin.ChangeUserStatusCommand;
+import edu.epam.committee.command.impl.admin.EnrolleeListCommand;
+import edu.epam.committee.command.impl.admin.FinishInroductoryCampaignCommand;
+import edu.epam.committee.command.impl.admin.UsersListCommand;
+import edu.epam.committee.command.impl.admin.UsersPaginationCommand;
+import edu.epam.committee.command.impl.general.ChangeLocaleCommand;
+import edu.epam.committee.command.impl.general.LogoutCommand;
+import edu.epam.committee.command.impl.general.OpenMenuCommand;
+import edu.epam.committee.command.impl.general.PageCommand;
+import edu.epam.committee.command.impl.general.ProfileCommand;
+import edu.epam.committee.command.impl.general.SendFormCommand;
+import edu.epam.committee.command.impl.general.SignInCommand;
+import edu.epam.committee.command.impl.general.SignUpCommand;
 import edu.epam.committee.command.impl.user.FormPageCommand;
 import edu.epam.committee.entity.RoleType;
 import edu.epam.committee.entity.StatusType;

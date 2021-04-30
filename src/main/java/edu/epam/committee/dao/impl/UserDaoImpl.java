@@ -3,7 +3,11 @@ package edu.epam.committee.dao.impl;
 import edu.epam.committee.dao.AbstractUserDao;
 import edu.epam.committee.dao.DaoException;
 import edu.epam.committee.dao.SqlRequest;
-import edu.epam.committee.entity.*;
+import edu.epam.committee.entity.RoleType;
+import edu.epam.committee.entity.Specialty;
+import edu.epam.committee.entity.SpecialtyList;
+import edu.epam.committee.entity.StatusType;
+import edu.epam.committee.entity.User;
 
 import java.sql.*;
 import java.util.ArrayList;

@@ -1,6 +1,10 @@
 package edu.epam.committee.command.impl.general;
 
-import edu.epam.committee.command.*;
+import edu.epam.committee.command.Command;
+import edu.epam.committee.command.CommandName;
+import edu.epam.committee.command.CommandResult;
+import edu.epam.committee.command.PagePath;
+import edu.epam.committee.command.SessionAttribute;
 import edu.epam.committee.controller.request.RequestContext;
 
 public class PageCommand implements Command {

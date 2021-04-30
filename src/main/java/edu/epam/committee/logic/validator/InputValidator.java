@@ -23,6 +23,8 @@ public class InputValidator {
      */
     final static int OTHER_FIELDS_MAX_LENGTH = 50;
 
+    final static String LOGIN_AND_PASSWORD_PATTERN = "^[a-zA-Z0-9]([._-](?![._-])|[a-zA-Z0-9]){3,18}[a-zA-Z0-9]$";
+
     /**
      * Validate form boolean.
      *
@@ -82,6 +84,9 @@ public class InputValidator {
      */
     public static boolean validateAuth(String login, String password) {
         if (login == null || password == null) {
+            return false;
+        }
+        if (!login.matches(LOGIN_AND_PASSWORD_PATTERN) || !password.matches(LOGIN_AND_PASSWORD_PATTERN)){
             return false;
         }
         if(checkXSS(login) || checkXSS(password)){

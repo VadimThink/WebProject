@@ -20,10 +20,6 @@ public class DoublePostingPreventingFilter implements Filter {
     private final static Logger log = LogManager.getLogger(DoublePostingPreventingFilter.class);
 
     @Override
-    public void init(FilterConfig fg) {
-    }
-
-    @Override
     public void doFilter(ServletRequest req, ServletResponse res,
                          FilterChain chain) throws IOException, ServletException {
         HttpServletRequest request = (HttpServletRequest) req;
@@ -48,9 +44,5 @@ public class DoublePostingPreventingFilter implements Filter {
                 dispatcher.forward(request, response);
             }
         }
-    }
-
-    @Override
-    public void destroy() {
     }
 }
